@@ -1,0 +1,13 @@
+# Every Stripe link for the site lives here, so the pages never need editing
+# when a checkout link changes. Replace each REPLACE_... URL with the link
+# Stripe gives you (Payment Links and the customer portal login link).
+#
+# The printed QR code in each issue should point to https://tommystories.com/join
+# so it keeps working even if the Stripe link behind it changes.
+
+/join        https://buy.stripe.com/REPLACE_MONTHLY_LINK          302
+/subscribe   /join                                                301
+/gift/3      https://buy.stripe.com/REPLACE_GIFT_3_MONTHS_LINK    302
+/gift/6      https://buy.stripe.com/REPLACE_GIFT_6_MONTHS_LINK    302
+/gift/12     https://buy.stripe.com/REPLACE_GIFT_12_MONTHS_LINK   302
+/manage      https://billing.stripe.com/p/login/REPLACE_PORTAL_LINK   302

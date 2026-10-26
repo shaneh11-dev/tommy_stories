@@ -2,7 +2,7 @@
 # No build step: Netlify publishes the plain HTML in /site as-is.
 
 [build]
-  publish = "site"
+  publish = "."
   command = ""
 
 [[headers]]

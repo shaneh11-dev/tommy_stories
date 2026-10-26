@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Share your story | Tommy Stories</title>
+  <meta name="description" content="Send us a true story about cars, family, life or faith. Reader stories fill every issue of Tommy Stories.">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="airmail-band" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="/">Tommy Stories</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/join">Subscribe</a></li>
+          <li><a href="/gift/">Give a gift</a></li>
+          <li><a href="/share/" aria-current="page">Share your story</a></li>
+          <li><a href="/questions/">Questions</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>Share your story</h1>
+        <p class="lead">Every issue of Tommy Stories is written by readers. Send us a true story from your life, and it could appear in a future issue.</p>
+        <ul class="guidelines">
+          <li>True stories only, about cars, family, life or faith.</li>
+          <li>About 600 to 1,200 words. That's roughly 2 to 5 typed pages, double-spaced.</li>
+          <li>Type it in the box below, attach a file, or mail it to us. Handwritten is fine.</li>
+          <li>We may edit for length and clarity, and we'll check with you before your story is printed.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <form class="form" name="story-submission" method="POST" action="/share/thanks/" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="company">
+          <input type="hidden" name="form-name" value="story-submission">
+          <p class="honeypot" aria-hidden="true">
+            <label>Leave this field empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <div class="field">
+            <label for="name">Your name (required)</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="address">Your mailing address (required)</label>
+            <p class="hint" id="address-hint">So we can reach you by mail about your story.</p>
+            <textarea id="address" name="address" autocomplete="street-address" aria-describedby="address-hint" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label for="topic">What is your story about?</label>
+            <select id="topic" name="topic">
+              <option>Cars and the open road</option>
+              <option>Family and life</option>
+              <option>Faith and hope</option>
+              <option>Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="title">Title of your story</label>
+            <input type="text" id="title" name="title">
+          </div>
+
+          <div class="field">
+            <label for="story">Your story</label>
+            <p class="hint" id="story-hint">Type or paste it here, or attach a file below.</p>
+            <textarea class="story-box" id="story" name="story" aria-describedby="story-hint"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="file">Attach a file instead</label>
+            <p class="hint" id="file-hint">A Word document, PDF, or clear photo of handwritten pages. Files up to 8 MB.</p>
+            <input type="file" id="file" name="file" accept=".doc,.docx,.pdf,.txt,.rtf,.jpg,.jpeg,.png,.heic" aria-describedby="file-hint">
+          </div>
+
+          <div class="field">
+            <label for="byline">How should we print your name?</label>
+            <select id="byline" name="byline">
+              <option>Full name</option>
+              <option>First name and last initial</option>
+              <option>Initials only</option>
+              <option>Don't print my name</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="checkbox">
+              <input type="checkbox" name="agreement" value="agreed" required>
+              <span>This is my own true story. I give Tommy Stories permission to edit it for length and clarity and to print it. I keep ownership of my story. (Required. Read the full <a href="/terms/#stories">story submission terms</a>.)</span>
+            </label>
+          </div>
+
+          <div>
+            <button class="button button--primary" type="submit">Send my story</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section--wash">
+      <div class="wrap">
+        <h2>Prefer paper?</h2>
+        <p>Mail your story to the address below. Include your name, mailing address, and phone or email, plus a signed note saying you agree to our <a href="/terms/#stories">story submission terms</a>.</p>
+        <address class="mail-address">
+          Tommy Stories<br>
+          [MAILING ADDRESS]<br>
+          [CITY, STATE ZIP]
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <p class="footer-name">Tommy Stories</p>
+        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a> or call <a href="tel:+1XXXXXXXXXX">[PHONE]</a>.</p>
+        <address>Tommy Stories<br>[MAILING ADDRESS]<br>[CITY, STATE ZIP]</address>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/questions/">Questions</a></li>
+          <li><a href="/manage">Manage my subscription</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap">
+      <p class="legal">© 2026 Tommy Stories</p>
+    </div>
+  </footer>
+</body>
+</html>

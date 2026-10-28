@@ -424,6 +424,22 @@ p {
   line-height: 1.45;
 }
 
+/* Small print under the "Share your story" buttons. */
+.cta-note,
+.hero-art-cta .cta-note {
+  max-width: 24rem;
+  margin: 0;
+  font-size: 0.85rem;
+  font-style: normal;
+  line-height: 1.45;
+  color: var(--muted);
+  text-wrap: balance;
+}
+
+.actions + .cta-note {
+  margin-top: 0.75rem;
+}
+
 /* Buttons */
 
 .actions {
@@ -955,6 +971,16 @@ p {
 .gift-option p {
   margin: 0.25rem 0 0;
   color: var(--muted);
+}
+
+/* All three gift buttons the same size. */
+.gift-option .button {
+  min-width: 12.5rem;
+}
+
+/* A heavier page title where it needs extra weight (the gift page). */
+.h1-heavy {
+  font-weight: 800;
 }
 
 /* Forms */

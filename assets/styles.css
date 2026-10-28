@@ -91,6 +91,7 @@
   --gold: #D4B06A;       /* on navy: the masthead and footer */
   --gold-deep: #A8833B;  /* on white: rules and borders only, never text */
   --gold-text: #8A6726;  /* antique gold dark enough for small text on white or wash */
+  --red: #B3261E;        /* notices only; readable on white */
 
   --masthead: "Bodoni Moda", Didot, Georgia, "Times New Roman", serif;
   --display: "Bodoni Moda", Didot, Georgia, "Times New Roman", serif;
@@ -112,10 +113,28 @@ html {
   html { font-size: 118.75%; }
 }
 
+/* Computer screens: everything at about two thirds of the tablet size, so the
+   page sits comfortably on a big monitor instead of filling it edge to edge.
+   Readers can still enlarge it with their browser's zoom. */
+@media (min-width: 64em) {
+  html { font-size: 83.333%; }
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* In-page links (like "mail it to us" on the story page) glide to their spot,
+   unless the reader has asked their device for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Leave a little room above a heading that a link scrolls to. */
+[id] {
+  scroll-margin-top: 1.5rem;
 }
 
 body {
@@ -445,6 +464,16 @@ p {
   margin-top: 0.75rem;
 }
 
+/* A notice that needs to be seen (the story page, above the form). */
+.notice-red {
+  max-width: var(--measure);
+  margin: 1.25rem 0 0;
+  color: var(--red);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
 .actions + .cta-note {
   margin-top: 0.75rem;
 }
@@ -624,6 +653,41 @@ p {
   margin: 0.35rem 0 0;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.reviews-disclosure {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* The narrow carousel beside the gift options: one review at a time. */
+.reviews--compact {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 0.5rem;
+  background: var(--wash);
+}
+
+.reviews--compact .reviews-head {
+  margin-bottom: 1rem;
+}
+
+.reviews--compact h2 {
+  font-size: 1.45rem;
+}
+
+.reviews--compact .reviews-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.reviews--compact .reviews-track {
+  grid-auto-columns: 100%;
+}
+
+.reviews--compact .review blockquote p {
+  font-size: 1rem;
 }
 
 .reviews-nav {
@@ -1126,6 +1190,63 @@ p {
   color: var(--muted);
 }
 
+/* Gift page: the options on the left, and on wider screens a column on the
+   right with a short "In every issue" card and the reader reviews. */
+.gift-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.gift-layout .gift-options {
+  margin-top: 0;
+}
+
+.gift-aside {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.gift-aside > * {
+  min-width: 0;
+}
+
+@media (min-width: 40em) and (max-width: 63.99em) {
+  .gift-aside { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 64em) {
+  .gift-layout { grid-template-columns: minmax(0, 1fr) 24rem; gap: 3rem; }
+}
+
+.contents--compact .contents-title {
+  margin-bottom: 0.9rem;
+  font-size: 1.35rem;
+}
+
+.contents-lead {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contents-extras {
+  gap: 0.35rem;
+  font-weight: 700;
+}
+
+.contents-foot {
+  margin: 1rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
 /* All three gift buttons the same size. */
 .gift-option .button {
   min-width: 12.5rem;
@@ -1361,4 +1482,19 @@ input[type="file"] {
   margin: 2rem 0 0;
   color: var(--rule);
   font-size: 0.9rem;
+}
+
+/* Computer screens: keep small print, hints and labels readable at the
+   smaller base size. (Last in the file so it wins over the rules above.) */
+@media (min-width: 64em) {
+  .cta-note,
+  .hero-art-cta .cta-note,
+  .hint,
+  .review-tag,
+  .byline-preview-label,
+  .reviews-note,
+  .reviews-disclosure,
+  .contents-foot {
+    font-size: 0.95rem;
+  }
 }

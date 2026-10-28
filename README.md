@@ -14,6 +14,9 @@ gift/                 Gift subscriptions (3, 6, 12 months)
 gift/thanks/          Shown after a gift checkout
 share/                "Share your story" form (Netlify Forms)
 share/thanks/         Shown after a story is sent
+write/                "Write to Tommy" letter form (Netlify Forms), for Letters to Tommy
+write/thanks/         Shown after a letter is sent
+about/                "Our story": where Tommy Stories came from
 welcome/              Shown after a subscription checkout
 questions/            FAQ
 order-form/           Printable order form for paying by check (one Letter page)
@@ -55,7 +58,7 @@ Use find-and-replace across all the files.
 1. Push this folder to a GitHub repo.
 2. In Netlify: **Add new project > Import an existing project**, pick the repo. Netlify reads `netlify.toml`, so leave the build command empty and the publish directory as `.`.
 3. In the project's **Forms** settings, enable form detection, then redeploy so Netlify finds the story form.
-4. Under **Forms > Form notifications**, add an email notification to your support address.
+4. Under **Forms > Form notifications**, add email notifications: the `story-submission` form to your support address, and the `letter-to-tommy` form to `tommy@yourdomain`.
 
 ### 2. Stripe
 
@@ -92,14 +95,18 @@ Then:
 
 ## Reviews
 
-The Subscribe page (`join/index.html`) has a reviews carousel that stays hidden until it has real reviews. Rules for what goes in it:
+Reader reviews live in one file, `assets/reviews.json`, and show in the carousels on the Subscribe page and the gift page. Each review has a `label` ("Gave it as a gift", "Shared it with family", "Reader" or, once they subscribe, "Subscriber"), the `quote` in the reader's own words, the `name` (first name and last initial) and, optionally, a `place` ("Town, ST"). If the file is ever emptied, the carousels hide themselves.
+
+Rules for what goes in it:
 
 - **Real readers only**, in their own words. Trim for length if needed, but never change the meaning, and never write or "improve" a review yourself.
-- **Get permission in writing** (an email reply is fine) to quote them with their first name, last initial and town. Keep that email.
-- **Disclose any connection.** Reviews from friends, family, or anyone who got a free issue need to say so. The note under "What readers say" covers the first preview batch ("friends and family who received a preview issue"). Once reviews from paying subscribers come in, give those their own "Subscriber" label, and keep the note accurate for whatever is showing.
+- **Get permission in writing** (an email reply is fine) to quote them with their first name and last initial. Keep that email.
+- **Disclose any connection.** Reviews from friends, family, or anyone who got a free issue need to say so. The line under each carousel ("Our first reviews come from friends and family who received a free preview issue.") covers the preview batch. Keep it while any of those reviews are showing.
 - Don't use reviews of other publications, and don't show only the glowing ones if you've received critical ones on the same point.
 
-To add one, copy the example block inside the comment in the reviews section and fill it in. If the list is ever emptied, the section hides itself.
+## Browser caching
+
+Every page links to `styles.css`, `reviews.js` and `share.js` with a version tag (for example `styles.css?v=20261028`). Browsers check for new copies of these files on each visit, but if a style change ever seems stuck for someone, change the tag on every page (find and replace) to force a fresh download. Fonts are cached for a year, since their files never change.
 
 ## Preview locally
 

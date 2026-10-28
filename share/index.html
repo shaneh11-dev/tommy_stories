@@ -10,7 +10,7 @@
   <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/styles.css?v=20261028">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -40,15 +40,16 @@
         <ul class="guidelines">
           <li>True stories only. The heart of the story can be your life, your family or your faith. It just needs a car somewhere in it, even a small part.</li>
           <li>About 600 to 1,200 words. That's roughly 2 to 5 typed pages, double-spaced.</li>
-          <li>Type it in the box below, attach a file, or mail it to us. Handwritten is fine.</li>
+          <li>Type it in the box below, attach a file, or <a href="#prefer-paper">mail it to us</a>. Handwritten is fine.</li>
           <li>We'll only fix spelling, grammar and typos, and we'll check with you before your story is printed.</li>
         </ul>
+        <p class="notice-red">*Because we receive so many stories, we can't publish every one, and a story may run several months after it's sent.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap">
-        <form class="form" name="story-submission" method="POST" action="/share/thanks/" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="company">
+        <form class="form" name="story-submission" method="POST" action="/share/thanks/" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="company" data-byline data-contact-required>
           <input type="hidden" name="form-name" value="story-submission">
           <p class="honeypot" aria-hidden="true">
             <label>Leave this field empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
@@ -239,7 +240,7 @@
 
     <section class="section section--wash">
       <div class="wrap">
-        <h2>Prefer paper?</h2>
+        <h2 id="prefer-paper">Prefer paper?</h2>
         <p>Mail your story to the address below. Include your first name and last initial, your city and state, how you'd like your name to appear, and an email or mailing address so we can reach you. Add a signed note saying you agree to our <a href="/terms/#stories">story submission terms</a>.</p>
         <address class="mail-address">
           Tommy Stories<br>
@@ -247,7 +248,7 @@
           Red Lion, PA 17356
         </address>
         <h2>Writing to Tommy?</h2>
-        <p>If a story in Tommy Stories brought back a memory, Tommy would love to hear it. Your letter could appear in Letters to Tommy. Mail it to the address above, or email <a href="mailto:tommy@tommystories.com">tommy@tommystories.com</a>.</p>
+        <p>If a story in Tommy Stories brought back a memory, Tommy would love to hear it. Your letter could appear in Letters to Tommy. <a href="/write/">Write to Tommy online</a>, mail it to the address above, or email <a href="mailto:tommy@tommystories.com">tommy@tommystories.com</a>.</p>
       </div>
     </section>
   </main>
@@ -261,6 +262,8 @@
       </div>
       <nav aria-label="Footer">
         <ul>
+          <li><a href="/about/">Our story</a></li>
+          <li><a href="/write/">Write to Tommy</a></li>
           <li><a href="/questions/">Questions</a></li>
           <li><a href="/manage">Manage my subscription</a></li>
           <li><a href="/terms/">Terms</a></li>
@@ -272,6 +275,6 @@
       <p class="legal">© 2026 Tommy Stories</p>
     </div>
   </footer>
-  <script src="/assets/share.js" defer></script>
+  <script src="/assets/share.js?v=20261028" defer></script>
 </body>
 </html>

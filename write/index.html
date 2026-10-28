@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Write to Tommy | Tommy Stories</title>
+  <meta name="description" content="Write a letter to Tommy about a story or a memory. Your letter could appear in Letters to Tommy in a future issue.">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#004185">
+  <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/styles.css?v=20261028">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
+        <span class="tagline">Car Stories that touch life, family, and faith</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/join/">Subscribe</a></li>
+          <li><a href="/gift/">Give a gift</a></li>
+          <li><a href="/share/">Share your story</a></li>
+          <li><a href="/questions/">Questions</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="masthead-rule" aria-hidden="true"></div>
+
+  <main id="main">
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>Write to Tommy</h1>
+        <p class="lead">Did a story bring back a memory? Tommy would love to hear it. Your letter could appear in Letters to Tommy in a future issue.</p>
+        <ul class="guidelines">
+          <li>Tell us which story or issue you're writing about, if it's about one.</li>
+          <li>Letters can be short. A few sentences is plenty.</li>
+          <li>Type it below, or <a href="#by-hand">write it by hand and mail it</a>.</li>
+          <li>We'll only fix spelling, grammar and typos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <form class="form" name="letter-to-tommy" method="POST" action="/write/thanks/" data-netlify="true" netlify-honeypot="company" data-byline>
+          <input type="hidden" name="form-name" value="letter-to-tommy">
+          <p class="honeypot" aria-hidden="true">
+            <label>Leave this field empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="first-name">First name (required)</label>
+              <input type="text" id="first-name" name="first-name" autocomplete="given-name" required>
+            </div>
+            <div class="field">
+              <label for="last-initial">Last initial</label>
+              <select id="last-initial" name="last-initial">
+                <option value="">Choose</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+                <option>E</option>
+                <option>F</option>
+                <option>G</option>
+                <option>H</option>
+                <option>I</option>
+                <option>J</option>
+                <option>K</option>
+                <option>L</option>
+                <option>M</option>
+                <option>N</option>
+                <option>O</option>
+                <option>P</option>
+                <option>Q</option>
+                <option>R</option>
+                <option>S</option>
+                <option>T</option>
+                <option>U</option>
+                <option>V</option>
+                <option>W</option>
+                <option>X</option>
+                <option>Y</option>
+                <option>Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="city">City or town (required)</label>
+              <input type="text" id="city" name="city" autocomplete="address-level2" required>
+            </div>
+            <div class="field">
+              <label for="state">State (required)</label>
+              <select id="state" name="state" autocomplete="address-level1" required>
+                <option value="">Choose</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend>Would you like a reply?</legend>
+            <p class="hint" id="contact-hint">Leave an email or mailing address if you'd like to hear back. We only use them to reply to you.</p>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" aria-describedby="contact-hint">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="street">Street address</label>
+                <input type="text" id="street" name="street" autocomplete="address-line1">
+              </div>
+              <div class="field">
+                <label for="zip">ZIP code</label>
+                <input type="text" id="zip" name="zip" autocomplete="postal-code" inputmode="numeric">
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="about">Which story or issue is your letter about?</label>
+            <p class="hint" id="about-hint">The story title or the month of the issue. Leave it blank if it's not about one.</p>
+            <input type="text" id="about" name="about" aria-describedby="about-hint">
+          </div>
+
+          <div class="field">
+            <label for="letter">Your letter (required)</label>
+            <textarea class="story-box" id="letter" name="letter" required></textarea>
+          </div>
+
+          <fieldset class="field">
+            <legend>May we print your letter in Letters to Tommy?</legend>
+            <label class="checkbox"><input type="radio" name="print" value="Yes" checked> <span>Yes, you may print it</span></label>
+            <label class="checkbox"><input type="radio" name="print" value="No"> <span>No, it's just for Tommy</span></label>
+          </fieldset>
+
+          <fieldset class="field byline-field" data-print-only>
+            <legend>How should your name appear with your letter?</legend>
+            <label class="checkbox"><input type="radio" name="byline" value="First name, last initial, city and state" data-style="first-initial" checked> <span>First name and last initial, with your city and state</span></label>
+            <label class="checkbox"><input type="radio" name="byline" value="First name, city and state" data-style="first"> <span>First name only, with your city and state</span></label>
+            <label class="checkbox"><input type="radio" name="byline" value="Initials, city and state" data-style="initials"> <span>Initials only, with your city and state</span></label>
+            <label class="checkbox"><input type="radio" name="byline" value="Anonymous" data-style="anonymous"> <span>No name at all (anonymous)</span></label>
+            <div class="byline-preview" aria-live="polite">
+              <p class="byline-preview-label">How it will appear in print</p>
+              <p class="byline-preview-name">Shawn R.</p>
+              <p class="byline-preview-place">&mdash; Columbus, OH</p>
+            </div>
+          </fieldset>
+
+          <div>
+            <button class="button button--primary" type="submit">Send my letter</button>
+            <p class="cta-note cta-note--form">*We read every letter, but we can't print every one.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section--wash">
+      <div class="wrap">
+        <h2 id="by-hand">Prefer to write by hand?</h2>
+        <p>Mail your letter to the address below. Include your first name and last initial, your city and state, and whether we may print it. Or email it to <a href="mailto:tommy@tommystories.com">tommy@tommystories.com</a>.</p>
+        <address class="mail-address">
+          Tommy Stories<br>
+          3151 Cape Horn Rd, Unit #2079<br>
+          Red Lion, PA 17356
+        </address>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <p class="footer-name wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></p>
+        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
+        <address>Tommy Stories<br>3151 Cape Horn Rd, Unit #2079<br>Red Lion, PA 17356</address>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/about/">Our story</a></li>
+          <li><a href="/write/">Write to Tommy</a></li>
+          <li><a href="/questions/">Questions</a></li>
+          <li><a href="/manage">Manage my subscription</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap">
+      <p class="legal">© 2026 Tommy Stories</p>
+    </div>
+  </footer>
+  <script src="/assets/share.js?v=20261028" defer></script>
+  <script src="/assets/share.js?v=20261028" defer></script>
+</body>
+</html>

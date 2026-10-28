@@ -375,8 +375,21 @@ p {
 
 /* Hero */
 
+/* A pale landscape along the bottom of the hero: a car parked on a hilltop, a
+   winding road, sheep in a pasture and the sun. It sits below the content so
+   nothing hides behind the text, and its ground is the wash color of the next
+   section, so the hills run straight into it. Phones get a tighter crop. */
 .hero {
-  padding-block: clamp(2rem, 6vw, 4.5rem);
+  --landscape-h: 15rem;
+  padding-block: clamp(2rem, 6vw, 4.5rem) calc(var(--landscape-h) + 0.5rem);
+  background: url("/assets/hero-landscape.svg") no-repeat center bottom / 100% var(--landscape-h);
+}
+
+@media (max-width: 55em) {
+  .hero {
+    --landscape-h: clamp(12rem, 37.5vw, 16.5rem);
+    background-image: url("/assets/hero-landscape-narrow.svg");
+  }
 }
 
 .hero-grid {

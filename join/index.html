@@ -36,7 +36,7 @@
     <section class="page-intro">
       <div class="wrap">
         <h1>Start your Tommy Stories subscription</h1>
-        <p class="lead">Four true car stories in your mailbox every month, in large, easy-to-read print. Choose the plan that suits you.</p>
+        <p class="lead lead--one-line">Four true car stories in your mailbox every month, in large, easy-to-read print. Choose the plan that suits you.</p>
       </div>
     </section>
 
@@ -85,6 +85,36 @@
         <p class="plans-note">Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>. Rather pay by check? <a href="/order-form/">Print our order form</a> and mail it in.</p>
       </div>
     </section>
+
+    <!-- Reviews from real readers only, in their own words and with their
+         permission (see "Reviews" in the README). This section stays hidden
+         until it has at least three. To add one, copy the example block below
+         out of the comment, fill it in, then delete the word hidden from the
+         <section> tag. -->
+    <section class="section section--wash reviews" aria-labelledby="reviews-title" hidden>
+      <div class="wrap wrap--wide">
+        <div class="reviews-head">
+          <h2 id="reviews-title">What readers say</h2>
+          <div class="reviews-nav">
+            <button class="reviews-btn" type="button" data-dir="-1" aria-label="Previous reviews">
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="reviews-btn" type="button" data-dir="1" aria-label="Next reviews">
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <ul class="reviews-track" tabindex="0" aria-label="Reader reviews">
+          <!-- Example (use "Gave it as a gift" or "Subscriber" for the label):
+          <li class="review">
+            <p class="review-tag">Gave it as a gift</p>
+            <blockquote><p>The reader's words, exactly as they wrote them.</p></blockquote>
+            <p class="review-by">First name and last initial <span>Town, ST</span></p>
+          </li>
+          -->
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -107,5 +137,6 @@
       <p class="legal">© 2026 Tommy Stories</p>
     </div>
   </footer>
+  <script src="/assets/reviews.js" defer></script>
 </body>
 </html>

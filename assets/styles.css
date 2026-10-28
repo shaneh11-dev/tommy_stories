@@ -90,6 +90,7 @@
   --blue-dark: #002E5F;
   --gold: #D4B06A;       /* on navy: the masthead and footer */
   --gold-deep: #A8833B;  /* on white: rules and borders only, never text */
+  --gold-text: #8A6726;  /* antique gold dark enough for small text on white or wash */
 
   --masthead: "Bodoni Moda", Didot, Georgia, "Times New Roman", serif;
   --display: "Bodoni Moda", Didot, Georgia, "Times New Roman", serif;
@@ -187,6 +188,10 @@ a:hover {
 .wrap {
   width: min(100% - 2rem, 64rem);
   margin-inline: auto;
+}
+
+.wrap--wide {
+  width: min(100% - 2rem, 80rem);
 }
 
 /* Header: the brand blue band with the wordmark */
@@ -429,11 +434,15 @@ p {
 .hero-art-cta .cta-note {
   max-width: 24rem;
   margin: 0;
-  font-size: 0.85rem;
-  font-style: normal;
+  font-size: 0.78rem;
+  font-style: italic;
   line-height: 1.45;
-  color: var(--muted);
+  color: var(--gold-text);
   text-wrap: balance;
+}
+
+.cta-note--form {
+  margin-top: 0.75rem;
 }
 
 .actions + .cta-note {
@@ -587,6 +596,150 @@ p {
   color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
+}
+
+/* A lead that should stay on one line on a computer screen. */
+.lead--one-line {
+  max-width: none;
+  font-size: 1.15rem;
+}
+
+/* Reviews carousel (Subscribe page): real readers only. One card on a phone,
+   two on a tablet, three on a computer; arrows move one card at a time and it
+   never moves on its own. */
+.reviews-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.reviews-head h2 {
+  margin: 0;
+}
+
+.reviews-note {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.reviews-nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.reviews--all-visible .reviews-nav {
+  display: none;
+}
+
+.reviews-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.reviews-btn:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+.reviews-btn:disabled {
+  border-color: var(--rule);
+  background: #fff;
+  color: var(--field);
+  cursor: default;
+}
+
+.reviews-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 86%;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0.25rem 0.25rem 0.5rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.25rem;
+  scrollbar-width: none;
+}
+
+.reviews-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 40em) {
+  .reviews-track { grid-auto-columns: calc((100% - 1.5rem) / 2); }
+}
+
+@media (min-width: 64em) {
+  .reviews-track { grid-auto-columns: calc((100% - 3rem) / 3); }
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border: 1px solid var(--rule);
+  border-top: 6px solid var(--gold-deep);
+  border-radius: 0.5rem;
+  background: #fff;
+  scroll-snap-align: start;
+}
+
+.review-tag {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.15rem 0.75rem;
+  border-radius: 999px;
+  background: var(--wash);
+  color: var(--blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.review blockquote {
+  flex: 1;
+  margin: 0;
+}
+
+.review blockquote::before {
+  content: "\201C";
+  display: block;
+  height: 2rem;
+  font-family: var(--display);
+  font-size: 3.6rem;
+  line-height: 1;
+  color: var(--gold-deep);
+}
+
+.review blockquote p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+
+.review-by {
+  margin: 0;
+  font-weight: 700;
+}
+
+.review-by span {
+  display: block;
+  font-weight: 400;
+  color: var(--muted);
 }
 
 .plans-note {
@@ -1017,6 +1170,55 @@ fieldset.field {
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+/* Two fields side by side on wider screens (first name + last initial, city + state). */
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem 1rem;
+}
+
+@media (min-width: 36em) {
+  .field-row { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+}
+
+/* Checkbox and radio labels read as normal text, not bold field labels. */
+.field > label.checkbox {
+  font-weight: 400;
+}
+
+.byline-field .checkbox input {
+  border-radius: 50%;
+}
+
+/* A live preview of the byline, set like it will be in print. */
+.byline-preview {
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--gold-deep);
+  background: var(--wash);
+}
+
+.byline-preview p {
+  margin: 0;
+}
+
+.byline-preview-label {
+  margin-bottom: 0.35rem !important;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.byline-preview-name {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.byline-preview-place {
+  font-style: italic;
 }
 
 .hint {

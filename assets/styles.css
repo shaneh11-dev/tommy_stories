@@ -344,6 +344,47 @@ a:hover {
   border-bottom-color: var(--gold);
 }
 
+.site-nav ul {
+  align-items: center;
+}
+
+/* "Write to Tommy" in the menu: a little gold envelope tag in the logo's
+   script, tilted like a note tucked into the menu. */
+.site-nav a.nav-letter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.95rem 0.35rem 0.8rem;
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  color: var(--gold);
+  font-family: var(--script);
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1;
+  transform: rotate(-3deg);
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-letter-icon {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.site-nav a.nav-letter:hover,
+.site-nav a.nav-letter:focus-visible,
+.site-nav a.nav-letter[aria-current="page"] {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--blue-dark);
+  transform: rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav a.nav-letter { transition: none; }
+}
+
 /* Type */
 
 h1,

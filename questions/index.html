@@ -6,21 +6,23 @@
   <title>Questions | Tommy Stories</title>
   <meta name="description" content="Answers about Tommy Stories: price, delivery, canceling, gifts, and sharing your own story.">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#004185">
+  <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="airmail-band" aria-hidden="true"></div>
-
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="/">Tommy Stories</a>
+      <a class="brand" href="/">
+        <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
+        <span class="tagline">Car Stories that touch life, family, and faith</span>
+      </a>
       <nav class="site-nav" aria-label="Main">
         <ul>
-          <li><a href="/join">Subscribe</a></li>
+          <li><a href="/join/">Subscribe</a></li>
           <li><a href="/gift/">Give a gift</a></li>
           <li><a href="/share/">Share your story</a></li>
           <li><a href="/questions/" aria-current="page">Questions</a></li>
@@ -28,51 +30,66 @@
       </nav>
     </div>
   </header>
+  <div class="masthead-rule" aria-hidden="true"></div>
 
   <main id="main">
     <section class="page-intro">
       <div class="wrap">
         <h1>Questions</h1>
-        <p class="lead">Can't find your answer here? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a> or call <a href="tel:+1XXXXXXXXXX">[PHONE]</a>. We reply within one business day.</p>
+        <p class="lead">Can't find your answer here? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>. We reply within one business day.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap prose">
         <h2>How much does it cost?</h2>
-        <p>$16.99 a month, with shipping to any U.S. address included. You're billed each month on the date you signed up.</p>
+        <p>$16.99 a month or $199.99 a year, with shipping to any U.S. address included. Monthly plans are billed each month, and yearly plans once a year, on the date you signed up.</p>
+
+        <h2>Does the yearly plan renew?</h2>
+        <p>Yes, once a year on the date you signed up, until you cancel. We'll email you a reminder about 30 days before it renews, so you have time to decide.</p>
 
         <h2>When will my first issue arrive?</h2>
         <p>We mail each issue around the middle of the month. Subscribe by the 10th and your first issue is that month's; after the 10th, it's next month's. Issues usually arrive within one to two weeks of mailing.</p>
 
         <h2>What's in each issue?</h2>
-        <p>Four true stories written by readers, about cars, family, life and faith. Each one is edited lightly for length and clarity and printed in large type.</p>
+        <p>Four true car stories written by readers, about the roads they traveled, the families they loved and the faith that saw them through. Each issue also has a note from Tommy, a Do You Remember? page, Name That Car, a large-print word search or crossword, and Letters to Tommy from other readers. Everything is printed in large type, with no outside advertising.</p>
 
-        <h2>How do I cancel?</h2>
-        <p>Use <a href="/manage">Manage my subscription</a> and sign in with the email you used at checkout. You can also email or call us and we'll cancel it for you. Cancel before your next billing date and you won't be charged again.</p>
+        <h2 id="cancel">How do I cancel?</h2>
+        <p>Use <a href="/manage">Manage my subscription</a> and sign in with the email you used at checkout. You can also email us, or mail us a note with your name and mailing address, and we'll cancel it for you. Gift subscriptions and subscriptions paid by check don't renew, so there's nothing to cancel.</p>
+
+        <h2 id="cancel-by">When do I need to cancel so I'm not charged again?</h2>
+        <p>Before your next billing date. Monthly plans renew on the same day each month as the day you signed up. Yearly plans renew on the same date each year. You'll find your next billing date in <a href="/manage">Manage my subscription</a> and on your receipt emails.</p>
+        <ul>
+          <li><strong>Online or by email:</strong> cancel by the day before your billing date.</li>
+          <li><strong>By mail:</strong> your note counts on the day it reaches us, so mail it at least a week before your billing date.</li>
+        </ul>
+        <p>For example, if you signed up on March 20, cancel by April 19 and you won't be charged on April 20. If a charge ever goes through after you've asked us to cancel, we'll refund it in full.</p>
+
+        <h2 id="refunds">Do you offer refunds?</h2>
+        <p>No. Payments aren't refundable, including for part of a month or year. Canceling stops future charges, and you'll keep receiving the issues you've already paid for until your month or year is up. Gift subscriptions and check orders are paid once and aren't refundable either. If an issue doesn't arrive, email us and we'll mail a replacement.</p>
 
         <h2>How do I change my mailing address?</h2>
-        <p>Update it under <a href="/manage">Manage my subscription</a>, or email or call us. Changes made by the 10th apply to that month's issue.</p>
+        <p>Update it under <a href="/manage">Manage my subscription</a>, or email us. Changes made by the 10th apply to that month's issue.</p>
 
         <h2>Can I pay by check?</h2>
-        <p>Yes. Mail a check for 6 months ($101.94) or 12 months ($203.88), made out to Tommy Stories, with your name and mailing address to:</p>
+        <p>Yes. Mail a check for 6 months ($99.99), 1 year ($199.99) or 2 years ($329.99), made out to Tommy Stories, with our <a href="/order-form/">printable order form</a> or a note with your name and mailing address, to:</p>
         <address class="mail-address">
           Tommy Stories<br>
-          [MAILING ADDRESS]<br>
-          [CITY, STATE ZIP]
+          3151 Cape Horn Rd, Unit #2079<br>
+          Red Lion, PA 17356
         </address>
 
         <h2>Can I give it as a gift?</h2>
-        <p>Yes. <a href="/gift/">Gift subscriptions</a> come in 3, 6 or 12 months, paid once, and don't renew on their own.</p>
+        <p>Yes. <a href="/gift/">Gift subscriptions</a> come in 6 months, 1 year or 2 years, paid once, and don't renew on their own.</p>
 
         <h2>My issue didn't arrive. What should I do?</h2>
-        <p>Email or call us and we'll mail a replacement.</p>
+        <p>Email us and we'll mail a replacement.</p>
 
         <h2>Do you mail outside the United States?</h2>
         <p>Not yet. We mail to U.S. addresses only for now.</p>
 
         <h2>How do I share my own story?</h2>
-        <p>Send it through our <a href="/share/">story form</a> or by mail. We look for true stories of about 600 to 1,200 words.</p>
+        <p>Send it through our <a href="/share/">story form</a> or by mail. We look for true stories about life, family or faith with a car somewhere in them, about 600 to 1,200 words long.</p>
       </div>
     </section>
   </main>
@@ -80,9 +97,9 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <div>
-        <p class="footer-name">Tommy Stories</p>
-        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a> or call <a href="tel:+1XXXXXXXXXX">[PHONE]</a>.</p>
-        <address>Tommy Stories<br>[MAILING ADDRESS]<br>[CITY, STATE ZIP]</address>
+        <p class="footer-name wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></p>
+        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
+        <address>Tommy Stories<br>3151 Cape Horn Rd, Unit #2079<br>Red Lion, PA 17356</address>
       </div>
       <nav aria-label="Footer">
         <ul>

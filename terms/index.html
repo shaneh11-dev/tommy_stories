@@ -5,22 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Terms | Tommy Stories</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#004185">
+  <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
   <!-- DRAFT: have a lawyer review these terms before launch. -->
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="airmail-band" aria-hidden="true"></div>
-
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="/">Tommy Stories</a>
+      <a class="brand" href="/">
+        <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
+        <span class="tagline">Car Stories that touch life, family, and faith</span>
+      </a>
       <nav class="site-nav" aria-label="Main">
         <ul>
-          <li><a href="/join">Subscribe</a></li>
+          <li><a href="/join/">Subscribe</a></li>
           <li><a href="/gift/">Give a gift</a></li>
           <li><a href="/share/">Share your story</a></li>
           <li><a href="/questions/">Questions</a></li>
@@ -28,6 +30,7 @@
       </nav>
     </div>
   </header>
+  <div class="masthead-rule" aria-hidden="true"></div>
 
   <main id="main">
     <section class="page-intro">
@@ -40,19 +43,19 @@
     <section class="section">
       <div class="wrap prose">
         <h2>Your subscription</h2>
-        <p>A Tommy Stories subscription costs $16.99 a month, including shipping to U.S. addresses. When you subscribe, you authorize us to charge your payment method $16.99 each month, on the date you signed up, until you cancel. Payments are processed by Stripe.</p>
+        <p>A Tommy Stories subscription costs $16.99 a month or $199.99 a year, including shipping to U.S. addresses. When you subscribe, you authorize us to charge your payment method that amount each month or each year, on the date you signed up, until you cancel. We'll email you a reminder about 30 days before a yearly plan renews. Payments are processed by Stripe.</p>
 
         <h2>Price changes</h2>
         <p>If the price changes, we'll tell you by email or mail at least 30 days before your first charge at the new price. You can cancel before then.</p>
 
         <h2>Canceling</h2>
-        <p>You can cancel anytime under <a href="/manage">Manage my subscription</a>, by emailing <a href="mailto:support@tommystories.com">support@tommystories.com</a>, or by calling <a href="tel:+1XXXXXXXXXX">[PHONE]</a>. Your subscription stays active until the end of the month you've paid for, and you'll receive any issue you've already paid for.</p>
+        <p>You can cancel anytime under <a href="/manage">Manage my subscription</a>, by emailing <a href="mailto:support@tommystories.com">support@tommystories.com</a>, or by mailing us a note with your name and mailing address. To avoid your next charge, cancel online or by email by the day before your next billing date. A mailed note takes effect on the day we receive it. Canceling stops future charges, and the issues you've already paid for keep coming until the end of the month or year you've paid for.</p>
 
         <h2>Refunds</h2>
-        <p>If you cancel before your first issue is mailed, we'll refund your first payment in full. After an issue has been mailed, the payment for that month isn't refundable. If an issue doesn't arrive, contact us and we'll mail a replacement.</p>
+        <p>Payments aren't refundable, including for partial months or years, gift subscriptions and check orders. Canceling stops future charges, and you'll keep receiving the issues you've already paid for. If we charge you after you've asked us to cancel, we'll refund that charge. If an issue doesn't arrive, contact us and we'll mail a replacement.</p>
 
         <h2>Gift subscriptions</h2>
-        <p>Gift subscriptions are paid once, up front, for 3, 6 or 12 months. They don't renew automatically. If a gift can't be delivered, contact us and we'll help fix the address or refund the issues not yet mailed.</p>
+        <p>Gift subscriptions and subscriptions paid by check are paid once, up front, for 6 months, 1 year or 2 years. They don't renew automatically. If a gift can't be delivered, contact us and we'll help fix the address.</p>
 
         <h2>Delivery</h2>
         <p>We mail issues by U.S. Mail around the middle of each month to U.S. addresses only. Subscriptions started by the 10th begin with that month's issue. Delivery times depend on the Postal Service.</p>
@@ -66,7 +69,7 @@
         <p>You keep ownership of your story. You give Tommy Stories permission to edit it for length and clarity, and to publish it in our printed issues, on our website, and in future Tommy Stories collections. We'll contact you before your story is first printed. We can't return submissions, and we can't print every story we receive.</p>
 
         <h2>Contact</h2>
-        <p>Tommy Stories, [MAILING ADDRESS], [CITY, STATE ZIP]. Email <a href="mailto:support@tommystories.com">support@tommystories.com</a> or call <a href="tel:+1XXXXXXXXXX">[PHONE]</a>.</p>
+        <p>Tommy Stories, 3151 Cape Horn Rd, Unit #2079, Red Lion, PA 17356. Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
       </div>
     </section>
   </main>
@@ -74,9 +77,9 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <div>
-        <p class="footer-name">Tommy Stories</p>
-        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a> or call <a href="tel:+1XXXXXXXXXX">[PHONE]</a>.</p>
-        <address>Tommy Stories<br>[MAILING ADDRESS]<br>[CITY, STATE ZIP]</address>
+        <p class="footer-name wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></p>
+        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
+        <address>Tommy Stories<br>3151 Cape Horn Rd, Unit #2079<br>Red Lion, PA 17356</address>
       </div>
       <nav aria-label="Footer">
         <ul>

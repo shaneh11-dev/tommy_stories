@@ -3,11 +3,13 @@
 # Stripe gives you (Payment Links and the customer portal login link).
 #
 # The printed QR code in each issue should point to https://tommystories.com/join
-# so it keeps working even if the Stripe link behind it changes.
+# That opens the plan choice page (/join/), so it keeps working even if a
+# Stripe link changes.
 
-/join        https://buy.stripe.com/REPLACE_MONTHLY_LINK          302
-/subscribe   /join                                                301
-/gift/3      https://buy.stripe.com/REPLACE_GIFT_3_MONTHS_LINK    302
-/gift/6      https://buy.stripe.com/REPLACE_GIFT_6_MONTHS_LINK    302
-/gift/12     https://buy.stripe.com/REPLACE_GIFT_12_MONTHS_LINK   302
-/manage      https://billing.stripe.com/p/login/REPLACE_PORTAL_LINK   302
+/subscribe      /join/                                                   301
+/join/monthly   https://buy.stripe.com/REPLACE_MONTHLY_LINK              302
+/join/yearly    https://buy.stripe.com/REPLACE_YEARLY_LINK               302
+/gift/6         https://buy.stripe.com/REPLACE_GIFT_6_MONTHS_LINK        302
+/gift/12        https://buy.stripe.com/REPLACE_GIFT_1_YEAR_LINK          302
+/gift/24        https://buy.stripe.com/REPLACE_GIFT_2_YEARS_LINK         302
+/manage         https://billing.stripe.com/p/login/REPLACE_PORTAL_LINK   302

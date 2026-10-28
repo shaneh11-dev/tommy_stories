@@ -90,6 +90,17 @@ Then:
 - [ ] Send a test story with a file attached and confirm the notification email arrives
 - [ ] Scan a printed test QR code pointing to `https://YOURDOMAIN/join`
 
+## Reviews
+
+The Subscribe page (`join/index.html`) has a reviews carousel that stays hidden until it has real reviews. Rules for what goes in it:
+
+- **Real readers only**, in their own words. Trim for length if needed, but never change the meaning, and never write or "improve" a review yourself.
+- **Get permission in writing** (an email reply is fine) to quote them with their first name, last initial and town. Keep that email.
+- **Disclose anything they got for free.** If a reader got a free preview issue, add "Received a free preview issue" under their name.
+- Don't use reviews of other publications, and don't show only the glowing ones if you've received critical ones on the same point.
+
+To add one, copy the example block inside the comment in the reviews section, fill it in, and once there are at least three, delete the word `hidden` from the `<section>` tag.
+
 ## Preview locally
 
 ```

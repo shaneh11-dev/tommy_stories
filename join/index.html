@@ -87,14 +87,15 @@
     </section>
 
     <!-- Reviews from real readers only, in their own words and with their
-         permission (see "Reviews" in the README). This section stays hidden
-         until it has at least three. To add one, copy the example block below
-         out of the comment, fill it in, then delete the word hidden from the
-         <section> tag. -->
-    <section class="section section--wash reviews" aria-labelledby="reviews-title" hidden>
+         permission (see "Reviews" in the README). To add one, copy the example
+         block inside the comment below and fill it in. -->
+    <section class="section section--wash reviews" aria-labelledby="reviews-title">
       <div class="wrap wrap--wide">
         <div class="reviews-head">
-          <h2 id="reviews-title">What readers say</h2>
+          <div>
+            <h2 id="reviews-title">What readers say</h2>
+            <p class="reviews-note">From our first readers: friends and family who received a preview issue.</p>
+          </div>
           <div class="reviews-nav">
             <button class="reviews-btn" type="button" data-dir="-1" aria-label="Previous reviews">
               <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -105,7 +106,32 @@
           </div>
         </div>
         <ul class="reviews-track" tabindex="0" aria-label="Reader reviews">
-          <!-- Example (use "Gave it as a gift" or "Subscriber" for the label):
+          <li class="review">
+            <p class="review-tag">Gave it as a gift</p>
+            <blockquote><p>Got this for my dad, who has been a car guy his whole life. He read it that afternoon and called to tell me about a car he had before I was born. I thought I’d heard all his stories by now.</p></blockquote>
+            <p class="review-by">Sarah M.</p>
+          </li>
+          <li class="review">
+            <p class="review-tag">Shared it with family</p>
+            <blockquote><p>My grandpa really enjoyed this. He showed me the car picture and asked if I knew what it was. I had no idea, but of course he knew. We sat and talked about old cars for a while.</p></blockquote>
+            <p class="review-by">Jake R.</p>
+          </li>
+          <li class="review">
+            <p class="review-tag">Gave it as a gift</p>
+            <blockquote><p>Never know what to get my dad because he says he doesn’t want anything. Took a chance on this and he really liked it. My mom said he’s already read the whole thing.</p></blockquote>
+            <p class="review-by">Amy B.</p>
+          </li>
+          <li class="review">
+            <p class="review-tag">Reader</p>
+            <blockquote><p>I’ve still got a soft spot for the cars I grew up around. Enjoyed the stories, especially the ones about family. Made me wish I had a few pictures of my dad’s old Chevy.</p></blockquote>
+            <p class="review-by">Bill H.</p>
+          </li>
+          <li class="review">
+            <p class="review-tag">Reader</p>
+            <blockquote><p>Read a couple stories with my morning coffee and finished the rest that evening. Nice to read something about regular people and their lives. Haven’t finished the word search yet.</p></blockquote>
+            <p class="review-by">Robert W.</p>
+          </li>
+          <!-- Example (label: "Gave it as a gift", "Shared it with family", "Reader" or, once they subscribe, "Subscriber"):
           <li class="review">
             <p class="review-tag">Gave it as a gift</p>
             <blockquote><p>The reader's words, exactly as they wrote them.</p></blockquote>

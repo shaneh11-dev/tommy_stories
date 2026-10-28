@@ -90,6 +90,7 @@
   --blue-dark: #002E5F;
   --gold: #D4B06A;       /* on navy: the masthead and footer */
   --gold-deep: #A8833B;  /* on white: rules and borders only, never text */
+  --gold-text: #8A6726;  /* antique gold dark enough for small text on white or wash */
 
   --masthead: "Bodoni Moda", Didot, Georgia, "Times New Roman", serif;
   --display: "Bodoni Moda", Didot, Georgia, "Times New Roman", serif;
@@ -433,11 +434,15 @@ p {
 .hero-art-cta .cta-note {
   max-width: 24rem;
   margin: 0;
-  font-size: 0.85rem;
-  font-style: normal;
+  font-size: 0.78rem;
+  font-style: italic;
   line-height: 1.45;
-  color: var(--muted);
+  color: var(--gold-text);
   text-wrap: balance;
+}
+
+.cta-note--form {
+  margin-top: 0.75rem;
 }
 
 .actions + .cta-note {
@@ -613,6 +618,12 @@ p {
 
 .reviews-head h2 {
   margin: 0;
+}
+
+.reviews-note {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .reviews-nav {
@@ -1159,6 +1170,55 @@ fieldset.field {
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+/* Two fields side by side on wider screens (first name + last initial, city + state). */
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem 1rem;
+}
+
+@media (min-width: 36em) {
+  .field-row { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+}
+
+/* Checkbox and radio labels read as normal text, not bold field labels. */
+.field > label.checkbox {
+  font-weight: 400;
+}
+
+.byline-field .checkbox input {
+  border-radius: 50%;
+}
+
+/* A live preview of the byline, set like it will be in print. */
+.byline-preview {
+  margin-top: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--gold-deep);
+  background: var(--wash);
+}
+
+.byline-preview p {
+  margin: 0;
+}
+
+.byline-preview-label {
+  margin-bottom: 0.35rem !important;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.byline-preview-name {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.byline-preview-place {
+  font-style: italic;
 }
 
 .hint {

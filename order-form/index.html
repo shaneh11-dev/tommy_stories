@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order form | Tommy Stories</title>
+  <meta name="description" content="A printable Tommy Stories order form. Fill it in by hand and mail it with a check.">
+  <meta name="theme-color" content="#004185">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <style>
+    /* The form is a sheet of paper on screen, and exactly one US Letter page in print. */
+    body { background: var(--wash); }
+
+    .form-tools {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: min(100% - 2rem, 8.5in);
+      margin: 1.5rem auto 1rem;
+    }
+
+    .sheet {
+      width: min(100% - 2rem, 8.5in);
+      margin: 0 auto 3rem;
+      padding: 0.5in 0.6in;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 46, 95, 0.12);
+      color: var(--ink);
+      font-family: var(--text);
+      font-size: 15pt;
+      line-height: 1.35;
+    }
+
+    .sheet-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      padding-bottom: 0.14in;
+      border-bottom: 2.5pt solid var(--gold-deep);
+    }
+
+    .sheet .wordmark {
+      --wordmark-bg: #fff;
+      font-size: 30pt;
+    }
+
+    .sheet .wordmark-first { color: var(--blue); }
+    .sheet .wordmark-second { color: var(--gold-deep); }
+    .sheet .wordmark { --wordmark-line: var(--gold-deep); }
+
+    .sheet-head p {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 17pt;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .sheet h2 {
+      margin: 0.28in 0 0.1in;
+      font-size: 16pt;
+      color: var(--blue);
+    }
+
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.1in 0.5in;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .box {
+      display: inline-block;
+      width: 15pt;
+      height: 15pt;
+      margin-right: 7pt;
+      border: 1.5pt solid var(--ink);
+      vertical-align: -3pt;
+    }
+
+    .line {
+      display: flex;
+      align-items: flex-end;
+      gap: 6pt;
+      margin-top: 0.23in;
+    }
+
+    .line span {
+      white-space: nowrap;
+    }
+
+    .line i {
+      flex: 1;
+      min-width: 0.6in;
+      height: 1.1em;
+      border-bottom: 1pt solid var(--ink);
+    }
+
+    .line i.short { flex: 0 0 0.75in; }
+
+    .pay {
+      margin-top: 0.34in;
+      padding: 0.16in 0.2in;
+      border-left: 4pt solid var(--gold-deep);
+      background: var(--wash);
+    }
+
+    .pay p { margin: 0 0 0.06in; max-width: none; }
+    .pay address { font-style: normal; font-weight: 700; }
+
+    .sheet-foot {
+      margin: 0.22in 0 0;
+      max-width: none;
+      font-size: 12.5pt;
+      color: var(--muted);
+    }
+
+    @media screen and (max-width: 40rem) {
+      .sheet { padding: 1.25rem 1rem; font-size: 12pt; }
+      .sheet .wordmark { font-size: 24pt; }
+      .line { flex-wrap: wrap; row-gap: 0.1in; }
+      .line i, .line i.short { flex: 1 1 35%; }
+    }
+
+    @media print {
+      @page { size: letter; margin: 0; }
+      body { background: #fff; }
+      .no-print { display: none !important; }
+      .sheet {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 0;
+        box-shadow: none;
+      }
+      .pay { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-tools no-print">
+    <a href="/">Back to Tommy Stories</a>
+    <button class="button button--primary" type="button" onclick="window.print()">Print this form</button>
+  </div>
+
+  <main class="sheet">
+    <div class="sheet-head">
+      <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
+      <p>Subscription order form</p>
+    </div>
+
+    <h2>1. Choose your subscription</h2>
+    <ul class="choices">
+      <li><span class="box"></span>6 months, $99.99</li>
+      <li><span class="box"></span>1 year, $199.99</li>
+      <li><span class="box"></span>2 years, $329.99</li>
+    </ul>
+
+    <h2>2. Your name and address</h2>
+    <div class="line"><span>Name</span><i></i></div>
+    <div class="line"><span>Street address</span><i></i></div>
+    <div class="line"><span>City</span><i></i><span>State</span><i class="short"></i><span>ZIP</span><i class="short"></i></div>
+    <div class="line"><span>Phone (optional)</span><i></i><span>Email (optional)</span><i></i></div>
+
+    <h2>3. Is this a gift?</h2>
+    <p><span class="box"></span>Yes. Mail the issues to this person instead:</p>
+    <div class="line"><span>Their name</span><i></i></div>
+    <div class="line"><span>Street address</span><i></i></div>
+    <div class="line"><span>City</span><i></i><span>State</span><i class="short"></i><span>ZIP</span><i class="short"></i></div>
+    <div class="line"><span>Gift note (optional)</span><i></i></div>
+
+    <div class="pay">
+      <p>Make your check payable to <strong>Tommy Stories</strong> and mail it with this form to:</p>
+      <address>Tommy Stories, 3151 Cape Horn Rd, Unit #2079<br>Red Lion, PA 17356</address>
+    </div>
+
+    <p class="sheet-foot">Orders received by the 10th start with that month's issue. Check subscriptions are paid once and don't renew on their own. Questions? Email support@tommystories.com.</p>
+  </main>
+</body>
+</html>

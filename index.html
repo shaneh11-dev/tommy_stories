@@ -3,24 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tommy Stories: true stories in your mailbox every month</title>
-  <meta name="description" content="Four true stories about cars, family, life and faith, written by readers and printed in large type. Mailed to your door every month for $16.99.">
+  <title>Tommy Stories: true car stories in your mailbox every month</title>
+  <meta name="description" content="Four true car stories a month from real people, about the roads they traveled, the families they loved and the faith that saw them through. Printed in large type and mailed to your door.">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#004185">
+  <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="airmail-band" aria-hidden="true"></div>
-
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="/">Tommy Stories</a>
+      <a class="brand" href="/">
+        <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
+        <span class="tagline">Car Stories that touch life, family, and faith</span>
+      </a>
       <nav class="site-nav" aria-label="Main">
         <ul>
-          <li><a href="/join">Subscribe</a></li>
+          <li><a href="/join/">Subscribe</a></li>
           <li><a href="/gift/">Give a gift</a></li>
           <li><a href="/share/">Share your story</a></li>
           <li><a href="/questions/">Questions</a></li>
@@ -28,101 +30,171 @@
       </nav>
     </div>
   </header>
+  <div class="masthead-rule" aria-hidden="true"></div>
 
   <main id="main">
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <h1>True stories from real people, mailed to you every month</h1>
-          <p class="lead">Each issue of Tommy Stories holds four true stories about cars, family, life and faith. Readers write them, and we print them in large, easy-to-read type.</p>
-          <p class="price-line">$16.99 a month, shipping included. Cancel anytime.</p>
+          <h1>The cars that carried us through life</h1>
+          <p class="lead">Every car has a story, and the best ones are about more than the car. Each month, four true stories from real people arrive in your mailbox.</p>
+          <p class="price-line">$16.99 a month or $199.99 a year, shipping included. Cancel anytime.</p>
           <div class="actions">
-            <a class="button button--primary" href="/join">Start my subscription</a>
+            <a class="button button--primary" href="/join/">Start my subscription</a>
             <a href="/gift/">Give it as a gift</a>
           </div>
         </div>
 
-        <svg class="envelope" viewBox="0 0 440 290" role="img" aria-labelledby="envelope-title">
-          <title id="envelope-title">An envelope with a stamp and a Tommy Stories postmark</title>
-          <defs>
-            <pattern id="airmail" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <rect width="24" height="24" fill="#ffffff"/>
-              <rect width="8" height="24" fill="#B3261E"/>
-              <rect x="12" width="8" height="24" fill="#1E4E8C"/>
-            </pattern>
-            <path id="postmark-top" d="M 269 100 A 37 37 0 0 1 343 100"/>
-            <path id="postmark-bottom" d="M 263 100 A 43 43 0 0 0 349 100"/>
-          </defs>
+        <figure class="hero-art">
+          <svg class="envelope" viewBox="0 0 440 400" role="img" aria-labelledby="envelope-title">
+            <title id="envelope-title">A handwritten letter that begins "Dear Tommy Stories, I'll never forget the day Dad tossed me the keys," sliding out of a Tommy Stories envelope</title>
+            <defs>
+              <pattern id="airmail" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="24" height="24" fill="#ffffff"/>
+                <rect width="8" height="24" fill="#A8833B"/>
+                <rect x="12" width="8" height="24" fill="#004185"/>
+              </pattern>
+              <path id="postmark-top" d="M 269 100 A 37 37 0 0 1 343 100"/>
+              <path id="postmark-bottom" d="M 263 100 A 43 43 0 0 0 349 100"/>
+            </defs>
 
-          <rect x="8" y="8" width="424" height="274" rx="10" fill="#ffffff" stroke="#1B2638" stroke-width="2.5"/>
-          <rect x="18" y="18" width="404" height="254" rx="4" fill="none" stroke="url(#airmail)" stroke-width="10"/>
+            <!-- The reader's letter, rising out of the envelope -->
+            <g transform="rotate(4 220 130)">
+              <rect x="74" y="14" width="300" height="230" rx="3" fill="#FFFDF6" stroke="#C9D3E0" stroke-width="1.5"/>
+              <g stroke="#DCE5F1" stroke-width="1.2">
+                <line x1="88" y1="56" x2="360" y2="56"/>
+                <line x1="88" y1="84" x2="360" y2="84"/>
+                <line x1="88" y1="112" x2="360" y2="112"/>
+                <line x1="88" y1="140" x2="360" y2="140"/>
+              </g>
+              <line x1="106" y1="22" x2="106" y2="240" stroke="#E2CC9A" stroke-width="1.2"/>
+              <g font-family="La Belle Aurore, 'Segoe Print', 'Bradley Hand', cursive" fill="#1F3A68">
+                <text x="114" y="51" font-size="21">Dear Tommy Stories,</text>
+                <text x="114" y="79" font-size="19">I'll never forget the day Dad</text>
+                <text x="114" y="107" font-size="19">tossed me the keys to his old</text>
+                <text x="114" y="135" font-size="19">Chevy and said, "Take her</text>
+              </g>
+            </g>
 
-          <text x="44" y="66" font-family="Literata, Georgia, serif" font-size="19" font-weight="700" fill="#1B2638">Tommy Stories</text>
-          <rect x="44" y="78" width="112" height="7" rx="3.5" fill="#C7D2DE"/>
-          <rect x="44" y="92" width="86" height="7" rx="3.5" fill="#C7D2DE"/>
+            <!-- The envelope -->
+            <g transform="translate(0 110)">
+              <rect x="8" y="8" width="424" height="274" rx="10" fill="#ffffff" stroke="#16223A" stroke-width="2.5"/>
+              <rect x="18" y="18" width="404" height="254" rx="4" fill="none" stroke="url(#airmail)" stroke-width="10"/>
 
-          <rect x="340" y="36" width="70" height="84" fill="#ffffff" stroke="#1B2638" stroke-width="1.5"/>
-          <rect x="340" y="36" width="70" height="84" fill="none" stroke="#ffffff" stroke-width="7" stroke-dasharray="0.1 9" stroke-linecap="round"/>
-          <rect x="344" y="40" width="62" height="76" fill="#1E4E8C"/>
-          <circle cx="383" cy="64" r="10" fill="#F2B200"/>
-          <path d="M344 96 Q362 80 380 90 T406 86 V116 H344 Z" fill="#163B6B"/>
-          <path d="M366 116 Q370 104 388 92" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
-          <rect x="344" y="40" width="62" height="76" fill="none" stroke="#ffffff" stroke-width="4"/>
+              <text x="44" y="68" font-family="Bodoni Moda, Didot, Georgia, serif" font-size="25" font-weight="800"><tspan fill="#004185">Tommy</tspan><tspan dx="-4" fill="#A8833B" font-family="Yellowtail, 'Brush Script MT', cursive" font-size="28" font-weight="400" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" paint-order="stroke">Stories</tspan></text>
+              <rect x="44" y="78" width="112" height="7" rx="3.5" fill="#C7D2DE"/>
+              <rect x="44" y="92" width="86" height="7" rx="3.5" fill="#C7D2DE"/>
 
-          <g fill="none" stroke="#1B2638" stroke-opacity="0.75">
-            <circle cx="306" cy="100" r="46" stroke-width="2.5"/>
-            <circle cx="306" cy="100" r="31" stroke-width="1.5"/>
-          </g>
-          <g fill="none" stroke="#1B2638" stroke-opacity="0.55" stroke-width="2.5">
-            <path d="M352 84 q6 -6 12 0 t12 0 t12 0 t12 0"/>
-            <path d="M352 98 q6 -6 12 0 t12 0 t12 0 t12 0"/>
-            <path d="M352 112 q6 -6 12 0 t12 0 t12 0 t12 0"/>
-          </g>
-          <g font-family="Atkinson Hyperlegible, Arial, sans-serif" font-weight="700" fill="#1B2638" fill-opacity="0.8">
-            <text font-size="9.5" letter-spacing="1.5"><textPath href="#postmark-top" startOffset="50%" text-anchor="middle">TOMMY STORIES</textPath></text>
-            <text font-size="9.5" letter-spacing="1.5"><textPath href="#postmark-bottom" startOffset="50%" text-anchor="middle">EVERY MONTH</textPath></text>
-            <text x="306" y="98" font-size="11" text-anchor="middle">4 TRUE</text>
-            <text x="306" y="112" font-size="11" text-anchor="middle">STORIES</text>
-          </g>
+              <rect x="340" y="36" width="70" height="84" fill="#ffffff" stroke="#16223A" stroke-width="1.5"/>
+              <rect x="340" y="36" width="70" height="84" fill="none" stroke="#ffffff" stroke-width="7" stroke-dasharray="0.1 9" stroke-linecap="round"/>
+              <rect x="344" y="40" width="62" height="76" fill="#004185"/>
+              <circle cx="383" cy="64" r="10" fill="#D4B06A"/>
+              <path d="M344 96 Q362 80 380 90 T406 86 V116 H344 Z" fill="#002E5F"/>
+              <path d="M366 116 Q370 104 388 92" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+              <rect x="344" y="40" width="62" height="76" fill="none" stroke="#ffffff" stroke-width="4"/>
 
-          <rect x="150" y="178" width="190" height="11" rx="5.5" fill="#C7D2DE"/>
-          <rect x="150" y="200" width="160" height="11" rx="5.5" fill="#C7D2DE"/>
-          <rect x="150" y="222" width="120" height="11" rx="5.5" fill="#C7D2DE"/>
-        </svg>
+              <g fill="none" stroke="#16223A" stroke-opacity="0.75">
+                <circle cx="306" cy="100" r="46" stroke-width="2.5"/>
+                <circle cx="306" cy="100" r="31" stroke-width="1.5"/>
+              </g>
+              <g fill="none" stroke="#16223A" stroke-opacity="0.55" stroke-width="2.5">
+                <path d="M352 84 q6 -6 12 0 t12 0 t12 0 t12 0"/>
+                <path d="M352 98 q6 -6 12 0 t12 0 t12 0 t12 0"/>
+                <path d="M352 112 q6 -6 12 0 t12 0 t12 0 t12 0"/>
+              </g>
+              <g font-family="Libre Caslon Text, Georgia, serif" font-weight="700" fill="#16223A" fill-opacity="0.8">
+                <text font-size="9.5" letter-spacing="1.5"><textPath href="#postmark-top" startOffset="50%" text-anchor="middle">TOMMY STORIES</textPath></text>
+                <text font-size="9.5" letter-spacing="1.5"><textPath href="#postmark-bottom" startOffset="50%" text-anchor="middle">EVERY MONTH</textPath></text>
+                <text x="306" y="98" font-size="11" text-anchor="middle">4 TRUE</text>
+                <text x="306" y="112" font-size="11" text-anchor="middle">STORIES</text>
+              </g>
+
+              <rect x="150" y="178" width="190" height="11" rx="5.5" fill="#C7D2DE"/>
+              <rect x="150" y="200" width="160" height="11" rx="5.5" fill="#C7D2DE"/>
+              <rect x="150" y="222" width="120" height="11" rx="5.5" fill="#C7D2DE"/>
+            </g>
+          </svg>
+          <figcaption class="hero-art-cta">
+            <p>Have a story with a car in it somewhere? It could be the next one in the envelope.</p>
+            <a class="button button--secondary" href="/share/">Share your story</a>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="section section--wash">
-      <div class="wrap inside-grid">
-        <div>
+      <div class="wrap">
+        <div class="inside-head">
           <h2>What's inside each issue</h2>
-          <p>Four true stories, each one written by a reader like you. We edit them lightly for length and clarity, and print them in large type so you can read comfortably without straining.</p>
-          <p>Every story comes from someone's real life, about one of three things that matter most.</p>
+          <p class="lead">Every issue is a booklet made for a comfortable afternoon of reading.</p>
         </div>
-        <ul class="theme-list">
-          <li>
-            <h3>Cars and the open road</h3>
-            <p>The first car you bought, the road trip you never forgot, the engine you rebuilt in the garage.</p>
-          </li>
-          <li>
-            <h3>Family and life</h3>
-            <p>The people who shaped you, the lessons that stuck, and the days that changed everything.</p>
-          </li>
-          <li>
-            <h3>Faith and hope</h3>
-            <p>The moments faith carried you through, and the answers that came when you needed them.</p>
-          </li>
-        </ul>
+        <div class="contents">
+          <p class="contents-title">In every issue</p>
+          <ul class="contents-list">
+            <li>
+              <h3>A Note from Tommy</h3>
+              <p>A short letter to open the issue.</p>
+            </li>
+            <li>
+              <h3>Four True Car Stories</h3>
+              <p>About life, family and faith, each one written by the reader who lived it.</p>
+            </li>
+            <li>
+              <h3>Do You Remember?</h3>
+              <p>A then-and-now look at one year: what a new car, a gallon of gas or a movie ticket cost.</p>
+            </li>
+            <li>
+              <h3>Name That Car</h3>
+              <p>A classic grille, tail fin or hood ornament to identify, with the answer on the back page.</p>
+            </li>
+            <li>
+              <h3>The Puzzle Page</h3>
+              <p>A car word search or crossword in large print, with the answers in the back.</p>
+            </li>
+            <li>
+              <h3>Letters to Tommy</h3>
+              <p>Readers write back about the stories, the cars and the memories they stirred up.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="inside-foot">
+          <ul class="check-list check-list--row">
+            <li>Large, high-contrast print</li>
+            <li>Short reads of 5 to 10 minutes, good for reading aloud</li>
+            <li>No outside advertising</li>
+          </ul>
+          <a class="button button--primary" href="/join/">Start my subscription</a>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap">
+        <p class="themes-intro">Every story has a car in it, and a heart that's bigger than the car.</p>
+        <ul class="theme-list theme-list--row">
+          <li>
+            <h3>Life</h3>
+            <p>The first car you bought, the road trip you never forgot, the engine you rebuilt in the garage.</p>
+          </li>
+          <li>
+            <h3>Family</h3>
+            <p>The station wagon that hauled the kids, the truck your father taught you to drive in, the car you came home in as newlyweds.</p>
+          </li>
+          <li>
+            <h3>Faith</h3>
+            <p>The breakdown that turned into a blessing, and the long drive where a prayer was answered.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--wash">
+      <div class="wrap">
         <h2>How it works</h2>
         <ol class="steps">
           <li>
             <h3>Subscribe</h3>
-            <p>Sign up online in a couple of minutes, or call us and we'll help you get set up.</p>
+            <p>Sign up online in a couple of minutes, or mail in our order form with a check.</p>
           </li>
           <li>
             <h3>Get a new issue every month</h3>
@@ -138,48 +210,107 @@
 
     <section class="section section--rule" id="subscribe">
       <div class="wrap">
-        <h2>One simple price</h2>
-        <div class="price-panel">
-          <p class="price">$16.99 <small>a month</small></p>
-          <ul class="check-list">
-            <li>A new issue in your mailbox every month</li>
-            <li>Shipping to any U.S. address included</li>
-            <li>Cancel online, by email or by phone, anytime</li>
-          </ul>
-          <a class="button button--primary" href="/join">Start my subscription</a>
+        <h2>Choose your subscription</h2>
+        <div class="plans">
+          <div class="plan">
+            <h3>Monthly</h3>
+            <p class="price">$16.99 <small>a month</small></p>
+            <ul class="check-list">
+              <li>A new issue in your mailbox every month</li>
+              <li>Billed on the same day each month</li>
+              <li>Cancel anytime</li>
+            </ul>
+            <a class="button button--primary" href="/join/monthly">Pay monthly</a>
+          </div>
+          <div class="plan">
+            <h3>Yearly</h3>
+            <p class="price">$199.99 <small>a year</small></p>
+            <ul class="check-list">
+              <li>A new issue in your mailbox every month</li>
+              <li>Billed once a year, with a reminder about 30 days before it renews</li>
+              <li>Cancel anytime</li>
+            </ul>
+            <a class="button button--primary" href="/join/yearly">Pay yearly</a>
+          </div>
+          <div class="plan">
+            <h3>As a gift</h3>
+            <ul class="plan-options plan-options--links">
+              <li><a href="/gift/6" aria-label="Give 6 months for $99.99"><span>6 months</span> <span>$99.99</span></a></li>
+              <li><a href="/gift/12" aria-label="Give 1 year for $199.99"><span>1 year</span> <span>$199.99</span></a></li>
+              <li><a href="/gift/24" aria-label="Give 2 years for $329.99"><span>2 years</span> <span>$329.99</span></a></li>
+            </ul>
+            <ul class="check-list">
+              <li>Paid once, never renews</li>
+              <li>Mailed straight to them. Enter their address at checkout.</li>
+            </ul>
+            <a class="plan-more" href="/gift/">How gift subscriptions work</a>
+          </div>
         </div>
+        <p class="plans-note">Every plan includes shipping to any U.S. address. Cancel anytime to stop future charges. <a href="/questions/#cancel-by">When to cancel</a></p>
       </div>
     </section>
 
     <section class="section section--wash">
-      <div class="wrap two-up">
+      <div class="wrap story-grid">
         <div>
-          <h2>A gift that arrives every month</h2>
-          <p>Looking for something thoughtful for a parent, grandparent or friend? Choose 3, 6 or 12 months, and we'll mail each issue straight to them.</p>
+          <p class="handwritten" aria-hidden="true">Dear Tommy Stories,</p>
+          <h2>Have a story worth telling?</h2>
+          <p>Tommy Stories is written by readers, and your story doesn't have to be about a car. Write about your life, your family or your faith. It only needs a car somewhere in it, like the one you drove to the hospital, the one parked out front on your wedding day, or the one you learned to drive in.</p>
           <div class="actions">
-            <a class="button button--secondary" href="/gift/">Give a gift subscription</a>
+            <a class="button button--primary" href="/share/">Share your story</a>
           </div>
         </div>
-        <div>
-          <h2>Have a story worth telling?</h2>
-          <p>Tommy Stories is written by readers. If you remember the car you drove off the lot, the day that changed your life, or a moment your faith carried you through, we'd love to read it.</p>
-          <div class="actions">
-            <a class="button button--secondary" href="/share/">Share your story</a>
-          </div>
+        <div class="story-card">
+          <h3>What we look for</h3>
+          <ul class="check-list">
+            <li>A true story about your life, your family or your faith</li>
+            <li>A car somewhere in it, even a small part</li>
+            <li>About 600 to 1,200 words</li>
+            <li>Typed or handwritten, sent online or by mail</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap">
-        <h2>Rather not order online?</h2>
-        <p>Call us at <a href="tel:+1XXXXXXXXXX">[PHONE]</a> and we'll help you get set up.</p>
-        <p>Or mail a check for 6 months ($101.94) or 12 months ($203.88), made out to Tommy Stories. Include your name and mailing address, and send it to:</p>
-        <address class="mail-address">
-          Tommy Stories<br>
-          [MAILING ADDRESS]<br>
-          [CITY, STATE ZIP]
-        </address>
+        <h2>Common questions</h2>
+        <div class="faq-grid">
+          <div>
+            <h3>When will my first issue arrive?</h3>
+            <p>We mail each issue around the middle of the month. Subscribe by the 10th and your first issue is that month's. After the 10th, it's next month's.</p>
+          </div>
+          <div>
+            <h3>How do I cancel?</h3>
+            <p>Anytime, online under <a href="/manage">Manage my subscription</a> or by email. Cancel before your next billing date and you won't be charged again. You'll still receive the issues you've already paid for.</p>
+          </div>
+          <div>
+            <h3>Can I send it to someone else?</h3>
+            <p>Yes. <a href="/gift/">Give a gift</a> of 6 months, 1 year or 2 years, or start a subscription and enter their address for shipping.</p>
+          </div>
+        </div>
+        <p class="faq-more"><a href="/questions/">See all questions</a></p>
+      </div>
+    </section>
+
+    <section class="section section--wash">
+      <div class="wrap offline-grid">
+        <div>
+          <h2>Rather not order online?</h2>
+          <p>Pay by check instead: 6 months for $99.99, 1 year for $199.99 or 2 years for $329.99, made out to Tommy Stories. Print our order form, fill it in by hand, and mail it with your check.</p>
+          <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
+          <div class="actions">
+            <a class="button button--secondary" href="/order-form/">Print an order form</a>
+          </div>
+        </div>
+        <div>
+          <p class="offline-label">Mail your check and form to:</p>
+          <address class="mail-address">
+            Tommy Stories<br>
+            3151 Cape Horn Rd, Unit #2079<br>
+            Red Lion, PA 17356
+          </address>
+        </div>
       </div>
     </section>
   </main>
@@ -187,9 +318,9 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <div>
-        <p class="footer-name">Tommy Stories</p>
-        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a> or call <a href="tel:+1XXXXXXXXXX">[PHONE]</a>.</p>
-        <address>Tommy Stories<br>[MAILING ADDRESS]<br>[CITY, STATE ZIP]</address>
+        <p class="footer-name wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></p>
+        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
+        <address>Tommy Stories<br>3151 Cape Horn Rd, Unit #2079<br>Red Lion, PA 17356</address>
       </div>
       <nav aria-label="Footer">
         <ul>

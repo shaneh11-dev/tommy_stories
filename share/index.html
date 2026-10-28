@@ -4,23 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Share your story | Tommy Stories</title>
-  <meta name="description" content="Send us a true story about cars, family, life or faith. Reader stories fill every issue of Tommy Stories.">
+  <meta name="description" content="Send us a true story about your life, your family or your faith, with a car somewhere in it. Reader stories fill every issue of Tommy Stories.">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#004185">
+  <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  <div class="airmail-band" aria-hidden="true"></div>
-
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="wordmark" href="/">Tommy Stories</a>
+      <a class="brand" href="/">
+        <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
+        <span class="tagline">Car Stories that touch life, family, and faith</span>
+      </a>
       <nav class="site-nav" aria-label="Main">
         <ul>
-          <li><a href="/join">Subscribe</a></li>
+          <li><a href="/join/">Subscribe</a></li>
           <li><a href="/gift/">Give a gift</a></li>
           <li><a href="/share/" aria-current="page">Share your story</a></li>
           <li><a href="/questions/">Questions</a></li>
@@ -28,14 +30,15 @@
       </nav>
     </div>
   </header>
+  <div class="masthead-rule" aria-hidden="true"></div>
 
   <main id="main">
     <section class="page-intro">
       <div class="wrap">
         <h1>Share your story</h1>
-        <p class="lead">Every issue of Tommy Stories is written by readers. Send us a true story from your life, and it could appear in a future issue.</p>
+        <p class="lead">Every issue of Tommy Stories is written by readers. Send us a true story about your life, your family or your faith. It just needs a car somewhere in it, and it could appear in a future issue.</p>
         <ul class="guidelines">
-          <li>True stories only, about cars, family, life or faith.</li>
+          <li>True stories only. The heart of the story can be your life, your family or your faith. It just needs a car somewhere in it, even a small part.</li>
           <li>About 600 to 1,200 words. That's roughly 2 to 5 typed pages, double-spaced.</li>
           <li>Type it in the box below, attach a file, or mail it to us. Handwritten is fine.</li>
           <li>We may edit for length and clarity, and we'll check with you before your story is printed.</li>
@@ -73,13 +76,19 @@
           </div>
 
           <div class="field">
-            <label for="topic">What is your story about?</label>
+            <label for="topic">What does your story touch most?</label>
             <select id="topic" name="topic">
-              <option>Cars and the open road</option>
-              <option>Family and life</option>
-              <option>Faith and hope</option>
-              <option>Something else</option>
+              <option>Life</option>
+              <option>Family</option>
+              <option>Faith</option>
+              <option>A little of each</option>
             </select>
+          </div>
+
+          <div class="field">
+            <label for="car">The car in your story</label>
+            <p class="hint" id="car-hint">Year, make and model, if you know them. For example: 1965 Ford Mustang.</p>
+            <input type="text" id="car" name="car" aria-describedby="car-hint">
           </div>
 
           <div class="field">
@@ -129,9 +138,11 @@
         <p>Mail your story to the address below. Include your name, mailing address, and phone or email, plus a signed note saying you agree to our <a href="/terms/#stories">story submission terms</a>.</p>
         <address class="mail-address">
           Tommy Stories<br>
-          [MAILING ADDRESS]<br>
-          [CITY, STATE ZIP]
+          3151 Cape Horn Rd, Unit #2079<br>
+          Red Lion, PA 17356
         </address>
+        <h2>Writing to Tommy?</h2>
+        <p>If a story in Tommy Stories brought back a memory, Tommy would love to hear it. Your letter could appear in Letters to Tommy. Mail it to the address above, or email <a href="mailto:tommy@tommystories.com">tommy@tommystories.com</a>.</p>
       </div>
     </section>
   </main>
@@ -139,9 +150,9 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <div>
-        <p class="footer-name">Tommy Stories</p>
-        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a> or call <a href="tel:+1XXXXXXXXXX">[PHONE]</a>.</p>
-        <address>Tommy Stories<br>[MAILING ADDRESS]<br>[CITY, STATE ZIP]</address>
+        <p class="footer-name wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></p>
+        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
+        <address>Tommy Stories<br>3151 Cape Horn Rd, Unit #2079<br>Red Lion, PA 17356</address>
       </div>
       <nav aria-label="Footer">
         <ul>

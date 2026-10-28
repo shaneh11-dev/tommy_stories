@@ -1,5 +1,5 @@
 # Netlify settings for Tommy Stories.
-# No build step: Netlify publishes the plain HTML in /site as-is.
+# No build step: Netlify publishes the plain HTML at the top of the repo as-is.
 
 [build]
   publish = "."

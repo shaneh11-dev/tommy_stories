@@ -112,6 +112,23 @@ html {
   html { font-size: 118.75%; }
 }
 
+/* Computer screens: everything at about two thirds of the tablet size, so the
+   page sits comfortably on a big monitor instead of filling it edge to edge.
+   Readers can still enlarge it with their browser's zoom. */
+@media (min-width: 64em) {
+  html { font-size: 83.333%; }
+
+  /* Keep small print, hints and labels readable at the smaller size. */
+  .cta-note,
+  .hero-art-cta .cta-note,
+  .hint,
+  .review-tag,
+  .byline-preview-label,
+  .reviews-note {
+    font-size: 0.95rem;
+  }
+}
+
 *,
 *::before,
 *::after {

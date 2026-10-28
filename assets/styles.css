@@ -135,6 +135,17 @@ html {
   box-sizing: border-box;
 }
 
+/* In-page links (like "mail it to us" on the story page) glide to their spot,
+   unless the reader has asked their device for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Leave a little room above a heading that a link scrolls to. */
+[id] {
+  scroll-margin-top: 1.5rem;
+}
+
 body {
   margin: 0;
   background: var(--paper);

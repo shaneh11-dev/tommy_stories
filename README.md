@@ -101,6 +101,10 @@ The Subscribe page (`join/index.html`) has a reviews carousel that stays hidden 
 
 To add one, copy the example block inside the comment in the reviews section and fill it in. If the list is ever emptied, the section hides itself.
 
+## Browser caching
+
+Every page links to `styles.css`, `reviews.js` and `share.js` with a version tag (for example `styles.css?v=20261028`). Browsers check for new copies of these files on each visit, but if a style change ever seems stuck for someone, change the tag on every page (find and replace) to force a fresh download. Fonts are cached for a year, since their files never change.
+
 ## Preview locally
 
 ```

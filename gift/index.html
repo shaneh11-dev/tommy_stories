@@ -41,7 +41,8 @@
     </section>
 
     <section class="section">
-      <div class="wrap">
+      <div class="wrap gift-layout">
+        <div class="gift-main">
         <ul class="gift-options">
           <li class="gift-option">
             <div>
@@ -76,6 +77,41 @@
           <p>Want to give it month to month or year to year instead? <a href="/join/">Start a subscription</a> and enter their address for shipping. You can cancel anytime.</p>
           <p>Questions about a gift? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
         </div>
+        </div>
+
+        <aside class="gift-aside" aria-label="About Tommy Stories">
+          <div class="contents contents--compact">
+            <p class="contents-title">In every issue</p>
+            <p class="contents-lead">Four true car stories about life, family and faith, written by the readers who lived them. Plus:</p>
+            <ul class="check-list contents-extras">
+              <li>A Note from Tommy</li>
+              <li>Do You Remember?</li>
+              <li>Name That Car</li>
+              <li>The Puzzle Page</li>
+              <li>Letters to Tommy</li>
+            </ul>
+            <p class="contents-foot">Large print. No outside advertising.</p>
+          </div>
+
+          <section class="reviews reviews--compact" aria-labelledby="gift-reviews-title" hidden>
+            <div class="reviews-head">
+              <div>
+                <h2 id="gift-reviews-title">What readers say</h2>
+                <p class="reviews-note">From our readers:</p>
+              </div>
+            <div class="reviews-nav">
+              <button class="reviews-btn" type="button" data-dir="-1" aria-label="Previous reviews">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="reviews-btn" type="button" data-dir="1" aria-label="Next reviews">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            </div>
+            <ul class="reviews-track" tabindex="0" aria-label="Reader reviews"></ul>
+            <p class="reviews-disclosure">Our first reviews come from friends and family who received a free preview issue.</p>
+          </section>
+        </aside>
       </div>
     </section>
   </main>
@@ -100,5 +136,6 @@
       <p class="legal">© 2026 Tommy Stories</p>
     </div>
   </footer>
+  <script src="/assets/reviews.js?v=20261028" defer></script>
 </body>
 </html>

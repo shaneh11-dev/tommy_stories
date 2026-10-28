@@ -92,14 +92,14 @@ Then:
 
 ## Reviews
 
-The Subscribe page (`join/index.html`) has a reviews carousel that stays hidden until it has real reviews. Rules for what goes in it:
+Reader reviews live in one file, `assets/reviews.json`, and show in the carousels on the Subscribe page and the gift page. Each review has a `label` ("Gave it as a gift", "Shared it with family", "Reader" or, once they subscribe, "Subscriber"), the `quote` in the reader's own words, the `name` (first name and last initial) and, optionally, a `place` ("Town, ST"). If the file is ever emptied, the carousels hide themselves.
+
+Rules for what goes in it:
 
 - **Real readers only**, in their own words. Trim for length if needed, but never change the meaning, and never write or "improve" a review yourself.
-- **Get permission in writing** (an email reply is fine) to quote them with their first name, last initial and town. Keep that email.
-- **Disclose any connection.** Reviews from friends, family, or anyone who got a free issue need to say so. The note under "What readers say" covers the first preview batch ("friends and family who received a preview issue"). Once reviews from paying subscribers come in, give those their own "Subscriber" label, and keep the note accurate for whatever is showing.
+- **Get permission in writing** (an email reply is fine) to quote them with their first name and last initial. Keep that email.
+- **Disclose any connection.** Reviews from friends, family, or anyone who got a free issue need to say so. The line under each carousel ("Our first reviews come from friends and family who received a free preview issue.") covers the preview batch. Keep it while any of those reviews are showing.
 - Don't use reviews of other publications, and don't show only the glowing ones if you've received critical ones on the same point.
-
-To add one, copy the example block inside the comment in the reviews section and fill it in. If the list is ever emptied, the section hides itself.
 
 ## Browser caching
 

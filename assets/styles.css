@@ -118,16 +118,6 @@ html {
    Readers can still enlarge it with their browser's zoom. */
 @media (min-width: 64em) {
   html { font-size: 83.333%; }
-
-  /* Keep small print, hints and labels readable at the smaller size. */
-  .cta-note,
-  .hero-art-cta .cta-note,
-  .hint,
-  .review-tag,
-  .byline-preview-label,
-  .reviews-note {
-    font-size: 0.95rem;
-  }
 }
 
 *,
@@ -1492,4 +1482,19 @@ input[type="file"] {
   margin: 2rem 0 0;
   color: var(--rule);
   font-size: 0.9rem;
+}
+
+/* Computer screens: keep small print, hints and labels readable at the
+   smaller base size. (Last in the file so it wins over the rules above.) */
+@media (min-width: 64em) {
+  .cta-note,
+  .hero-art-cta .cta-note,
+  .hint,
+  .review-tag,
+  .byline-preview-label,
+  .reviews-note,
+  .reviews-disclosure,
+  .contents-foot {
+    font-size: 0.95rem;
+  }
 }

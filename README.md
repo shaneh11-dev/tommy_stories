@@ -14,6 +14,9 @@ gift/                 Gift subscriptions (3, 6, 12 months)
 gift/thanks/          Shown after a gift checkout
 share/                "Share your story" form (Netlify Forms)
 share/thanks/         Shown after a story is sent
+write/                "Write to Tommy" letter form (Netlify Forms), for Letters to Tommy
+write/thanks/         Shown after a letter is sent
+about/                "Our story": where Tommy Stories came from
 welcome/              Shown after a subscription checkout
 questions/            FAQ
 order-form/           Printable order form for paying by check (one Letter page)
@@ -55,7 +58,7 @@ Use find-and-replace across all the files.
 1. Push this folder to a GitHub repo.
 2. In Netlify: **Add new project > Import an existing project**, pick the repo. Netlify reads `netlify.toml`, so leave the build command empty and the publish directory as `.`.
 3. In the project's **Forms** settings, enable form detection, then redeploy so Netlify finds the story form.
-4. Under **Forms > Form notifications**, add an email notification to your support address.
+4. Under **Forms > Form notifications**, add email notifications: the `story-submission` form to your support address, and the `letter-to-tommy` form to `tommy@yourdomain`.
 
 ### 2. Stripe
 

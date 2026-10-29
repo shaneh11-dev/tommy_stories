@@ -101,7 +101,7 @@ Rules for what goes in it:
 
 - **Real readers only**, in their own words. Trim for length if needed, but never change the meaning, and never write or "improve" a review yourself.
 - **Get permission in writing** (an email reply is fine) to quote them with their first name and last initial. Keep that email.
-- **Disclose any connection.** Reviews from friends, family, or anyone who got a free issue need to say so. The line under each carousel ("Our first reviews come from friends and family who received a free preview issue.") covers the preview batch. Keep it while any of those reviews are showing.
+- **Disclose any connection.** Reviews from friends, family, or anyone who got a free issue need to say so. The line under each carousel ("From friends and family who subscribe.") covers the first five reviewers. Keep it while any of their reviews are showing; drop it once every review shown comes from subscribers outside friends and family.
 - Don't use reviews of other publications, and don't show only the glowing ones if you've received critical ones on the same point.
 
 ## Browser caching

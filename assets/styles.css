@@ -713,6 +713,39 @@ p {
   font-weight: 700;
 }
 
+/* Subscribe page: a row of quick help links between the intro and the plans
+   (questions, email, pay by check). Side by side on wider screens. */
+.help-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.help-row li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.help-row svg {
+  flex: none;
+  color: var(--gold-deep);
+}
+
+@media (min-width: 56em) {
+  .help-row li + li {
+    padding-left: 2rem;
+    border-left: 1px solid var(--rule);
+  }
+  .help-row { gap: 0.6rem 0; }
+  .help-row li { padding-right: 2rem; }
+}
+
 /* A lead that should stay on one line on a computer screen. */
 .lead--one-line {
   max-width: none;

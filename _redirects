@@ -13,3 +13,10 @@
 /gift/12        https://buy.stripe.com/REPLACE_GIFT_1_YEAR_LINK          302
 /gift/24        https://buy.stripe.com/REPLACE_GIFT_2_YEARS_LINK         302
 /manage         https://billing.stripe.com/p/login/REPLACE_PORTAL_LINK   302
+
+# Behind-the-scenes files in the repo aren't pages; don't serve them.
+/netlify/*          /404.html   404!
+/package.json       /404.html   404!
+/package-lock.json  /404.html   404!
+/README.md          /404.html   404!
+/netlify.toml       /404.html   404!

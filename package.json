@@ -1,0 +1,8 @@
+{
+  "name": "tommy-stories",
+  "private": true,
+  "description": "Tommy Stories website. Plain HTML; this file only lists what the confirmation email function needs.",
+  "dependencies": {
+    "nodemailer": "10.1.1"
+  }
+}

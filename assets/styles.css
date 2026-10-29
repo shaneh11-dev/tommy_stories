@@ -385,6 +385,42 @@ a:hover {
   .site-nav a.nav-letter { transition: none; }
 }
 
+/* Phones: a tighter menu so it doesn't fill the screen. */
+@media (max-width: 40em) {
+  .site-nav ul { gap: 0 1rem; }
+  .site-nav a { padding: 0.3rem 0; font-size: 0.88rem; }
+  .site-nav a.nav-letter { margin-top: 0.35rem; font-size: 1.2rem; }
+}
+
+/* Computer screens: the envelope sits on its own line at top right, with the
+   five menu links underneath, so the whole menu stays beside the logo. */
+@media (min-width: 64em) {
+  .header-inner {
+    flex-wrap: nowrap;
+  }
+
+  .brand {
+    flex: none;
+  }
+
+  .site-nav {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .site-nav ul {
+    justify-content: flex-end;
+    gap: 0.35rem 1.15rem;
+  }
+
+  .site-nav .nav-letter-item {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: flex-end;
+    order: -1;
+  }
+}
+
 /* Type */
 
 h1,
@@ -487,6 +523,15 @@ p {
   font-size: 1.1rem;
   font-style: italic;
   line-height: 1.45;
+}
+
+/* A handwritten sign-off (the Our story page). */
+.signature {
+  margin: 0.5rem 0 1.75rem;
+  font-family: var(--hand);
+  font-size: 1.9rem;
+  line-height: 1.3;
+  color: var(--blue);
 }
 
 /* Small print under the "Share your story" buttons. */

@@ -713,6 +713,97 @@ p {
   font-weight: 700;
 }
 
+/* Subscribe page: "In every issue" as one horizontal strip between the intro
+   and the plans: the summary on the left, the five extras across the middle,
+   and the print promise under them. Stacks on phones. */
+.issue-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem 2rem;
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.4rem;
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--gold-deep);
+  border-radius: 0.5rem;
+  background: var(--wash);
+}
+
+.issue-strip p {
+  margin: 0;
+}
+
+.issue-strip-title {
+  margin-bottom: 0.2rem !important;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.issue-strip .issue-strip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  align-content: center;
+  font-weight: 700;
+}
+
+.issue-strip .issue-strip-list li {
+  white-space: nowrap;
+}
+
+.issue-strip-foot {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@media (min-width: 56em) {
+  .issue-strip {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    align-items: center;
+  }
+  .issue-strip-foot { grid-column: 2; }
+}
+
+/* Subscribe page: a row of quick help links between the intro and the plans
+   (questions, email, pay by check). Side by side on wider screens. */
+.help-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.help-row--below {
+  margin-top: 1.25rem;
+}
+
+.help-row li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.help-row svg {
+  flex: none;
+  color: var(--gold-deep);
+}
+
+@media (min-width: 56em) {
+  .help-row li + li {
+    padding-left: 2rem;
+    border-left: 1px solid var(--rule);
+  }
+  .help-row { gap: 0.6rem 0; }
+  .help-row li { padding-right: 2rem; }
+}
+
 /* A lead that should stay on one line on a computer screen. */
 .lead--one-line {
   max-width: none;

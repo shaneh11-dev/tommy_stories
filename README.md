@@ -16,7 +16,7 @@ share/                "Share your story" form (Netlify Forms)
 share/thanks/         Shown after a story is sent
 write/                "Write to Tommy" letter form (Netlify Forms), for Letters to Tommy
 write/thanks/         Shown after a letter is sent
-about/                "Our story": where Tommy Stories came from
+about/                "Who's Tommy Stories": the story behind Tommy Stories
 welcome/              Shown after a subscription checkout
 questions/            FAQ
 order-form/           Printable order form for paying by check (one Letter page)

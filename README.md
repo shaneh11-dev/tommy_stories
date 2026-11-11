@@ -2,15 +2,18 @@
 
 The website for Tommy Stories, a monthly mailed booklet of true reader stories in large print.
 
-Plain HTML and CSS with no build step. Netlify publishes the top level of the repo as-is. Checkout, billing and cancellations run on Stripe; story submissions use Netlify Forms.
+Plain HTML and CSS with no build step. Netlify publishes the top level of the repo as-is. Checkout, billing and cancellations run on Stripe; story submissions use Netlify Forms. One small Netlify function emails a confirmation to people who send a story or a letter.
 
 ## What's here
 
 ```
 netlify.toml          Netlify settings (publish folder, security headers)
+netlify/functions/    submission-created.mjs: the confirmation email (see
+                      "Confirmation emails" below)
+package.json          What that function needs (nodemailer); no build step
 _redirects            Every Stripe link lives here (see "Stripe" below)
 index.html            Home page with the subscribe button
-gift/                 Gift subscriptions (3, 6, 12 months)
+gift/                 Gift subscriptions (6, 12, 24 months)
 gift/thanks/          Shown after a gift checkout
 share/                "Share your story" form (Netlify Forms)
 share/thanks/         Shown after a story is sent
@@ -85,12 +88,29 @@ Then:
 2. In Zoho Mail, add the domain, verify it, and add Zoho's MX, SPF and DKIM records at your DNS host.
 3. Create `support@yourdomain` and `tommy@yourdomain` (new users or aliases, depending on your Zoho plan).
 
+### Confirmation emails
+
+When someone sends a story or a letter and gives an email address, the site emails them a short confirmation from `support@`: thanks, the date it arrived, how their name will be printed, and what happens next. It never repeats what they wrote. Replies to a story confirmation go to `support@`; replies to a letter confirmation go to `tommy@`.
+
+The email is sent by `netlify/functions/submission-created.mjs`, which Netlify runs on its own after each form submission that passes its spam check. It sends through your Zoho mailbox, so it needs two settings:
+
+1. In Zoho, sign in as `support@`, go to **My Account > Security > App Passwords**, and create one named "Website". Copy it.
+2. In Netlify: **Project configuration > Environment variables > Add a variable**:
+   - `SMTP_USER` = `support@tommystories.com`
+   - `SMTP_PASS` = the app password from step 1
+   - Only if your Zoho account isn't in the U.S. data center: `SMTP_HOST` = `smtppro.zoho.eu` (or `.in`, `.com.au`). The default is `smtppro.zoho.com`.
+3. **Deploys > Trigger deploy > Deploy project** so the function picks up the settings.
+4. Send yourself a test story and a test letter.
+
+Until both settings are added, no confirmation is sent and the forms work as before. If a test email doesn't arrive, look under **Logs > Functions > submission-created**: "Invalid login" or "Authentication failed" means the app password or the Zoho plan is the problem (Zoho's free plan may not allow sending from outside apps; Mail Lite does).
+
 ### 4. Before launch
 
 - [ ] Replace every placeholder above
 - [ ] Have a lawyer review `terms/`, `privacy/`, and the story-agreement checkbox on `share/`
 - [ ] Run a full test checkout in Stripe test mode: subscribe, land on `/welcome/`, cancel in the portal
 - [ ] Send a test story with a file attached and confirm the notification email arrives
+- [ ] Confirm the reader's confirmation email arrives for a test story and a test letter (and isn't in spam)
 - [ ] Scan a printed test QR code pointing to `https://YOURDOMAIN/join`
 
 ## Reviews

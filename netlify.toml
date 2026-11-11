@@ -5,6 +5,15 @@
   publish = "."
   command = ""
 
+[build.environment]
+  NODE_VERSION = "22"
+
+# One small function: it emails a confirmation to people who send a story
+# or a letter (netlify/functions/submission-created.mjs).
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [[headers]]
   for = "/*"
   [headers.values]

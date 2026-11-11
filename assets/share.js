@@ -4,7 +4,9 @@
    - on the story form, asks for an email or a mailing address so we can
      reach the writer (forms marked data-contact-required)
    - on the letter form, hides the byline choice if the reader says the
-     letter is just for Tommy and not for print */
+     letter is just for Tommy and not for print
+   - on the thank-you pages, says which address the confirmation email
+     is going to (the email itself is sent by netlify/functions) */
 (function () {
   var forms = document.querySelectorAll("form[data-byline]");
 
@@ -68,8 +70,38 @@
       if (!form.checkValidity()) {
         event.preventDefault();
         form.reportValidity();
+        return;
       }
+      // Remember the email address for the thank-you page, which says
+      // where the confirmation is going (this browser tab only).
+      try {
+        sessionStorage.setItem("tommy-confirm", JSON.stringify({ email: email ? email.value.trim() : "" }));
+      } catch (e) { /* storage blocked: the page shows its general wording */ }
     });
     refresh();
   });
+
+  /* Thank-you pages: "We're sending a confirmation to you@example.com",
+     or nothing about email if the reader didn't give an address. */
+  var note = document.querySelector("[data-confirm-email]");
+  if (note) {
+    var saved = null;
+    try {
+      saved = JSON.parse(sessionStorage.getItem("tommy-confirm") || "null");
+      sessionStorage.removeItem("tommy-confirm");
+    } catch (e) { saved = null; }
+    if (saved && saved.email) {
+      var strong = document.createElement("strong");
+      strong.textContent = saved.email;
+      var support = document.createElement("a");
+      support.href = "mailto:support@tommystories.com";
+      support.textContent = "support@tommystories.com";
+      note.textContent = "";
+      note.append("We're sending a confirmation email to ", strong,
+        ". If it hasn't arrived in a few minutes, please check your spam or junk folder. If that address has a typo, email us at ",
+        support, ".");
+    } else if (saved) {
+      note.hidden = true;
+    }
+  }
 })();

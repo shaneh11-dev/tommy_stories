@@ -15,7 +15,7 @@
 /gift/6         https://buy.stripe.com/test_aFa6oHe9seeS7Ukb6veIw02      302
 /gift/12        https://buy.stripe.com/test_aFa14nd5o7QugqQfmLeIw03      302
 /gift/24        https://buy.stripe.com/test_6oU14n2qK1s6eiI3E3eIw04      302
-/manage         https://billing.stripe.com/p/login/REPLACE_PORTAL_LINK   302
+/manage         https://billing.stripe.com/p/login/test_9B67sLaXgfiWeiI6QfeIw00  302
 
 # Behind-the-scenes files in the repo aren't pages; don't serve them.
 /netlify/*          /404.html   404!

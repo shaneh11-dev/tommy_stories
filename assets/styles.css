@@ -1481,6 +1481,14 @@ fieldset.field {
   .field-row { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
 }
 
+/* The two photo boxes on the story form, one above the other. */
+.photo-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
 /* Checkbox and radio labels read as normal text, not bold field labels. */
 .field > label.checkbox {
   font-weight: 400;

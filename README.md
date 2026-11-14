@@ -109,7 +109,7 @@ Until both settings are added, no confirmation is sent and the forms work as bef
 - [ ] Replace every placeholder above
 - [ ] Have a lawyer review `terms/`, `privacy/`, and the story-agreement checkbox on `share/`
 - [ ] Run a full test checkout in Stripe test mode: subscribe, land on `/welcome/`, cancel in the portal
-- [ ] Send a test story with a file attached and confirm the notification email arrives
+- [ ] Send a test story with a file and 2 phone photos attached and confirm the notification email arrives with all three
 - [ ] Confirm the reader's confirmation email arrives for a test story and a test letter (and isn't in spam)
 - [ ] Scan a printed test QR code pointing to `https://YOURDOMAIN/join`
 

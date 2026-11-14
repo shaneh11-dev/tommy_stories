@@ -741,10 +741,11 @@ p {
   color: var(--blue);
 }
 
+/* Lined-up columns: two when there's room for both, otherwise one. The
+   column minimum is wider than the longest item, "A Note from Tommy". */
 .issue-strip .issue-strip-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.4rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(14.5em, 100%), max-content));
+  gap: 0.4rem 2rem;
   align-content: center;
   font-weight: 700;
 }

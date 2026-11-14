@@ -2,8 +2,7 @@
 # when a checkout link changes. Replace each REPLACE_... URL with the link
 # Stripe gives you (Payment Links and the customer portal login link).
 #
-# LIVE payment links (real charges). /manage still points to the sandbox
-# portal until the live customer portal link replaces it.
+# LIVE Stripe links (real charges) and the live customer portal.
 #
 # The printed QR code in each issue should point to https://tommystories.com/join
 # That opens the plan choice page (/join/), so it keeps working even if a
@@ -15,7 +14,7 @@
 /gift/6         https://buy.stripe.com/9B614neb5dQVbEAfjd9MY00           302
 /gift/12        https://buy.stripe.com/5kQdR95EzbINeQMfjd9MY02           302
 /gift/24        https://buy.stripe.com/00w14n8QL005eQMc719MY01           302
-/manage         https://billing.stripe.com/p/login/test_9B67sLaXgfiWeiI6QfeIw00  302
+/manage         https://billing.stripe.com/p/login/9B614neb5dQVbEAfjd9MY00302
 
 # Behind-the-scenes files in the repo aren't pages; don't serve them.
 /netlify/*          /404.html   404!

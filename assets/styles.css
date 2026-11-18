@@ -1670,6 +1670,301 @@ input[type="file"] {
   font-size: 0.9rem;
 }
 
+/* "Plus many extras." in the hero: an in-page link down to What's inside. */
+.lead-link {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.lead-link svg {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.2em;
+  vertical-align: -0.08em;
+}
+
+/* What's inside (home page): an envelope that opens when it scrolls into
+   view (assets/mail-open.js). The month's booklet rises out of it with the
+   surprise beside it, then the contents appear. Everything below is the
+   open envelope; the closed one only exists while the script waits to open
+   it, so without the script, or for readers who've asked for less motion,
+   it simply shows open. The drawing is 440 x 400: the envelope fills the
+   bottom 270, and the booklet rises into the space above it. */
+.inside-head--mail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem 3rem;
+  align-items: end;
+}
+
+.mail-open {
+  position: relative;
+  isolation: isolate;
+  justify-self: center;
+  width: min(100%, 15rem);
+  aspect-ratio: 440 / 400;
+  perspective: 1100px;
+}
+
+@media (min-width: 52rem) {
+  .inside-head--mail { grid-template-columns: minmax(0, 1fr) 19rem; }
+  .mail-open { width: 100%; }
+}
+
+.mail-open > *,
+.mail-open-inside > svg {
+  position: absolute;
+  display: block;
+}
+
+.mail-open-lining,
+.mail-open-pocket {
+  left: 0;
+  top: 32.5%;
+  width: 100%;
+  height: 67.5%;
+}
+
+.mail-open-lining { z-index: 1; }
+
+/* The booklet and the surprise: whatever is below the envelope's bottom
+   edge is cut off, so they seem to come out of it. */
+.mail-open-inside {
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.mail-open-pocket {
+  z-index: 5;
+  filter: drop-shadow(0 10px 14px rgba(27, 38, 56, 0.16));
+}
+
+.mail-open-booklet {
+  left: 32.05%;
+  top: 40%;
+  width: 35.9%;
+  height: auto;
+  transform: translateY(-63%) rotate(-3deg);
+}
+
+.mail-open-card {
+  left: 60%;
+  top: 44%;
+  width: 30%;
+  height: auto;
+  transform: translate(6%, -118%) rotate(10deg);
+}
+
+/* The flap folds up and back, behind the booklet. */
+.mail-open-flap {
+  left: 0;
+  top: 32.5%;
+  width: 100%;
+  height: 31.25%;
+  z-index: 2;
+  transform-origin: 50% 0;
+  transform: rotateX(180deg);
+  transform-style: preserve-3d;
+}
+
+.mail-open-flap svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.mail-open-flap .flap-in {
+  transform: rotateX(180deg);
+}
+
+/* Opening: the flap, then the booklet, then the surprise, then the
+   contents one after another. */
+.mail-ready .mail-open-flap {
+  transition: transform 0.8s cubic-bezier(0.45, 0, 0.25, 1), z-index 0s linear 0.4s;
+}
+
+.mail-ready .mail-open-booklet {
+  transition: transform 1s cubic-bezier(0.2, 0.75, 0.25, 1) 0.6s;
+}
+
+.mail-ready .mail-open-card {
+  transition: transform 0.9s cubic-bezier(0.2, 0.75, 0.25, 1) 1s;
+}
+
+.mail-ready .contents-list > li {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: 1.2s;
+}
+
+.mail-ready .contents-list > li:nth-child(2) { transition-delay: 1.28s; }
+.mail-ready .contents-list > li:nth-child(3) { transition-delay: 1.36s; }
+.mail-ready .contents-list > li:nth-child(4) { transition-delay: 1.44s; }
+.mail-ready .contents-list > li:nth-child(5) { transition-delay: 1.52s; }
+.mail-ready .contents-list > li:nth-child(6) { transition-delay: 1.6s; }
+.mail-ready .contents-list > li:nth-child(7) { transition-delay: 1.8s; }
+
+/* Closed, waiting to open. */
+.mail-ready:not(.is-open) .mail-open-flap {
+  z-index: 6;
+  transform: rotateX(0deg);
+  transition: none;
+}
+
+.mail-ready:not(.is-open) .mail-open-booklet {
+  transform: translateY(0) rotate(0deg);
+  transition: none;
+}
+
+.mail-ready:not(.is-open) .mail-open-card {
+  transform: translate(0, 0) rotate(0deg);
+  transition: none;
+}
+
+.mail-ready:not(.is-open) .contents-list > li {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: none;
+}
+
+@media print {
+  .mail-ready .contents-list > li {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* The surprise in every envelope: across the bottom of the contents, set
+   apart because it isn't a page in the booklet. */
+.contents-list > li.contents-surprise {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  padding: 1rem 1.25rem;
+  border: 2px dashed var(--gold-deep);
+  border-radius: 0.5rem;
+  background: #FFFBF1;
+}
+
+.contents-surprise-icon {
+  flex: none;
+  width: 4.75rem;
+  height: auto;
+  transform: rotate(-6deg);
+}
+
+.contents-surprise p {
+  max-width: none;
+}
+
+/* Subscribe and gift pages: the title beside an envelope like the one on
+   the home page. On a phone the envelope sits small at the right and the
+   title wraps around it. */
+.intro-mail {
+  display: flow-root;
+}
+
+.intro-mail h1 {
+  margin: 0;
+}
+
+.intro-mail .lead {
+  margin: 1rem 0 0;
+}
+
+.intro-mail .envelope {
+  float: right;
+  width: 7rem;
+  max-width: none;
+  margin: 0.25rem 0 0.5rem 1rem;
+}
+
+@media (min-width: 52rem) {
+  .intro-mail {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 16rem;
+    grid-template-areas:
+      "title art"
+      "lead  art";
+    column-gap: 3rem;
+    align-items: center;
+  }
+  .intro-mail h1 { grid-area: title; align-self: end; }
+  .intro-mail .lead { grid-area: lead; align-self: start; }
+  .intro-mail .envelope {
+    grid-area: art;
+    float: none;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+/* Subscribe page: subscribing for someone else. */
+.for-someone {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--blue);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.for-someone p {
+  max-width: none;
+  margin: 0;
+}
+
+.for-someone svg {
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  margin-top: 0.1rem;
+  color: var(--blue);
+}
+
+.for-someone + .plans-assurance {
+  margin-top: 1rem;
+}
+
+/* Gift page: an ongoing gift, billed monthly or yearly until canceled. */
+.gift-ongoing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  max-width: 44rem;
+  margin: -1rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 2px dashed var(--blue);
+  border-radius: 0.5rem;
+  background: var(--wash);
+}
+
+.gift-ongoing h2 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.gift-ongoing p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.gift-ongoing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 /* Computer screens: keep small print, hints and labels readable at the
    smaller base size. (Last in the file so it wins over the rules above.) */
 @media (min-width: 64em) {

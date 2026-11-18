@@ -10,7 +10,7 @@
   <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=20261113">
+  <link rel="stylesheet" href="/assets/styles.css?v=20261118">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -37,8 +37,85 @@
   <main id="main">
     <section class="page-intro">
       <div class="wrap">
-        <h1>Start your Tommy Stories subscription</h1>
-        <p class="lead lead--one-line">Four true car stories in your mailbox every month, in large, easy-to-read print. Choose the plan that suits you.</p>
+        <div class="intro-mail">
+          <svg class="envelope" viewBox="0 0 440 400" aria-hidden="true">
+            <defs>
+              <pattern id="join-airmail" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="24" height="24" fill="#ffffff"/>
+                <rect width="8" height="24" fill="#A8833B"/>
+                <rect x="12" width="8" height="24" fill="#004185"/>
+              </pattern>
+              <path id="join-postmark-top" d="M 269 100 A 37 37 0 0 1 343 100"/>
+              <path id="join-postmark-bottom" d="M 263 100 A 43 43 0 0 0 349 100"/>
+            </defs>
+
+            <!-- This month's booklet, rising out of the envelope -->
+            <g transform="rotate(-4 220 130) translate(141 10)">
+              <rect x="0.75" y="0.75" width="156.5" height="242.5" rx="2" fill="#ffffff" stroke="#C9D3E0" stroke-width="1.5"/>
+              <g font-family="Libre Caslon Text, Georgia, serif" font-weight="700" text-anchor="middle">
+                <text x="79" y="15" font-size="6.2" letter-spacing="2" fill="#8A6726">LARGE PRINT</text>
+                <text x="79" y="59" font-size="6.6" letter-spacing="2.2" fill="#004185">EVERY MONTH</text>
+                <text x="79" y="69.3" font-size="4" letter-spacing="0.3" fill="#004185">CAR STORIES THAT TOUCH LIFE, FAMILY, AND FAITH</text>
+              </g>
+              <image href="/assets/logo-print.svg" x="16" y="20" width="126" height="28.2"/>
+              <path d="M12 64H146M12 72H146" stroke="#004185" stroke-width="1"/>
+              <clipPath id="join-booklet-art"><rect x="12" y="77" width="134" height="129"/></clipPath>
+              <g clip-path="url(#join-booklet-art)">
+                <rect x="12" y="77" width="134" height="129" fill="#004185"/>
+                <g stroke="#D4B06A" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.85"><line x1="54.4" y1="145.7" x2="14.0" y2="138.5"/><line x1="57.3" y1="137.5" x2="40.0" y2="127.5"/><line x1="62.9" y1="130.8" x2="36.6" y2="99.4"/><line x1="70.4" y1="126.5" x2="63.6" y2="107.7"/><line x1="79.0" y1="125.0" x2="79.0" y2="84.0"/><line x1="87.6" y1="126.5" x2="94.4" y2="107.7"/><line x1="95.1" y1="130.8" x2="121.4" y2="99.4"/><line x1="100.7" y1="137.5" x2="118.0" y2="127.5"/><line x1="103.6" y1="145.7" x2="144.0" y2="138.5"/></g>
+                <circle cx="79" cy="150" r="19" fill="#D4B06A"/>
+                <path d="M12 160C30 150 50 149 66 155C82 161 100 151 118 150C132 149 142 154 146 153V206H12Z" fill="#00305F" stroke="#F4EBD6" stroke-width="1"/>
+                <g fill="#F4EBD6"><rect x="25" y="148" width="9" height="7"/><polygon points="24,149 29.5,145 35,149"/><rect x="28" y="141" width="3.5" height="8"/><polygon points="27.3,142 29.75,136.5 32.2,142"/></g>
+                <path d="M12 172C36 163 60 165 82 170C104 175 128 164 146 167V206H12Z" fill="#002A55" stroke="#F4EBD6" stroke-width="1"/>
+                <rect x="12" y="183" width="134" height="11" fill="#001D3D"/>
+                <path d="M12 183H146M12 194H146" stroke="#F4EBD6" stroke-width="0.9"/>
+                <line x1="12" y1="188.5" x2="146" y2="188.5" stroke="#D4B06A" stroke-width="1.2" stroke-dasharray="6 5"/>
+              </g>
+              <rect x="15" y="80" width="128" height="123" fill="none" stroke="#D4B06A" stroke-width="1"/>
+              <text x="79" y="226" text-anchor="middle" font-family="Bodoni Moda, Didot, Georgia, serif" font-weight="800" font-size="8.6" fill="#004185">It’s Never Really About The Car</text>
+            </g>
+
+            <!-- The envelope -->
+            <g transform="translate(0 110)">
+              <rect x="8" y="8" width="424" height="274" rx="10" fill="#ffffff" stroke="#16223A" stroke-width="2.5"/>
+              <rect x="18" y="18" width="404" height="254" rx="4" fill="none" stroke="url(#join-airmail)" stroke-width="10"/>
+
+              <text x="44" y="68" font-family="Bodoni Moda, Didot, Georgia, serif" font-size="25" font-weight="800"><tspan fill="#004185">Tommy</tspan><tspan dx="-4" fill="#A8833B" font-family="Yellowtail, 'Brush Script MT', cursive" font-size="28" font-weight="400" stroke="#ffffff" stroke-width="2.6" stroke-linejoin="round" paint-order="stroke">Stories</tspan></text>
+              <rect x="44" y="78" width="112" height="7" rx="3.5" fill="#C7D2DE"/>
+              <rect x="44" y="92" width="86" height="7" rx="3.5" fill="#C7D2DE"/>
+
+              <rect x="340" y="36" width="70" height="84" fill="#ffffff" stroke="#16223A" stroke-width="1.5"/>
+              <rect x="340" y="36" width="70" height="84" fill="none" stroke="#ffffff" stroke-width="7" stroke-dasharray="0.1 9" stroke-linecap="round"/>
+              <rect x="344" y="40" width="62" height="76" fill="#004185"/>
+              <circle cx="383" cy="64" r="10" fill="#D4B06A"/>
+              <path d="M344 96 Q362 80 380 90 T406 86 V116 H344 Z" fill="#002E5F"/>
+              <path d="M366 116 Q370 104 388 92" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+              <rect x="344" y="40" width="62" height="76" fill="none" stroke="#ffffff" stroke-width="4"/>
+
+              <g fill="none" stroke="#16223A" stroke-opacity="0.75">
+                <circle cx="306" cy="100" r="46" stroke-width="2.5"/>
+                <circle cx="306" cy="100" r="31" stroke-width="1.5"/>
+              </g>
+              <g fill="none" stroke="#16223A" stroke-opacity="0.55" stroke-width="2.5">
+                <path d="M352 84 q6 -6 12 0 t12 0 t12 0 t12 0"/>
+                <path d="M352 98 q6 -6 12 0 t12 0 t12 0 t12 0"/>
+                <path d="M352 112 q6 -6 12 0 t12 0 t12 0 t12 0"/>
+              </g>
+              <g font-family="Libre Caslon Text, Georgia, serif" font-weight="700" fill="#16223A" fill-opacity="0.8">
+                <text font-size="9.5" letter-spacing="1.5"><textPath href="#join-postmark-top" startOffset="50%" text-anchor="middle">TOMMY STORIES</textPath></text>
+                <text font-size="9.5" letter-spacing="1.5"><textPath href="#join-postmark-bottom" startOffset="50%" text-anchor="middle">EVERY MONTH</textPath></text>
+                <text x="306" y="98" font-size="11" text-anchor="middle">4 TRUE</text>
+                <text x="306" y="112" font-size="11" text-anchor="middle">STORIES</text>
+              </g>
+              <g font-family="La Belle Aurore, 'Segoe Print', 'Bradley Hand', cursive" fill="#1F3A68">
+                <text x="150" y="198" font-size="27">To: You</text>
+                <text x="150" y="236" font-size="20">Your mailbox, every month</text>
+              </g>
+            </g>
+          </svg>
+          <h1>Start your Tommy Stories subscription</h1>
+          <p class="lead">Four true car stories in your mailbox every month, in large, easy-to-read print. Choose the plan that suits you.</p>
+        </div>
         <div class="issue-strip">
           <div class="issue-strip-intro">
             <p class="issue-strip-title">In every issue</p>
@@ -50,6 +127,7 @@
             <li>Name That Car</li>
             <li>The Puzzle Page</li>
             <li>Letters to Tommy</li>
+            <li>A Surprise from Tommy</li>
           </ul>
           <p class="issue-strip-foot">Large print. No outside advertising.</p>
         </div>
@@ -92,6 +170,10 @@
             </ul>
             <a class="plan-more" href="/gift/">How gift subscriptions work</a>
           </div>
+        </div>
+        <div class="for-someone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3.5 7 8.5 6.5L20.5 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <p><strong>Subscribing for someone else?</strong> Choose Monthly or Yearly, then enter their name and address for shipping at checkout. Every issue goes to them, the bill comes to you, and it keeps coming until you cancel.</p>
         </div>
         <ul class="check-list check-list--row plans-assurance">
           <li>Secure checkout with Stripe</li>

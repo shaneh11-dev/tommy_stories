@@ -147,6 +147,10 @@ Rules for what goes in it:
 - **Disclose any connection.** Reviews from friends, family, or anyone who got a free issue need to say so. The line under each carousel ("From friends who subscribe.") covers the first five reviewers. Keep it while any of their reviews are showing; drop it once every review shown comes from subscribers you don't know personally.
 - Don't use reviews of other publications, and don't show only the glowing ones if you've received critical ones on the same point.
 
+## Link previews
+
+When someone shares a page on Facebook, in a text message or in an email, the preview shows `assets/share-preview.png` (1200 x 630, the Facebook cover design) with the page's title and description. Those come from the `og:` lines near the top of each page. To change the picture, replace that file and keep the same name; Facebook keeps its old copy for a while, so paste the page address into Facebook's Sharing Debugger (developers.facebook.com/tools/debug) and press **Scrape Again**. The picture is made in the booklet workspace (`social/make_social.py`).
+
 ## Browser caching
 
 Every page links to `styles.css`, `reviews.js` and `share.js` with a version tag (for example `styles.css?v=20261028`). Browsers check for new copies of these files on each visit, but if a style change ever seems stuck for someone, change the tag on every page (find and replace) to force a fresh download. Fonts are cached for a year, since their files never change.

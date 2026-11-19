@@ -79,7 +79,7 @@ Then:
 
 1. Paste each Payment Link URL into `_redirects`.
 2. **Settings > Billing > Customer portal**: allow canceling at the end of the billing period (not immediately; issues keep coming for the time already paid, and there are no refunds or prorations), updating payment methods, and updating the shipping address. Copy the portal's login link into the `/manage` line of `_redirects`.
-3. **Customer emails** settings: turn on receipts for successful payments, and turn on **Send emails about upcoming renewals**, with the reminder set to 30 days before renewal (under **Prevent failed payments > Upcoming renewal events**). The site promises yearly subscribers a reminder about 30 days ahead.
+3. **Customer emails** settings: turn on receipts for successful payments. Leave Stripe's **Send emails about upcoming renewals** off: it would email monthly subscribers too. Yearly subscribers in some states (California and New York, for example) must get a renewal reminder 15 to 45 days ahead, so build a yearly-only reminder email before the first yearly renewal. The site doesn't promise one.
 4. Add your business address (3151 Cape Horn Rd, Unit #2079, Red Lion, PA 17356), support email, and links to `/terms/` and `/privacy/` in your Stripe account's public business details.
 
 ### 3. Domain and email
@@ -112,6 +112,29 @@ Until both settings are added, no confirmation is sent and the forms work as bef
 - [ ] Send a test story with a file and 2 phone photos attached and confirm the notification email arrives with all three
 - [ ] Confirm the reader's confirmation email arrives for a test story and a test letter (and isn't in spam)
 - [ ] Scan a printed test QR code pointing to `https://YOURDOMAIN/join`
+
+### Share with a friend
+
+Readers can invite a friend at `/friend/`. We email the friend one invitation from `support@` with the reader's note and the friend offer ($12.99 a month for the first 3 months on the Monthly plan), email the reader a copy, and send the friend one reminder a week later. Every email to a friend has a "Stop all emails" link.
+
+The pieces:
+
+- `friend/index.html` and `friend/thanks/`: the form (a Netlify form named `share-with-a-friend`; submissions show under **Forms** in Netlify).
+- `netlify/lib/friend.mjs`: the emails and the rules (each address invited once, ever; at most 5 invitations a day from one reader; notes are plain text with no web addresses). The offer price is set at the top of this file, and also written on the friend page, Questions, the welcome page and Terms.
+- `netlify/functions/submission-created.mjs`: sends the invitation when the form comes in.
+- `netlify/functions/friend-reminders.mjs`: runs every day at 15:00 UTC and sends the week-later reminders.
+- `netlify/functions/friend-stop.mjs`: the stop link, at `/friend/stop`.
+- What we remember between emails is kept in Netlify Blobs (store `friend-invites`); nothing to set up.
+- The emails use the same `SMTP_USER` and `SMTP_PASS` settings as the confirmation emails.
+
+Set up the offer in Stripe (live mode) before sharing the page:
+
+1. **Product catalog > Coupons > Create coupon**: name "Friend offer", **Amount off** $4.00, duration **Multiple months**, 3 months, applied only to the Tommy Stories monthly product.
+2. On that coupon, **Add promotion code**: `TOMMYFRIEND`, and check **Eligible for first-time order only**.
+3. **Payment Links**: open the Monthly link, edit it, turn on **Allow promotion codes**, and save.
+4. Open `https://tommystories.com/join/friend`: the checkout should show `TOMMYFRIEND` applied and $12.99.
+
+`/join/friend` in `_redirects` holds the code. If you change the code in Stripe, change it there too.
 
 ## Reviews
 

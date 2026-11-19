@@ -1965,6 +1965,41 @@ input[type="file"] {
   gap: 0.75rem;
 }
 
+/* Share with a friend: the friend offer, and a smaller box for the note. */
+.friend-offer {
+  max-width: 34rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 2px dashed var(--gold-deep);
+  border-radius: 0.5rem;
+  background: #FFFBF1;
+}
+
+.friend-offer p {
+  margin: 0;
+  max-width: none;
+}
+
+.friend-offer-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+
+.friend-offer .friend-offer-price {
+  margin: 0.15rem 0 0.35rem;
+  font-family: var(--display);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--blue);
+}
+
+textarea.note-box {
+  min-height: 6rem;
+}
+
 /* Computer screens: keep small print, hints and labels readable at the
    smaller base size. (Last in the file so it wins over the rules above.) */
 @media (min-width: 64em) {

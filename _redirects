@@ -16,6 +16,12 @@
 /gift/24        https://buy.stripe.com/00w14n8QL005eQMc719MY01           302
 /manage         https://billing.stripe.com/p/login/9B614neb5dQVbEAfjd9MY00  302
 
+# Share with a friend: the button in the friend's invitation email opens the
+# Monthly checkout with the friend code already applied ($12.99 a month for
+# the first 3 months). The code must exist in Stripe and the Monthly link
+# must allow promotion codes (README, "Share with a friend").
+/join/friend    https://buy.stripe.com/7sY00j6IDdQVbEAfjd9MY04?prefilled_promo_code=TOMMYFRIEND  302
+
 # Behind-the-scenes files in the repo aren't pages; don't serve them.
 /netlify/*          /404.html   404!
 /package.json       /404.html   404!

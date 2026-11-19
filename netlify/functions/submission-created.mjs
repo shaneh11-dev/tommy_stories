@@ -1,4 +1,5 @@
-/* Confirmation emails for the Share your story and Write to Tommy forms.
+/* Confirmation emails for the Share your story and Write to Tommy forms,
+   and the invitations from the Share with a friend form.
 
    Netlify runs this function on its own after every form submission that
    passes its spam check. The file name, submission-created, is what tells
@@ -11,8 +12,15 @@
 
    On purpose, the email never repeats what the reader wrote: only their
    first name and the byline they chose. That way nobody can use our forms
-   to send someone else a message that looks like it came from us. */
+   to send someone else a message that looks like it came from us.
+
+   Share with a friend is the one form whose email goes to someone else (the
+   friend), with the reader's note. netlify/lib/friend.mjs explains the limits
+   that keep it from being misused. */
 import nodemailer from "nodemailer";
+import { getStore } from "@netlify/blobs";
+import { makeSender } from "../lib/mailer.mjs";
+import { handleFriendInvite } from "../lib/friend.mjs";
 
 const SUPPORT = "support@tommystories.com";
 const TOMMY = "tommy@tommystories.com";
@@ -31,6 +39,23 @@ export default async (req) => {
     ({ payload } = await req.json());
   } catch {
     return new Response("Bad request", { status: 400 });
+  }
+
+  if (payload && payload.form_name === "share-with-a-friend") {
+    const send = makeSender();
+    if (!send) {
+      console.log("Friend invitations are off: add SMTP_USER and SMTP_PASS in Netlify.");
+      return new Response("Friend invitations are off");
+    }
+    try {
+      const store = getStore({ name: "friend-invites", consistency: "strong" });
+      const result = await handleFriendInvite(payload, { store, send, site: process.env.URL });
+      console.log(`Friend invitation: ${result}.`);
+    } catch (error) {
+      // Always answer OK so Netlify doesn't retry and send the friend a second copy.
+      console.error(`Friend invitation failed: ${error.message}`);
+    }
+    return new Response("OK");
   }
 
   const message = buildMessage(payload, process.env.URL);
@@ -126,7 +151,7 @@ export function buildMessage(payload, siteUrl) {
     lines.invite[1],
     "",
     "Warmly,",
-    "The Tommy Story Family",
+    "The Tommy Stories Family",
     "",
     "--",
     ADDRESS,
@@ -145,7 +170,7 @@ export function buildMessage(payload, siteUrl) {
 ${showByline ? `<p ${p}>${escapeHtml(lines.bylineIntro)}<br><strong>${escapeHtml(byline)}</strong><br>If that isn't right, just reply to this email.</p>` : ""}
 <ul style="margin:0 0 16px;padding-left:22px">${lines.steps.map((step) => `<li style="margin:0 0 8px">${escapeHtml(step)}</li>`).join("")}</ul>
 <p ${p}>${escapeHtml(lines.invite[0])}<br><a href="${escapeHtml(lines.invite[1])}" style="color:#004185">${escapeHtml(lines.invite[1].replace(/^https?:\/\//, ""))}</a></p>
-<p style="margin:0 0 24px">Warmly,<br>The Tommy Story Family</p>
+<p style="margin:0 0 24px">Warmly,<br>The Tommy Stories Family</p>
 <p style="margin:0;padding-top:14px;border-top:1px solid #D3DCE8;font-size:15px;line-height:1.5;color:#4A5568">${escapeHtml(ADDRESS)}<br>Questions? <a href="mailto:${SUPPORT}" style="color:#004185">${SUPPORT}</a><br>${escapeHtml(footer)}</p>
 </div>
 </body>

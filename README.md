@@ -115,7 +115,7 @@ Until both settings are added, no confirmation is sent and the forms work as bef
 
 ### Share with a friend
 
-Readers can invite a friend at `/friend/`. We email the friend one invitation from `support@` with the reader's note and the friend offer ($12.99 a month for the first 3 months on the Monthly plan), email the reader a copy, and send the friend one reminder a week later. Every email to a friend has a "Stop all emails" link.
+Readers can invite up to 5 friends at a time at `/friend/` (first names optional). We email each friend one invitation from `support@` with the reader's note and the friend offer ($12.99 a month for the first 3 months on the Monthly plan), email the reader one copy listing who was invited, and send each friend one reminder a week later. Every email to a friend has a "Stop all emails" link.
 
 The pieces:
 

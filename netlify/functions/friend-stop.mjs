@@ -49,7 +49,7 @@ function page(title, body, status = 200) {
   <meta name="robots" content="noindex">
   <title>${title} | Tommy Stories</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/styles.css?v=20261119">
+  <link rel="stylesheet" href="/assets/styles.css?v=20261119b">
 </head>
 <body>
   <header class="site-header">

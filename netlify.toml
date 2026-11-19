@@ -8,11 +8,17 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# One small function: it emails a confirmation to people who send a story
-# or a letter (netlify/functions/submission-created.mjs).
+# Functions: confirmation emails for stories and letters, Share with a friend
+# (submission-created, friend-reminders, friend-stop) and Facebook posts
+# (facebook-poster). See the README.
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+
+# The Facebook posting robot reads the approved posts and their images from
+# social/posts/ (they aren't served on the public site; see _redirects).
+[functions."facebook-poster"]
+  included_files = ["social/posts/**"]
 
 [[headers]]
   for = "/*"

@@ -1,0 +1,9 @@
+{
+  "card": "name-that-car",
+  "out": "2026-11-26-0900-name-that-car-corvair.png",
+  "clues": [
+    [3, "Motor Trend named me its Car of the Year in my very first year, 1960."],
+    [2, "My engine sat in the back and was cooled by air, not water. That was rare for an American car."],
+    [1, "In 1965, Ralph Nader's book <i>Unsafe at Any Speed</i> opened with a chapter about me."]
+  ]
+}

@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Share with a friend | Tommy Stories</title>
-  <meta name="description" content="Invite a friend to Tommy Stories. We'll send them an email from you, with your note and a friend offer: their first 3 months for $12.99 a month.">
+  <meta name="description" content="Invite up to 5 friends to Tommy Stories. We'll send each an email from you, with your note and a friend offer: their first 3 months for $12.99 a month.">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <meta name="theme-color" content="#004185">
   <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=20261119">
+  <link rel="stylesheet" href="/assets/styles.css?v=20261119b">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -38,14 +38,14 @@
     <section class="page-intro">
       <div class="wrap">
         <h1>Share Tommy Stories with a friend</h1>
-        <p class="lead">Know someone who'd love these stories? Give us their name and email, add a note if you like, and we'll send them an invitation from you.</p>
+        <p class="lead">Know someone who'd love these stories? Give us up to 5 friends' email addresses, add a note if you like, and we'll send each of them an invitation from you.</p>
         <div class="friend-offer">
           <p class="friend-offer-label">Friend offer</p>
           <p class="friend-offer-price">$12.99 a month for their first 3 months</p>
           <p>Then $16.99 a month on the Monthly plan, shipping included. They can cancel anytime.</p>
         </div>
         <ul class="guidelines">
-          <li>We send your friend one email from Tommy Stories, with your note and a button to subscribe.</li>
+          <li>We send each friend one email from Tommy Stories, with your note and a button to subscribe.</li>
           <li>If they haven't subscribed after a week, we send one short reminder. That's all, and we never add them to a mailing list.</li>
           <li>We'll email you a copy so you know it went out.</li>
         </ul>
@@ -74,29 +74,87 @@
             </div>
           </fieldset>
 
-          <fieldset class="field">
-            <legend>About your friend</legend>
-            <div class="field">
-              <label for="friend-name">Their first name (required)</label>
-              <input type="text" id="friend-name" name="friend-name" autocomplete="off" maxlength="30" required>
+          <fieldset class="field friends">
+            <legend>Your friends</legend>
+            <p class="hint" id="friends-hint">Up to 5 friends. Each one gets their own email with your note. Use their own email address, not yours. A first name is optional; with one, the email starts &ldquo;Dear John.&rdquo;</p>
+            <div class="friend" data-friend="1">
+              <p class="friend-label">Friend 1</p>
+              <div class="friend-pair">
+                <div class="field">
+                  <label for="friend-name-1">First name</label>
+                  <input type="text" id="friend-name-1" name="friend-name-1" autocomplete="off" maxlength="30">
+                </div>
+                <div class="field">
+                  <label for="friend-email-1">Email (required)</label>
+                  <input type="email" id="friend-email-1" name="friend-email-1" autocomplete="off" required aria-describedby="friends-hint">
+                </div>
+              </div>
             </div>
-            <div class="field">
-              <label for="friend-email">Their email (required)</label>
-              <p class="hint" id="friend-email-hint">Your friend's own email, not yours.</p>
-              <input type="email" id="friend-email" name="friend-email" autocomplete="off" required aria-describedby="friend-email-hint">
+            <div class="friend" data-friend="2">
+              <p class="friend-label">Friend 2</p>
+              <div class="friend-pair">
+                <div class="field">
+                  <label for="friend-name-2">First name</label>
+                  <input type="text" id="friend-name-2" name="friend-name-2" autocomplete="off" maxlength="30">
+                </div>
+                <div class="field">
+                  <label for="friend-email-2">Email</label>
+                  <input type="email" id="friend-email-2" name="friend-email-2" autocomplete="off" aria-describedby="friends-hint">
+                </div>
+              </div>
             </div>
+            <div class="friend" data-friend="3">
+              <p class="friend-label">Friend 3</p>
+              <div class="friend-pair">
+                <div class="field">
+                  <label for="friend-name-3">First name</label>
+                  <input type="text" id="friend-name-3" name="friend-name-3" autocomplete="off" maxlength="30">
+                </div>
+                <div class="field">
+                  <label for="friend-email-3">Email</label>
+                  <input type="email" id="friend-email-3" name="friend-email-3" autocomplete="off" aria-describedby="friends-hint">
+                </div>
+              </div>
+            </div>
+            <div class="friend" data-friend="4">
+              <p class="friend-label">Friend 4</p>
+              <div class="friend-pair">
+                <div class="field">
+                  <label for="friend-name-4">First name</label>
+                  <input type="text" id="friend-name-4" name="friend-name-4" autocomplete="off" maxlength="30">
+                </div>
+                <div class="field">
+                  <label for="friend-email-4">Email</label>
+                  <input type="email" id="friend-email-4" name="friend-email-4" autocomplete="off" aria-describedby="friends-hint">
+                </div>
+              </div>
+            </div>
+            <div class="friend" data-friend="5">
+              <p class="friend-label">Friend 5</p>
+              <div class="friend-pair">
+                <div class="field">
+                  <label for="friend-name-5">First name</label>
+                  <input type="text" id="friend-name-5" name="friend-name-5" autocomplete="off" maxlength="30">
+                </div>
+                <div class="field">
+                  <label for="friend-email-5">Email</label>
+                  <input type="email" id="friend-email-5" name="friend-email-5" autocomplete="off" aria-describedby="friends-hint">
+                </div>
+              </div>
+            </div>
+            <button class="button button--secondary add-friend" type="button" hidden>Add another friend</button>
           </fieldset>
 
           <div class="field">
-            <label for="note">A note to your friend</label>
-            <p class="hint" id="note-hint">Optional. A sentence or two, up to 300 characters, like &ldquo;I think you'd love these. The Christmas snowstorm story made me think of Dad.&rdquo; It goes in the email as you write it, without any web addresses.</p>
+            <label for="note">A note to your friends</label>
+            <p class="hint" id="note-hint">Optional. Each friend gets the same note. A sentence or two, up to 300 characters, like &ldquo;I think you'd love these. The Christmas snowstorm story made me think of Dad.&rdquo; It goes in the email as you write it, without any web addresses.</p>
             <textarea class="note-box" id="note" name="note" maxlength="300" rows="3" aria-describedby="note-hint"></textarea>
           </div>
 
-          <label class="checkbox"><input type="checkbox" name="knows-them" value="Yes" required> <span>I know this person, and I think they'd like to hear about Tommy Stories.</span></label>
+          <label class="checkbox"><input type="checkbox" name="knows-them" value="Yes" required> <span>I know the people I'm inviting, and I think they'd like to hear about Tommy Stories.</span></label>
 
           <div>
-            <button class="button button--primary" type="submit">Send my invitation</button>
+            <button class="button button--primary" type="submit">Send my invitations</button>
             <p class="cta-note cta-note--form">The friend offer is for new subscribers on the Monthly plan. See our <a href="/terms/#friend-offer">terms</a>.</p>
           </div>
         </form>
@@ -133,6 +191,6 @@
       <p class="legal">© 2026 Tommy Stories LLC</p>
     </div>
   </footer>
-  <script src="/assets/friend.js?v=20261119" defer></script>
+  <script src="/assets/friend.js?v=20261119b" defer></script>
 </body>
 </html>

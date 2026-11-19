@@ -2000,6 +2000,50 @@ textarea.note-box {
   min-height: 6rem;
 }
 
+/* Up to 5 friends, each a first name and an email side by side on a
+   computer, stacked on a phone. */
+fieldset.friends {
+  gap: 1rem;
+}
+
+.friend {
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+  background: var(--wash);
+}
+
+.friend[hidden] {
+  display: none;
+}
+
+.friend-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+
+.friend-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem 1rem;
+}
+
+@media (min-width: 40rem) {
+  .friend-pair { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+}
+
+.add-friend {
+  justify-self: start;
+}
+
+.add-friend[hidden] {
+  display: none;
+}
+
 /* Computer screens: keep small print, hints and labels readable at the
    smaller base size. (Last in the file so it wins over the rules above.) */
 @media (min-width: 64em) {

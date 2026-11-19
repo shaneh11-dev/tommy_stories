@@ -1,22 +1,25 @@
-/* Share with a friend: the invitation, the reader's copy, the one reminder,
+/* Share with a friend: the invitations, the reader's copy, the one reminder,
    and the "stop emailing me" link.
 
    How it works
-   - A reader fills in /friend/ (their name and email, a friend's first name
-     and email, and an optional note). Netlify checks the form for spam, then
-     runs netlify/functions/submission-created.mjs, which calls
+   - A reader fills in /friend/: their name and email, up to 5 friends'
+     email addresses (each with an optional first name), and an optional
+     note. Netlify checks the form for spam, then runs
+     netlify/functions/submission-created.mjs, which calls
      handleFriendInvite() below.
-   - We email the friend one invitation from Tommy Stories, with the reader's
-     note and the friend offer, and email the reader a short copy.
-   - Seven days later, netlify/functions/friend-reminders.mjs sends the friend
-     one short reminder. Then nothing more, ever.
+   - We email each friend their own invitation from Tommy Stories, with the
+     same note and the friend offer, and email the reader one copy saying
+     who was invited.
+   - Seven days later, netlify/functions/friend-reminders.mjs sends each
+     friend one short reminder. Then nothing more, ever.
    - Every email to a friend has a link (netlify/functions/friend-stop.mjs)
      that stops all emails from us to that address.
 
    Keeping it from being misused (anyone can fill in a web form):
    - Each email address is invited once, ever. Addresses that asked us to
      stop are never emailed again.
-   - One reader's email address can send at most 5 invitations a day.
+   - One reader's email address can send at most 5 invitations a day (one
+     form holds up to 5 friends).
    - The note is plain text, at most 300 characters, with web addresses and
      email addresses taken out, so it can't carry a link.
    - After the reminder goes out, we forget the friend's email address and
@@ -33,6 +36,7 @@ export const OFFER = {
   months: 3,
 };
 
+export const MAX_FRIENDS = 5;
 const SUPPORT = "support@tommystories.com";
 const ADDRESS = "Tommy Stories, 3151 Cape Horn Rd, Unit #2079, Red Lion, PA 17356";
 const DAILY_LIMIT = 5;
@@ -41,47 +45,68 @@ const DAY = 24 * 60 * 60 * 1000;
 
 /* One form submission. `store` holds what we remember between emails
    (Netlify Blobs in production); `send` sends one email. Returns a short
-   word for the log: "sent", "already", "limit" or "skipped". */
+   line for the log, like "sent 3, already 1, held 0, failed 0". */
 export async function handleFriendInvite(payload, { store, send, site, now = new Date() }) {
   const data = (payload && payload.data) || {};
   if (String(data.company || "").trim()) return "skipped";
 
   const sender = plainName(data["your-name"], 40);
   const senderEmail = emailAddress(data["your-email"]);
-  const friend = plainName(data["friend-name"], 30);
-  const friendEmail = emailAddress(data["friend-email"]);
   const note = plainNote(data.note);
-  if (!sender || !senderEmail || !friend || !friendEmail) return "skipped";
-  if (friendEmail.toLowerCase() === senderEmail.toLowerCase()) return "skipped";
+  if (!sender || !senderEmail) return "skipped";
+
+  // Up to 5 friends: friend-email-1 to friend-email-5, each with an optional
+  // friend-name-N. (friend-email and friend-name are from the form's first
+  // version.) The reader's own address and repeats are left out.
+  const friends = [];
+  const seen = new Set([senderEmail.toLowerCase()]);
+  for (const n of ["", "-1", "-2", "-3", "-4", "-5"]) {
+    const email = emailAddress(data[`friend-email${n}`]);
+    if (!email || seen.has(email.toLowerCase())) continue;
+    seen.add(email.toLowerCase());
+    friends.push({ name: plainName(data[`friend-name${n}`], 30), email });
+    if (friends.length === MAX_FRIENDS) break;
+  }
+  if (!friends.length) return "skipped";
 
   site = String(site || "https://tommystories.com").replace(/\/+$/, "");
-  const friendKey = fingerprint(friendEmail);
   const dayKey = `sender/${fingerprint(senderEmail)}/${now.toISOString().slice(0, 10)}`;
+  let sentToday = Number((await store.get(dayKey)) || 0);
+  const results = { sent: [], already: [], held: [], failed: [] };
 
-  const sentToday = Number((await store.get(dayKey)) || 0);
-  if (sentToday >= DAILY_LIMIT) {
-    await send(readerCopy({ sender, senderEmail, friend, friendEmail, outcome: "limit", site }));
-    return "limit";
+  for (const friend of friends) {
+    const friendKey = fingerprint(friend.email);
+    const known = (await store.get(`invite/${friendKey}`)) || (await store.get(`stop/${friendKey}`));
+    if (known) {
+      results.already.push(friend);
+      continue;
+    }
+    if (sentToday >= DAILY_LIMIT) {
+      results.held.push(friend);
+      continue;
+    }
+    try {
+      await send(invitation({ sender, friend: friend.name, friendEmail: friend.email, note, site, stopId: friendKey }));
+    } catch (error) {
+      console.error(`Invitation failed: ${error.message}`);
+      results.failed.push(friend);
+      continue;
+    }
+    await store.setJSON(`invite/${friendKey}`, {
+      sentAt: now.toISOString(),
+      remindAt: new Date(now.getTime() + REMIND_AFTER_DAYS * DAY).toISOString(),
+      reminded: false,
+      friend: friend.name,
+      friendEmail: friend.email,
+      sender,
+    });
+    sentToday += 1;
+    await store.set(dayKey, String(sentToday));
+    results.sent.push(friend);
   }
 
-  const known = (await store.get(`invite/${friendKey}`)) || (await store.get(`stop/${friendKey}`));
-  if (known) {
-    await send(readerCopy({ sender, senderEmail, friend, friendEmail, outcome: "already", site }));
-    return "already";
-  }
-
-  await send(invitation({ sender, friend, friendEmail, note, site, stopId: friendKey }));
-  await store.setJSON(`invite/${friendKey}`, {
-    sentAt: now.toISOString(),
-    remindAt: new Date(now.getTime() + REMIND_AFTER_DAYS * DAY).toISOString(),
-    reminded: false,
-    friend,
-    friendEmail,
-    sender,
-  });
-  await store.set(dayKey, String(sentToday + 1));
-  await send(readerCopy({ sender, senderEmail, friend, friendEmail, outcome: "sent", site }));
-  return "sent";
+  await send(readerCopy({ sender, senderEmail, results, site }));
+  return `sent ${results.sent.length}, already ${results.already.length}, held ${results.held.length}, failed ${results.failed.length}`;
 }
 
 /* Runs once a day: sends the one reminder to friends invited a week ago,
@@ -124,20 +149,19 @@ export async function stopEmails(stopId, { store, now = new Date() }) {
 
 /* ---------- The emails ---------- */
 
+/* `friend` is the friend's first name, or "" if the reader left it blank;
+   then the email starts without a "Dear ..." line. */
 export function invitation({ sender, friend, friendEmail, note, site, stopId }) {
   const join = `${site}/join/friend`;
   const stop = `${site}/friend/stop?id=${stopId}`;
-  const subject = `${sender} thought you'd enjoy Tommy Stories`;
+  const subject = `${sender} referred you to Tommy Stories`;
+  const opening = `Your friend, ${sender}, has referred you to our invite-only mail club, Tommy Stories.${note ? " They left a note as well:" : ""}`;
+  const about = "Every month, Tommy Stories mails a large-print booklet with four true stories from everyday people about the cars in their lives, and about the life, family and faith those stories are really about. There's also a note from Tommy, a Do You Remember? page, Name That Car, a puzzle page, and a little surprise from Tommy in every envelope.";
   const offer = `Because ${sender} sent you, your first ${OFFER.months} months are ${OFFER.price} a month instead of ${OFFER.regular}. After that it's ${OFFER.regular} a month, shipping included, and you can cancel anytime.`;
-  const about = "Tommy Stories is a large-print booklet that comes in the mail every month. Each issue has four true stories from everyday people about the cars in their lives, and about the life, family and faith those stories are really about. There's also a note from Tommy, a Do You Remember? page, Name That Car, a puzzle page, and a little surprise from Tommy in every envelope.";
   const why = `${sender} entered your email address on our Share with a friend page. We'll send you one short reminder next week, and that's all. We won't add you to a mailing list.`;
-  const opening = note
-    ? `${sender} thought you'd enjoy Tommy Stories and asked us to pass along this note:`
-    : `${sender} thought you'd enjoy Tommy Stories and asked us to tell you about it.`;
 
   const text = [
-    `Dear ${friend},`,
-    "",
+    ...(friend ? [`Dear ${friend},`, ""] : []),
     opening,
     ...(note ? ["", ...note.split("\n").map((line) => `    ${line}`)] : []),
     "",
@@ -161,7 +185,7 @@ export function invitation({ sender, friend, friendEmail, note, site, stopId }) 
   ].join("\n");
 
   const html = frame(`
-<p ${P}>Dear ${esc(friend)},</p>
+${friend ? `<p ${P}>Dear ${esc(friend)},</p>` : ""}
 <p ${P}>${esc(opening)}</p>
 ${note ? `<p style="margin:0 0 20px;padding:12px 16px;border-left:4px solid #D4B06A;background:#FBF7EE;font-style:italic">${esc(note).replace(/\n/g, "<br>")}</p>` : ""}
 <p ${P}>${esc(about)}</p>
@@ -181,16 +205,15 @@ ${button(join, "Start my subscription")}
 export function reminder({ sender, friend, friendEmail, site, stopId }) {
   const join = `${site}/join/friend`;
   const stop = `${site}/friend/stop?id=${stopId}`;
-  const subject = `A reminder: ${sender}'s invitation to Tommy Stories`;
+  const subject = `A reminder: ${sender} referred you to Tommy Stories`;
   const lines = [
-    `Last week, ${sender} asked us to tell you about Tommy Stories, our monthly large-print booklet of true car stories about life, family and faith.`,
+    `Last week, your friend ${sender} referred you to Tommy Stories, our monthly large-print booklet of true car stories about life, family and faith.`,
     `Your friend offer is still here: your first ${OFFER.months} months for ${OFFER.price} a month, then ${OFFER.regular} a month, shipping included. Cancel anytime.`,
   ];
   const closing = "If you've already subscribed, welcome, and thank you! Either way, this is the last email we'll send you about it.";
 
   const text = [
-    `Dear ${friend},`,
-    "",
+    ...(friend ? [`Dear ${friend},`, ""] : []),
     lines[0],
     "",
     lines[1],
@@ -210,7 +233,7 @@ export function reminder({ sender, friend, friendEmail, site, stopId }) {
   ].join("\n");
 
   const html = frame(`
-<p ${P}>Dear ${esc(friend)},</p>
+${friend ? `<p ${P}>Dear ${esc(friend)},</p>` : ""}
 <p ${P}>${esc(lines[0])}</p>
 <p ${P}>${esc(lines[1])}</p>
 ${button(join, "Start my subscription")}
@@ -221,38 +244,46 @@ ${button(join, "Start my subscription")}
   return { to: friendEmail, replyTo: SUPPORT, subject, text, html, headers: unsubscribeHeaders(stop) };
 }
 
-/* The reader's copy: what happened with their invitation. It never repeats
-   their note, so it can't be used to send someone a message. */
-export function readerCopy({ sender, senderEmail, friend, friendEmail, outcome, site }) {
+/* The reader's copy: who was invited, and anyone who wasn't, and why. It
+   never repeats their note, so it can't be used to send someone a message. */
+export function readerCopy({ sender, senderEmail, results, site }) {
   const first = sender.split(" ")[0];
-  const body = {
-    sent: {
-      subject: `Your invitation to ${friend} is on its way`,
-      lines: [
-        `Thank you for sharing Tommy Stories. We've emailed your invitation to ${friend} at ${friendEmail}, with your note and the friend offer: ${OFFER.price} a month for their first ${OFFER.months} months.`,
-        "If they haven't subscribed in a week, we'll send them one short reminder, and that's all.",
-      ],
-    },
-    already: {
-      subject: `About your invitation to ${friend}`,
-      lines: [
-        `Thank you for sharing Tommy Stories. We've already been in touch with ${friendEmail} before, so we didn't send another invitation. We only ever invite an address once.`,
-        `If ${friend} would like to subscribe, they can visit ${site.replace(/^https?:\/\//, "")}/join.`,
-      ],
-    },
-    limit: {
-      subject: `About your invitation to ${friend}`,
-      lines: [
-        `Thank you for sharing Tommy Stories. You've sent several invitations today, so we held this one back. Please try again tomorrow at ${site.replace(/^https?:\/\//, "")}/friend.`,
-      ],
-    },
-  }[outcome];
+  const host = site.replace(/^https?:\/\//, "");
+  const { sent, already, held, failed } = results;
+  const total = sent.length + already.length + held.length + failed.length;
+  const label = (f) => (f.name ? `${f.name} (${f.email})` : f.email);
+  const allSent = sent.length === total;
+  const subject = total === 1
+    ? (allSent ? `Your invitation to ${sent[0].name || sent[0].email} is on its way` : "About your invitation to Tommy Stories")
+    : (allSent ? "Your invitations are on their way" : "About your invitations to Tommy Stories");
+
+  const sections = [];
+  if (sent.length) {
+    sections.push({
+      line: `We've emailed your invitation, with your note and the friend offer (${OFFER.price} a month for their first ${OFFER.months} months), to:`,
+      list: sent,
+      after: sent.length === 1
+        ? "If they haven't subscribed in a week, we'll send them one short reminder, and that's all."
+        : "If they haven't subscribed in a week, we'll send each of them one short reminder, and that's all.",
+    });
+  }
+  if (already.length) {
+    sections.push({ line: "We've been in touch with these addresses before, so we didn't send another invitation. We only ever invite an address once:", list: already });
+  }
+  if (held.length) {
+    sections.push({ line: `You can send up to ${DAILY_LIMIT} invitations a day, so we held these back. Please try them again tomorrow at ${host}/friend:`, list: held });
+  }
+  if (failed.length) {
+    sections.push({ line: `Something went wrong sending to these, so please try them again later at ${host}/friend:`, list: failed });
+  }
   const footer = "You're getting this one-time email because this address was entered on our Share with a friend page. If that wasn't you, please ignore it.";
 
   const text = [
     `Dear ${first},`,
     "",
-    ...body.lines.flatMap((line) => [line, ""]),
+    "Thank you for sharing Tommy Stories.",
+    "",
+    ...sections.flatMap((s) => [s.line, ...s.list.map((f) => `  - ${label(f)}`), "", ...(s.after ? [s.after, ""] : [])]),
     "Warmly,",
     "The Tommy Stories Family",
     "",
@@ -264,11 +295,14 @@ export function readerCopy({ sender, senderEmail, friend, friendEmail, outcome, 
 
   const html = frame(`
 <p ${P}>Dear ${esc(first)},</p>
-${body.lines.map((line) => `<p ${P}>${esc(line)}</p>`).join("\n")}
+<p ${P}>Thank you for sharing Tommy Stories.</p>
+${sections.map((s) => `<p style="margin:0 0 8px">${esc(s.line)}</p>
+<ul style="margin:0 0 16px;padding-left:24px">${s.list.map((f) => `<li>${esc(label(f))}</li>`).join("")}</ul>
+${s.after ? `<p ${P}>${esc(s.after)}</p>` : ""}`).join("\n")}
 <p style="margin:0 0 24px">Warmly,<br>The Tommy Stories Family</p>`,
     `${esc(ADDRESS)}<br>Questions? <a href="mailto:${SUPPORT}" style="color:#004185">${SUPPORT}</a><br>${esc(footer)}`);
 
-  return { to: senderEmail, replyTo: SUPPORT, subject: body.subject, text, html };
+  return { to: senderEmail, replyTo: SUPPORT, subject, text, html };
 }
 
 /* ---------- Helpers ---------- */

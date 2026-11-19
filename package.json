@@ -1,8 +1,9 @@
 {
   "name": "tommy-stories",
   "private": true,
-  "description": "Tommy Stories website. Plain HTML; this file only lists what the confirmation email function needs.",
+  "description": "Tommy Stories website. Plain HTML; this file only lists what the email functions need (confirmations and Share with a friend).",
   "dependencies": {
-    "nodemailer": "10.1.1"
+    "@netlify/blobs": "11.1.7",
+    "nodemailer": "10.1.7"
   }
 }

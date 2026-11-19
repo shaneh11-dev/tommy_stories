@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Share with a friend | Tommy Stories</title>
+  <meta name="description" content="Invite a friend to Tommy Stories. We'll send them an email from you, with your note and a friend offer: their first 3 months for $12.99 a month.">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#004185">
+  <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/styles.css?v=20261119">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
+        <span class="tagline">Car Stories that touch life, family, and faith</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/join/">Subscribe</a></li>
+          <li><a href="/gift/">Give a gift</a></li>
+          <li><a href="/share/">Share your story</a></li>
+          <li><a href="/about/">Who's Tommy Stories</a></li>
+          <li><a href="/questions/">Questions</a></li>
+          <li class="nav-letter-item"><a class="nav-letter" href="/write/"><svg class="nav-letter-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3.5 7 8.5 6.5L20.5 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>Write to Tommy</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="masthead-rule" aria-hidden="true"></div>
+
+  <main id="main">
+    <section class="page-intro">
+      <div class="wrap">
+        <h1>Share Tommy Stories with a friend</h1>
+        <p class="lead">Know someone who'd love these stories? Give us their name and email, add a note if you like, and we'll send them an invitation from you.</p>
+        <div class="friend-offer">
+          <p class="friend-offer-label">Friend offer</p>
+          <p class="friend-offer-price">$12.99 a month for their first 3 months</p>
+          <p>Then $16.99 a month on the Monthly plan, shipping included. They can cancel anytime.</p>
+        </div>
+        <ul class="guidelines">
+          <li>We send your friend one email from Tommy Stories, with your note and a button to subscribe.</li>
+          <li>If they haven't subscribed after a week, we send one short reminder. That's all, and we never add them to a mailing list.</li>
+          <li>We'll email you a copy so you know it went out.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <form class="form" name="share-with-a-friend" method="POST" action="/friend/thanks/" data-netlify="true" netlify-honeypot="company">
+          <input type="hidden" name="form-name" value="share-with-a-friend">
+          <p class="honeypot" aria-hidden="true">
+            <label>Leave this field empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <fieldset class="field">
+            <legend>About you</legend>
+            <div class="field">
+              <label for="your-name">Your name (required)</label>
+              <p class="hint" id="your-name-hint">The way your friend knows you, like Mary Smith or Aunt Mary.</p>
+              <input type="text" id="your-name" name="your-name" autocomplete="name" maxlength="40" required aria-describedby="your-name-hint">
+            </div>
+            <div class="field">
+              <label for="your-email">Your email (required)</label>
+              <p class="hint" id="your-email-hint">We'll send your copy here. We won't add you to a mailing list.</p>
+              <input type="email" id="your-email" name="your-email" autocomplete="email" required aria-describedby="your-email-hint">
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>About your friend</legend>
+            <div class="field">
+              <label for="friend-name">Their first name (required)</label>
+              <input type="text" id="friend-name" name="friend-name" autocomplete="off" maxlength="30" required>
+            </div>
+            <div class="field">
+              <label for="friend-email">Their email (required)</label>
+              <input type="email" id="friend-email" name="friend-email" autocomplete="off" required>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="note">A note to your friend</label>
+            <p class="hint" id="note-hint">Optional. A sentence or two, up to 300 characters, like &ldquo;I think you'd love these. The Christmas snowstorm story made me think of Dad.&rdquo; It goes in the email as you write it, without any web addresses.</p>
+            <textarea class="note-box" id="note" name="note" maxlength="300" rows="3" aria-describedby="note-hint"></textarea>
+          </div>
+
+          <label class="checkbox"><input type="checkbox" name="knows-them" value="Yes" required> <span>I know this person, and I think they'd like to hear about Tommy Stories.</span></label>
+
+          <div>
+            <button class="button button--primary" type="submit">Send my invitation</button>
+            <p class="cta-note cta-note--form">The friend offer is for new subscribers on the Monthly plan. See our <a href="/terms/#friend-offer">terms</a>.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section--wash">
+      <div class="wrap">
+        <h2>Rather tell them yourself?</h2>
+        <p>Send them to <strong>tommystories.com</strong>, or <a href="/gift/">give Tommy Stories as a gift</a>.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <p class="footer-name wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></p>
+        <p>Questions? Email <a href="mailto:support@tommystories.com">support@tommystories.com</a>.</p>
+        <address>Tommy Stories<br>3151 Cape Horn Rd, Unit #2079<br>Red Lion, PA 17356</address>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="/about/">Who's Tommy Stories</a></li>
+          <li><a href="/write/">Write to Tommy</a></li>
+          <li><a href="/friend/">Share with a friend</a></li>
+          <li><a href="/questions/">Questions</a></li>
+          <li><a href="/manage">Manage my subscription</a></li>
+          <li><a href="/terms/">Terms</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="wrap">
+      <p class="legal">© 2026 Tommy Stories LLC</p>
+    </div>
+  </footer>
+</body>
+</html>

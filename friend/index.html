@@ -82,7 +82,8 @@
             </div>
             <div class="field">
               <label for="friend-email">Their email (required)</label>
-              <input type="email" id="friend-email" name="friend-email" autocomplete="off" required>
+              <p class="hint" id="friend-email-hint">Your friend's own email, not yours.</p>
+              <input type="email" id="friend-email" name="friend-email" autocomplete="off" required aria-describedby="friend-email-hint">
             </div>
           </fieldset>
 
@@ -132,5 +133,6 @@
       <p class="legal">© 2026 Tommy Stories LLC</p>
     </div>
   </footer>
+  <script src="/assets/friend.js?v=20261119" defer></script>
 </body>
 </html>

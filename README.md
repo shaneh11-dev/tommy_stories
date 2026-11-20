@@ -151,6 +151,20 @@ Rules for what goes in it:
 
 When someone shares a page on Facebook, in a text message or in an email, the preview shows `assets/share-preview.png` (1200 x 630, the Facebook cover design) with the page's title and description. Those come from the `og:` lines near the top of each page. To change the picture, replace that file and keep the same name; Facebook keeps its old copy for a while, so paste the page address into Facebook's Sharing Debugger (developers.facebook.com/tools/debug) and press **Scrape Again**. The picture is made in the booklet workspace (`social/make_social.py`).
 
+## Google Analytics
+
+Every page has Google's tag (gtag.js) for the Google Analytics property tommystories.com, Measurement ID `G-FNPRVNVL46`, near the top of its `<head>`. A new page needs the same lines (copy them from any page). To switch to a different property, find and replace the ID on every page.
+
+Checkout happens on Stripe's site, where the tag can't run, so the thank-you pages report what happened:
+
+- `welcome/` sends `subscribed` (Monthly, Yearly and the friend offer all land here)
+- `gift/thanks/` sends `gift_purchased`
+- `friend/thanks/` sends `friends_invited`
+
+Each is a **key event** in Google Analytics (Admin > Data display > Key events), so the reports count them. Stripe is on the property's list of unwanted referrals (Admin > Data streams > the web stream > Configure tag settings > List unwanted referrals), so a subscriber is credited to wherever they came from (Facebook, a search) rather than to Stripe.
+
+The Privacy page's "Website visits" section describes this and says we don't use it to show ads: keep Google signals and other advertising features off unless that section is updated first. Don't add the tag to the `/friend/stop` page (made by a function): its address carries a friend's stop code.
+
 ## Browser caching
 
 Every page links to `styles.css`, `reviews.js` and `share.js` with a version tag (for example `styles.css?v=20261028`). Browsers check for new copies of these files on each visit, but if a style change ever seems stuck for someone, change the tag on every page (find and replace) to force a fresh download. Fonts are cached for a year, since their files never change.

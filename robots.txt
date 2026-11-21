@@ -3,3 +3,4 @@ Allow: /
 Disallow: /welcome/
 Disallow: /gift/thanks/
 Disallow: /share/thanks/
+Disallow: /friend/invitation/

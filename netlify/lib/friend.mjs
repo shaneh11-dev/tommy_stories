@@ -8,8 +8,13 @@
      netlify/functions/submission-created.mjs, which calls
      handleFriendInvite() below.
    - We email each friend their own invitation from Tommy Stories, with the
-     same note and the friend offer, and email the reader one copy saying
-     who was invited.
+     same note and a link to their invitation page (/friend/invitation/),
+     which shows the friend offer, and email the reader one copy saying who
+     was invited.
+   - The friend's emails are written as plain letters, from "[Reader] via
+     Tommy Stories", with no prices and no buttons, so they read like a note
+     from a friend (and are less likely to land in Gmail's Promotions tab).
+     The price and terms are on the invitation page, before checkout.
    - Seven days later, netlify/functions/friend-reminders.mjs sends each
      friend one short reminder. Then nothing more, ever.
    - Every email to a friend has a link (netlify/functions/friend-stop.mjs)
@@ -152,12 +157,12 @@ export async function stopEmails(stopId, { store, now = new Date() }) {
 /* `friend` is the friend's first name, or "" if the reader left it blank;
    then the email starts without a "Dear ..." line. */
 export function invitation({ sender, friend, friendEmail, note, site, stopId }) {
-  const join = `${site}/join/friend`;
+  const page = `${site}/friend/invitation/`;
   const stop = `${site}/friend/stop?id=${stopId}`;
   const subject = `${sender} referred you to Tommy Stories`;
   const opening = `Your friend, ${sender}, has referred you to our invite-only mail club, Tommy Stories.${note ? " They left a note as well:" : ""}`;
-  const about = "Every month, Tommy Stories mails a large-print booklet with four true stories from everyday people about the cars in their lives, and about the life, family and faith those stories are really about. There's also a note from Tommy, a Do You Remember? page, Name That Car, a puzzle page, and a little surprise from Tommy in every envelope.";
-  const offer = `Because ${sender} sent you, your first ${OFFER.months} months are ${OFFER.price} a month instead of ${OFFER.regular}. After that it's ${OFFER.regular} a month, shipping included, and you can cancel anytime.`;
+  const about = "Every month, Tommy Stories mails a large-print booklet of four true stories from everyday people about the cars in their lives, and about the life, family and faith those stories are really about.";
+  const welcome = `Because ${sender} invited you, a special friend's rate is waiting for you. You'll find it here:`;
   const why = `${sender} entered your email address on our Share with a friend page. We'll send you one short reminder next week, and that's all. We won't add you to a mailing list.`;
 
   const text = [
@@ -167,12 +172,8 @@ export function invitation({ sender, friend, friendEmail, note, site, stopId }) 
     "",
     about,
     "",
-    offer,
-    "",
-    "Start your subscription:",
-    join,
-    "",
-    `Read more about us at ${site.replace(/^https?:\/\//, "")}.`,
+    welcome,
+    page,
     "",
     "Warmly,",
     "The Tommy Stories Family",
@@ -184,31 +185,26 @@ export function invitation({ sender, friend, friendEmail, note, site, stopId }) 
     `To stop all emails from us: ${stop}`,
   ].join("\n");
 
-  const html = frame(`
+  const html = letter(`
 ${friend ? `<p ${P}>Dear ${esc(friend)},</p>` : ""}
 <p ${P}>${esc(opening)}</p>
-${note ? `<p style="margin:0 0 20px;padding:12px 16px;border-left:4px solid #D4B06A;background:#FBF7EE;font-style:italic">${esc(note).replace(/\n/g, "<br>")}</p>` : ""}
+${note ? `<p style="margin:0 0 16px;padding-left:14px;border-left:3px solid #D4B06A;font-style:italic">${esc(note).replace(/\n/g, "<br>")}</p>` : ""}
 <p ${P}>${esc(about)}</p>
-<div style="margin:0 0 22px;padding:16px 18px;border:2px dashed #A8833B;border-radius:8px;background:#FFFBF1">
-<p style="margin:0 0 4px;font-size:14px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:#8A6726">Friend offer</p>
-<p style="margin:0;font-size:22px;font-weight:bold;color:#004185">${OFFER.price} a month for your first ${OFFER.months} months</p>
-<p style="margin:6px 0 0;font-size:17px">${esc(`Because ${sender} sent you. After that it's ${OFFER.regular} a month, shipping included. Cancel anytime.`)}</p>
-</div>
-${button(join, "Start my subscription")}
-<p ${P}>Read more about us at <a href="${esc(site)}" style="color:#004185">${esc(site.replace(/^https?:\/\//, ""))}</a>.</p>
-<p style="margin:0 0 24px">Warmly,<br>The Tommy Stories Family</p>`,
+<p style="margin:0 0 6px">${esc(welcome)}</p>
+<p ${P}>${link(page, "Open your invitation")}</p>
+<p style="margin:0">Warmly,<br>The Tommy Stories Family</p>`,
     `${esc(ADDRESS)}<br>Questions? <a href="mailto:${SUPPORT}" style="color:#004185">${SUPPORT}</a><br>${esc(why)}<br><a href="${esc(stop)}" style="color:#004185">Stop all emails from Tommy Stories</a>`);
 
-  return { to: friendEmail, replyTo: SUPPORT, subject, text, html, headers: unsubscribeHeaders(stop) };
+  return { to: friendEmail, replyTo: SUPPORT, fromName: viaName(sender), subject, text, html };
 }
 
 export function reminder({ sender, friend, friendEmail, site, stopId }) {
-  const join = `${site}/join/friend`;
+  const page = `${site}/friend/invitation/`;
   const stop = `${site}/friend/stop?id=${stopId}`;
   const subject = `A reminder: ${sender} referred you to Tommy Stories`;
   const lines = [
     `Last week, your friend ${sender} referred you to Tommy Stories, our monthly large-print booklet of true car stories about life, family and faith.`,
-    `Your friend offer is still here: your first ${OFFER.months} months for ${OFFER.price} a month, then ${OFFER.regular} a month, shipping included. Cancel anytime.`,
+    "Your invitation, with its special friend's rate, is still waiting for you here:",
   ];
   const closing = "If you've already subscribed, welcome, and thank you! Either way, this is the last email we'll send you about it.";
 
@@ -217,9 +213,7 @@ export function reminder({ sender, friend, friendEmail, site, stopId }) {
     lines[0],
     "",
     lines[1],
-    "",
-    "Start your subscription:",
-    join,
+    page,
     "",
     closing,
     "",
@@ -232,16 +226,16 @@ export function reminder({ sender, friend, friendEmail, site, stopId }) {
     `To stop all emails from us: ${stop}`,
   ].join("\n");
 
-  const html = frame(`
+  const html = letter(`
 ${friend ? `<p ${P}>Dear ${esc(friend)},</p>` : ""}
 <p ${P}>${esc(lines[0])}</p>
-<p ${P}>${esc(lines[1])}</p>
-${button(join, "Start my subscription")}
+<p style="margin:0 0 6px">${esc(lines[1])}</p>
+<p ${P}>${link(page, "Open your invitation")}</p>
 <p ${P}>${esc(closing)}</p>
-<p style="margin:0 0 24px">Warmly,<br>The Tommy Stories Family</p>`,
+<p style="margin:0">Warmly,<br>The Tommy Stories Family</p>`,
     `${esc(ADDRESS)}<br>Questions? <a href="mailto:${SUPPORT}" style="color:#004185">${SUPPORT}</a><br><a href="${esc(stop)}" style="color:#004185">Stop all emails from Tommy Stories</a>`);
 
-  return { to: friendEmail, replyTo: SUPPORT, subject, text, html, headers: unsubscribeHeaders(stop) };
+  return { to: friendEmail, replyTo: SUPPORT, fromName: viaName(sender), subject, text, html };
 }
 
 /* The reader's copy: who was invited, and anyone who wasn't, and why. It
@@ -322,15 +316,27 @@ ${body.trim()}
 </html>`;
 }
 
-function button(href, label) {
-  return `<p style="margin:0 0 22px"><a href="${esc(href)}" style="display:inline-block;padding:14px 26px;border-radius:6px;background:#004185;color:#ffffff;font-weight:bold;font-size:19px;text-decoration:none">${esc(label)}</a></p>`;
+/* The friend's emails: a plain letter on white, like a note from a person,
+   rather than a designed newsletter. */
+function letter(body, footer) {
+  return `<!doctype html>
+<html lang="en">
+<body style="margin:0;padding:16px 12px;background:#ffffff">
+<div style="max-width:560px;font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.6;color:#16223A">
+${body.trim()}
+<p style="margin:28px 0 0;font-size:14px;line-height:1.5;color:#5A6474">${footer}</p>
+</div>
+</body>
+</html>`;
 }
 
-function unsubscribeHeaders(stop) {
-  return {
-    "List-Unsubscribe": `<${stop}>, <mailto:${SUPPORT}?subject=Stop%20emails>`,
-    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-  };
+function link(href, label) {
+  return `<a href="${esc(href)}" style="color:#004185;font-weight:bold">${esc(label)}</a>`;
+}
+
+/* "Shane via Tommy Stories": the name the friend sees in their inbox. */
+export function viaName(sender) {
+  return `${String(sender).replace(/["<>]/g, "").trim()} via Tommy Stories`;
 }
 
 /* A scrambled fingerprint of an email address: the same address always gives

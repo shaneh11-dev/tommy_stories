@@ -18,8 +18,5 @@ export function makeSender() {
     greetingTimeout: 8000,
     socketTimeout: 10000,
   });
-  // A message can set fromName (the friend invitations use "Shane via Tommy
-  // Stories"); the address is always the support@ mailbox.
-  return ({ fromName, ...message }) =>
-    transport.sendMail({ from: { name: fromName || "Tommy Stories", address: user }, ...message });
+  return (message) => transport.sendMail({ from: { name: "Tommy Stories", address: user }, ...message });
 }

@@ -2006,34 +2006,10 @@ fieldset.friends {
   gap: 1rem;
 }
 
-.friend {
-  padding: 0.9rem 1rem 1rem;
-  border: 1px solid var(--rule);
-  border-radius: 0.5rem;
-  background: var(--wash);
-}
-
+/* Each friend is one email box (friend/index.html); friends 2 to 10 are
+   revealed one at a time by assets/friend.js. */
 .friend[hidden] {
   display: none;
-}
-
-.friend-label {
-  margin: 0 0 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gold-text);
-}
-
-.friend-pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0.75rem 1rem;
-}
-
-@media (min-width: 40rem) {
-  .friend-pair { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
 }
 
 .add-friend {

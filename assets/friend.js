@@ -1,6 +1,6 @@
 // Share with a friend (friend/index.html):
 // - Shows one friend to start, with an "Add another friend" button for up
-//   to 5. Without this script, all 5 are shown.
+//   to 10. Without this script, all 10 are shown.
 // - A friend's email can't be the reader's own. The site sends nothing in
 //   that case (netlify/lib/friend.mjs), so say so before the form is sent.
 (function () {

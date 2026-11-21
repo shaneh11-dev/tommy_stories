@@ -23,4 +23,19 @@
     }
   }, { threshold: 0.6 });
   watcher.observe(envelope);
+
+  // Phones: the contents run long below the envelope, so if a reader lands
+  // part way down (say, coming back to the page), seeing the contents opens
+  // the envelope too, rather than leaving an empty box.
+  var list = section.querySelector(".contents-list");
+  if (list && window.matchMedia && window.matchMedia("(max-width: 40em)").matches) {
+    var listWatcher = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        listWatcher.disconnect();
+        watcher.disconnect();
+        section.classList.add("is-open");
+      }
+    }, { threshold: 0.15 });
+    listWatcher.observe(list);
+  }
 })();

@@ -28,7 +28,7 @@
   <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/yellowtail-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=20261119b">
+  <link rel="stylesheet" href="/assets/styles.css?v=20261120">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -38,7 +38,8 @@
         <span class="wordmark"><span class="wordmark-first">Tommy</span> <span class="wordmark-second">Stories</span></span>
         <span class="tagline">Car Stories that touch life, family, and faith</span>
       </a>
-      <nav class="site-nav" aria-label="Main">
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-menu" hidden><svg class="menu-button-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path class="menu-icon-open" d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path class="menu-icon-close" d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="menu-button-label">Menu</span></button>
+      <nav class="site-nav" id="site-menu" aria-label="Main">
         <ul>
           <li><a href="/join/">Subscribe</a></li>
           <li><a href="/gift/" aria-current="page">Give a gift</a></li>
@@ -257,5 +258,6 @@
     </div>
   </footer>
   <script src="/assets/reviews.js?v=20261028" defer></script>
+  <script src="/assets/menu.js?v=20261120" defer></script>
 </body>
 </html>

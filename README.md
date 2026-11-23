@@ -115,12 +115,17 @@ Until both settings are added, no confirmation is sent and the forms work as bef
 
 ### Share with a friend
 
-Readers can invite up to 5 friends at a time at `/friend/` (first names optional). We email each friend one invitation from `support@` with the reader's note and the friend offer ($12.99 a month for the first 3 months on the Monthly plan), email the reader one copy listing who was invited, and send each friend one reminder a week later. Every email to a friend has a "Stop all emails" link.
+Readers can invite up to 10 friends at a time at `/friend/`, with a short note (required, and signed by the reader: it's how friends know who the invitation is from). We email each friend one invitation from `support@` with the note and a link to their invitation page, email the reader one copy listing who was invited, and send each friend one reminder a week later. Every email to a friend has a "Stop all emails" link.
+
+The friend's emails are plain letters that name nobody ("A friend referred you to Tommy Stories"), with no prices, no buttons and one link ("Open your invitation"), so they read like a note from a friend and are less likely to land in Gmail's Promotions tab. (Gmail decides on its own, so there's no guarantee.) The price and terms are on the invitation page, `/friend/invitation/`: not linked anywhere on the site and kept out of search engines, it shows the friend offer ($12.99 a month for the first 3 months on the Monthly plan) and its Start my subscription button goes to `/join/friend`. Visits show in Google Analytics under that page.
+
+An address can be invited more than once (each invitation brings its own one reminder), except addresses that used the stop link, which we never email again. To test, send invitations to your own Gmail from a different "your email" (the form won't send to the reader's own address).
 
 The pieces:
 
+- `friend/invitation/`: the page the invitation links to, with the friend's rate.
 - `friend/index.html` and `friend/thanks/`: the form (a Netlify form named `share-with-a-friend`; submissions show under **Forms** in Netlify).
-- `netlify/lib/friend.mjs`: the emails and the rules (each address invited once, ever; at most 5 invitations a day from one reader; notes are plain text with no web addresses). The offer price is set at the top of this file, and also written on the friend page, Questions, the welcome page and Terms.
+- `netlify/lib/friend.mjs`: the emails and the rules (stop requests honored forever; at most 10 invitations a day from one reader; notes are plain text with no web addresses). The offer price is set at the top of this file (it appears in the reader's copy), and also written on the invitation page, the friend page, Questions, the welcome page and Terms.
 - `netlify/functions/submission-created.mjs`: sends the invitation when the form comes in.
 - `netlify/functions/friend-reminders.mjs`: runs every day at 15:00 UTC and sends the week-later reminders.
 - `netlify/functions/friend-stop.mjs`: the stop link, at `/friend/stop`.

@@ -2006,34 +2006,10 @@ fieldset.friends {
   gap: 1rem;
 }
 
-.friend {
-  padding: 0.9rem 1rem 1rem;
-  border: 1px solid var(--rule);
-  border-radius: 0.5rem;
-  background: var(--wash);
-}
-
+/* Each friend is one email box (friend/index.html); friends 2 to 10 are
+   revealed one at a time by assets/friend.js. */
 .friend[hidden] {
   display: none;
-}
-
-.friend-label {
-  margin: 0 0 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gold-text);
-}
-
-.friend-pair {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0.75rem 1rem;
-}
-
-@media (min-width: 40rem) {
-  .friend-pair { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
 }
 
 .add-friend {
@@ -2057,6 +2033,81 @@ fieldset.friends {
   .contents-foot {
     font-size: 0.95rem;
   }
+}
+
+/* Friend invitation page (/friend/invitation/): the friend's rate, with
+   what happens next beside it on wider screens. */
+.invite-offer {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 56rem) {
+  .invite-offer { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); gap: 3.5rem; }
+}
+
+.next-steps h2 {
+  margin: 0 0 1.25rem;
+  font-size: 1.6rem;
+}
+
+.next-steps ol {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: next-step;
+}
+
+.next-steps li {
+  display: grid;
+  grid-template-columns: 2.3rem minmax(0, 1fr);
+  gap: 0 1rem;
+  counter-increment: next-step;
+}
+
+.next-steps li::before {
+  content: counter(next-step);
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--display);
+  font-weight: 700;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--gold-deep);
+}
+
+.next-steps li p {
+  margin: 0.15rem 0 0;
+}
+
+.issue-strip--after {
+  margin-top: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+@media (max-width: 40em) {
+  .invite-offer .plan .button {
+    align-self: stretch;
+    padding-inline: 0.75rem;
+  }
+}
+
+.plan .plan-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--blue);
+}
+
+.plan-small {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 /* ------------------------------------------------------------------------

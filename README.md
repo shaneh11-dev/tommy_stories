@@ -156,6 +156,10 @@ Rules for what goes in it:
 
 When someone shares a page on Facebook, in a text message or in an email, the preview shows `assets/share-preview.png` (1200 x 630, the Facebook cover design) with the page's title and description. Those come from the `og:` lines near the top of each page. To change the picture, replace that file and keep the same name; Facebook keeps its old copy for a while, so paste the page address into Facebook's Sharing Debugger (developers.facebook.com/tools/debug) and press **Scrape Again**. The picture is made in the booklet workspace (`social/make_social.py`).
 
+## Email signature logo
+
+`assets/email/signature-logo.png` (440 x 136, shown at 220 x 68) is the logo in the Zoho Mail email signatures. Email signatures load it from https://tommystories.com/assets/email/signature-logo.png, so keep that file at that address: moving or renaming it breaks the logo in every email already sent.
+
 ## Google Analytics
 
 Every page has Google's tag (gtag.js) for the Google Analytics property tommystories.com, Measurement ID `G-FNPRVNVL46`, near the top of its `<head>`. A new page needs the same lines (copy them from any page). To switch to a different property, find and replace the ID on every page.

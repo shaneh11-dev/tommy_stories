@@ -9,18 +9,18 @@
 # Stripe link changes.
 
 /subscribe      /join/                                                   301
-/join/monthly   https://buy.stripe.com/7sY00j6IDdQVbEAfjd9MY04           302
-/join/yearly    https://buy.stripe.com/bJe6oH0kf1490ZWc719MY03           302
+/join/monthly   https://buy.stripe.com/00w14n5Ez149bEAef99MY05           302
+/join/yearly    https://buy.stripe.com/5kQaEXc2XcMRbEA2wr9MY06           302
 /gift/6         https://buy.stripe.com/9B614neb5dQVbEAfjd9MY00           302
 /gift/12        https://buy.stripe.com/5kQdR95EzbINeQMfjd9MY02           302
 /gift/24        https://buy.stripe.com/00w14n8QL005eQMc719MY01           302
 /manage         https://billing.stripe.com/p/login/9B614neb5dQVbEAfjd9MY00  302
 
 # Share with a friend: the button in the friend's invitation email opens the
-# Monthly checkout with the friend code already applied ($12.99 a month for
-# the first 3 months). The code must exist in Stripe and the Monthly link
+# Monthly checkout with the friend code already applied ($10.99 a month for
+# the first 3 months: $4 off the $14.99 price). The code must exist in Stripe and the Monthly link
 # must allow promotion codes (README, "Share with a friend").
-/join/friend    https://buy.stripe.com/7sY00j6IDdQVbEAfjd9MY04?prefilled_promo_code=TOMMYFRIEND  302
+/join/friend    https://buy.stripe.com/00w14n5Ez149bEAef99MY05?prefilled_promo_code=TOMMYFRIEND  302
 
 # BEGIN story links (written by tools/build_stories.py; don't edit by hand)
 # tommystories.com/s/<slug> opens the story with Google Analytics tags on it.

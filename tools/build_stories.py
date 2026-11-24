@@ -266,7 +266,7 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
             <li>A little surprise from Tommy in every envelope</li>
             <li>No outside advertisements, ever</li>
           </ul>
-          <p class="price-line">$16.99 a month or $199.99 a year, shipping included.</p>
+          <p class="price-line">$14.99 a month or $169.99 a year, shipping included.</p>
           <div class="actions">
             <a class="button button--primary" href="/join/">Start my subscription</a>
             <a class="button button--secondary" href="/gift/">Give it as a gift</a>

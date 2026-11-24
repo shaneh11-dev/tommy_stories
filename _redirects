@@ -22,8 +22,15 @@
 # must allow promotion codes (README, "Share with a friend").
 /join/friend    https://buy.stripe.com/7sY00j6IDdQVbEAfjd9MY04?prefilled_promo_code=TOMMYFRIEND  302
 
+# BEGIN story links (written by tools/build_stories.py; don't edit by hand)
+# tommystories.com/s/<slug> opens the story with Google Analytics tags on it.
+/s/mga  /stories/mga/?utm_source=facebook&utm_medium=social&utm_campaign=mga  302
+# END story links
+
 # Behind-the-scenes files in the repo aren't pages; don't serve them.
 /netlify/*          /404.html   404!
+/tools/*            /404.html   404!
+/stories/_src/*     /404.html   404!
 /package.json       /404.html   404!
 /package-lock.json  /404.html   404!
 /README.md          /404.html   404!

@@ -2118,6 +2118,212 @@ fieldset.friends {
 }
 
 /* ------------------------------------------------------------------------
+   Story pages for Facebook posts (stories/<slug>/, made by
+   tools/build_stories.py): the full story in large print, then the offer.
+   ------------------------------------------------------------------------ */
+.story {
+  padding-block: clamp(2rem, 5vw, 3.5rem) clamp(2.5rem, 6vw, 4rem);
+}
+
+.story-wrap {
+  width: min(100% - 2rem, 40rem);
+}
+
+.story-kicker {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--gold-text);
+}
+
+.story h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--blue);
+  text-wrap: balance;
+}
+
+.story-jump {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+}
+
+.story-jump a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.story-photo {
+  margin: 1.75rem 0 0;
+}
+
+.story-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.story-photo figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.story-body {
+  margin-top: 1.75rem;
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.story-body p {
+  margin: 0 0 0.85em;
+}
+
+@media (min-width: 64em) {
+  .story-body { font-size: 1.3rem; }
+}
+
+.story-body > p:first-child::first-letter {
+  float: left;
+  margin: 0.06em 0.12em 0 0;
+  font-family: var(--display);
+  font-size: 3.4em;
+  font-weight: 800;
+  line-height: 0.85;
+  color: var(--blue);
+}
+
+/* Where the Facebook half ended: a gold rule with a note. */
+.story-body .story-left-off {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--gold-text);
+  scroll-margin-top: 1.5rem;
+}
+
+.story-body .story-left-off::before,
+.story-body .story-left-off::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--gold-deep);
+}
+
+.story-source {
+  margin: 1.5rem 0 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.story-end {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0;
+}
+
+.story-end span {
+  width: 3rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gold-deep);
+}
+
+.story-offer-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 52rem) {
+  .story-offer-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 3rem; }
+}
+
+.story-offer h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--blue);
+  text-wrap: balance;
+}
+
+.story-offer .check-list {
+  margin: 1rem 0;
+}
+
+.story-offer .price-line {
+  margin: 0 0 1.25rem;
+}
+
+.story-offer-art {
+  margin: 0;
+}
+
+.story-more-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 52rem) {
+  .story-more-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.story-card {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  justify-items: start;
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.story-card h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--blue);
+}
+
+.story-card p {
+  margin: 0;
+}
+
+.story-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.story-share-status {
+  min-height: 1.3em;
+  font-size: 0.9rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 40em) {
+  .story-offer .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .story-offer .actions .button,
+  .story-card .button {
+    width: 100%;
+  }
+
+  .story-card {
+    justify-items: stretch;
+  }
+}
+
+/* ------------------------------------------------------------------------
    Phones (up to 40em, about 640px wide). Everything in this part only
    changes phones; tablets and computers look exactly as before.
    ------------------------------------------------------------------------ */

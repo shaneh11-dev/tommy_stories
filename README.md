@@ -156,6 +156,42 @@ Rules for what goes in it:
 
 When someone shares a page on Facebook, in a text message or in an email, the preview shows `assets/share-preview.png` (1200 x 630, the Facebook cover design) with the page's title and description. Those come from the `og:` lines near the top of each page. To change the picture, replace that file and keep the same name; Facebook keeps its old copy for a while, so paste the page address into Facebook's Sharing Debugger (developers.facebook.com/tools/debug) and press **Scrape Again**. The picture is made in the booklet workspace (`social/make_social.py`).
 
+## Story pages for Facebook
+
+Each Facebook story post tells the first half of a story and links to the
+rest on our site, where the full story is followed by what Tommy Stories is
+and how to subscribe or give it as a gift.
+
+- **Pages:** `stories/<slug>/` (made by `tools/build_stories.py`; don't edit
+  them by hand). Not linked anywhere on the site and marked `noindex`, so
+  search engines leave them out. Each has the full story in large print, one
+  optional photo, a "You left off on Facebook here" marker with a "Skip to
+  where you left off" link, the offer (booklet picture, what's inside,
+  prices, Start my subscription, Give it as a gift), Share your story, and
+  Share on Facebook / Copy the link. On phones, a Subscribe / Give a gift
+  bar stays at the bottom while reading (`assets/story.js`).
+- **Links to post:** `tommystories.com/s/<slug>`. Each opens the story with
+  `utm_source=facebook&utm_medium=social&utm_campaign=<slug>` (the
+  `_redirects` block between the "story links" lines is rewritten by the
+  build script).
+- **Story files:** `stories/_src/<slug>.txt`, photos in `stories/_src/images/`
+  (format in `stories/_src/README.md`; not served on the website).
+- **Build:** `python3 tools/build_stories.py` (needs Pillow for photos), then
+  commit the story file, photo, page and `_redirects`.
+- **Daily routine:** the owner sends the day's full stories (a PDF: each
+  story starting on a new page, title first, a line with `~~~` where the
+  Facebook post stops, and the photo if there is one). Claude checks the
+  facts, writes the story files, builds, opens a pull request and sends back
+  each story's `/s/` link.
+- **Photos:** only ones we have the right to use (our own, a reader's with
+  permission, or licensed). Not photos copied from TV, news sites or other
+  Pages.
+- **Google Analytics:** visits by story are under Traffic acquisition with
+  **Session campaign** (the slug). Reaching the end of a story sends the
+  event `story_finished` with a `story` parameter (to break it down by
+  story, add `story` as an event-scoped custom dimension under Admin >
+  Custom definitions).
+
 ## Email signature logo
 
 `assets/email/signature-logo.png` (440 x 136, shown at 220 x 68) is the logo in the Zoho Mail email signatures. Email signatures load it from https://tommystories.com/assets/email/signature-logo.png, so keep that file at that address: moving or renaming it breaks the logo in every email already sent.

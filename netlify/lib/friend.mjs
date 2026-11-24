@@ -38,8 +38,8 @@
 import { createHash } from "node:crypto";
 
 export const OFFER = {
-  price: "$12.99",
-  regular: "$16.99",
+  price: "$10.99",
+  regular: "$14.99",
   months: 3,
 };
 

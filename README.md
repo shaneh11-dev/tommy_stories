@@ -39,7 +39,7 @@ Short links the site and printed issues use:
 | Link | Goes to |
 | --- | --- |
 | `/join` | The plan choice page (monthly, yearly or gift). **Use this for the QR code in every issue.** |
-| `/join/monthly`, `/join/yearly` | Stripe checkout for the $16.99 monthly and $199.99 yearly subscriptions |
+| `/join/monthly`, `/join/yearly` | Stripe checkout for the $14.99 monthly and $169.99 yearly subscriptions |
 | `/gift/6`, `/gift/12`, `/gift/24` | Stripe checkout for prepaid gifts of 6 months, 1 year and 2 years |
 | `/manage` | Stripe customer portal (cancel, change address, update card) |
 
@@ -69,8 +69,8 @@ Create these in Stripe (test mode first, then live):
 
 | Product | Price | Payment Link settings |
 | --- | --- | --- |
-| Tommy Stories monthly | $16.99, recurring monthly | Collect shipping address (United States only). Turn on **Require customers to accept your terms of service** (needs the `/terms/` link in your public business details). After payment, redirect to `https://YOURDOMAIN/welcome/` |
-| Tommy Stories yearly | $199.99, recurring yearly | Same as monthly |
+| Tommy Stories monthly | $14.99, recurring monthly (was $16.99 until Nov 23, 2026) | Collect shipping address (United States only). Turn on **Require customers to accept your terms of service** (needs the `/terms/` link in your public business details). After payment, redirect to `https://YOURDOMAIN/welcome/` |
+| Tommy Stories yearly | $169.99, recurring yearly (was $199.99 until Nov 23, 2026) | Same as monthly |
 | Tommy Stories gift, 6 months | $99.99, one time | Collect shipping address (United States only); this is the recipient's address. Redirect to `https://YOURDOMAIN/gift/thanks/` |
 | Tommy Stories gift, 1 year | $199.99, one time | Same as above |
 | Tommy Stories gift, 2 years | $329.99, one time | Same as above |
@@ -137,7 +137,7 @@ Set up the offer in Stripe (live mode) before sharing the page:
 1. **Product catalog > Coupons > Create coupon**: name "Friend offer", **Amount off** $4.00, duration **Multiple months**, 3 months, applied only to the Tommy Stories monthly product.
 2. On that coupon, **Add promotion code**: `TOMMYFRIEND`, and check **Eligible for first-time order only**.
 3. **Payment Links**: open the Monthly link, edit it, turn on **Allow promotion codes**, and save.
-4. Open `https://tommystories.com/join/friend`: the checkout should show `TOMMYFRIEND` applied and $12.99.
+4. Open `https://tommystories.com/join/friend`: the checkout should show `TOMMYFRIEND` applied and $10.99.
 
 `/join/friend` in `_redirects` holds the code. If you change the code in Stripe, change it there too.
 

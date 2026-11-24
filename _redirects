@@ -24,7 +24,15 @@
 
 # BEGIN story links (written by tools/build_stories.py; don't edit by hand)
 # tommystories.com/s/<slug> opens the story with Google Analytics tags on it.
+/s/1938-chevrolet-truck  /stories/1938-chevrolet-truck/?utm_source=facebook&utm_medium=social&utm_campaign=1938-chevrolet-truck  302
+/s/1957-mercury-turnpike-cruiser  /stories/1957-mercury-turnpike-cruiser/?utm_source=facebook&utm_medium=social&utm_campaign=1957-mercury-turnpike-cruiser  302
+/s/1960-cadillac-convertible  /stories/1960-cadillac-convertible/?utm_source=facebook&utm_medium=social&utm_campaign=1960-cadillac-convertible  302
+/s/1967-morris-minor  /stories/1967-morris-minor/?utm_source=facebook&utm_medium=social&utm_campaign=1967-morris-minor  302
+/s/1969-norton-commando  /stories/1969-norton-commando/?utm_source=facebook&utm_medium=social&utm_campaign=1969-norton-commando  302
+/s/1972-gran-torino  /stories/1972-gran-torino/?utm_source=facebook&utm_medium=social&utm_campaign=1972-gran-torino  302
+/s/1974-triumph-tr6  /stories/1974-triumph-tr6/?utm_source=facebook&utm_medium=social&utm_campaign=1974-triumph-tr6  302
 /s/mga  /stories/mga/?utm_source=facebook&utm_medium=social&utm_campaign=mga  302
+/s/plymouth-fury-1960  /stories/plymouth-fury-1960/?utm_source=facebook&utm_medium=social&utm_campaign=plymouth-fury-1960  302
 # END story links
 
 # Behind-the-scenes files in the repo aren't pages; don't serve them.

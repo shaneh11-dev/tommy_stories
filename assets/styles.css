@@ -495,6 +495,120 @@ p {
   font-weight: 700;
 }
 
+/* Home page: a strip under the header with who it's for, a break from
+   screens, and shipping. On wide screens all three sit on one line. Below
+   1140px they don't fit, so the strip scrolls past like a ticker: the
+   track holds the list twice and slides left by one copy, then repeats.
+   A tap or hover pauses it; readers who've asked for less motion can
+   swipe it instead. */
+.home-banner {
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+  background: var(--wash);
+}
+
+.home-banner-track {
+  display: flex;
+  justify-content: center;
+}
+
+.home-banner-list {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 2.25rem;
+  margin: 0;
+  padding: 0.75rem 0;
+  list-style: none;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.home-banner-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home-banner-list svg {
+  flex: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.home-banner-list strong {
+  color: var(--blue);
+}
+
+.home-banner-copy {
+  display: none;
+}
+
+@media (max-width: 1139px) {
+  .home-banner-track {
+    justify-content: flex-start;
+    width: max-content;
+  }
+
+  /* Each copy ends with the same space that sits between items, so the
+     loop has no seam. */
+  .home-banner-list {
+    padding-right: 2.25rem;
+  }
+
+  .home-banner-copy {
+    display: flex;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .home-banner-track {
+      animation: home-banner-scroll 32s linear infinite;
+    }
+
+    .home-banner:hover .home-banner-track,
+    .home-banner:active .home-banner-track {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-banner {
+      overflow-x: auto;
+    }
+
+    .home-banner-track {
+      padding-inline: 1rem;
+    }
+
+    .home-banner-copy {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 40em) {
+  .home-banner-list {
+    padding-block: 0.6rem;
+    font-size: 0.92rem;
+  }
+
+  .home-banner-list svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+@keyframes home-banner-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 /* Who's behind it, under the hero buttons. */
 .hero-note {
   margin-top: 1.25rem;

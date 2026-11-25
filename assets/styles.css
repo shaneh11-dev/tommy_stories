@@ -496,7 +496,7 @@ p {
 }
 
 /* Home page: a strip under the header with who it's for, a break from
-   screens, and shipping. One row on computers. On phones it shows one
+   screens, and shipping. Two lines on computers. On phones it shows one
    point at a time, so the hero's buttons stay on the first screen. */
 .home-banner {
   border-bottom: 1px solid var(--rule);
@@ -577,8 +577,14 @@ p {
   }
 }
 
-@media (min-width: 52.01rem) and (max-width: 72rem) {
-  .home-banner-list { gap: 0.5rem 1.5rem; }
+/* Computers: who it's for gets the first line to itself; the other two
+   points share the second. */
+@media (min-width: 52.01rem) {
+  .home-banner-list { gap: 0.45rem 2.25rem; }
+  .home-banner-list li:first-child {
+    flex-basis: 100%;
+    justify-content: center;
+  }
 }
 
 @keyframes home-banner-turn {

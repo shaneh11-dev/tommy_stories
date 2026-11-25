@@ -495,31 +495,36 @@ p {
   font-weight: 700;
 }
 
-/* Who it's for, a break from screens, and shipping: three short points
-   between the hero's opening paragraph and its buttons. On phones they move
-   under the buttons, so the buttons stay on the first screen. */
-.hero-points {
-  display: grid;
-  gap: 0.7rem;
-  max-width: var(--measure);
-  margin: 0;
-  padding: 0;
+/* Home page: a strip under the header with who it's for, a break from
+   screens, and shipping. One row on computers. On phones it shows one
+   point at a time, so the hero's buttons stay on the first screen. */
+.home-banner {
+  border-bottom: 1px solid var(--rule);
+  background: var(--wash);
+}
+
+.home-banner-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2.25rem;
+  margin: 0 auto;
+  padding-block: 0.8rem;
   list-style: none;
-  font-size: 1.05rem;
-  line-height: 1.45;
+  font-size: 0.98rem;
+  line-height: 1.35;
 }
 
-.hero-points li {
-  display: grid;
-  grid-template-columns: 1.5rem minmax(0, 1fr);
-  gap: 0.75rem;
-  align-items: start;
+.home-banner-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
-.hero-points svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-top: 0.05rem;
+.home-banner-list svg {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
   fill: none;
   stroke: var(--blue);
   stroke-width: 1.8;
@@ -527,8 +532,60 @@ p {
   stroke-linejoin: round;
 }
 
-.hero-points strong {
+.home-banner-list strong {
   color: var(--blue);
+}
+
+@media (max-width: 52rem) {
+  /* Home page strip under the header: the three points take turns in one
+     spot (each about four seconds; a tap pauses it). Readers who've asked
+     for less motion get all three, one per line. */
+  .home-banner-list {
+    display: grid;
+    justify-items: center;
+    gap: 0.35rem;
+    padding-block: 0.6rem;
+    font-size: 0.93rem;
+    text-align: center;
+  }
+
+  .home-banner-list li {
+    display: block;
+  }
+
+  .home-banner-list svg {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.4rem;
+    vertical-align: -0.22em;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .home-banner-list li {
+      grid-area: 1 / 1;
+      animation: home-banner-turn 12s infinite both;
+    }
+
+    .home-banner-list li:nth-child(2) { animation-delay: 4s; }
+    .home-banner-list li:nth-child(3) { animation-delay: 8s; }
+
+    .home-banner:hover .home-banner-list li,
+    .home-banner:focus-within .home-banner-list li {
+      animation-play-state: paused;
+    }
+  }
+}
+
+@media (min-width: 52.01rem) and (max-width: 72rem) {
+  .home-banner-list { gap: 0.5rem 1.5rem; }
+}
+
+@keyframes home-banner-turn {
+  0% { opacity: 0; }
+  3% { opacity: 1; }
+  30% { opacity: 1; }
+  33.4%, 100% { opacity: 0; }
 }
 
 /* Who's behind it, under the hero buttons. */
@@ -2479,21 +2536,6 @@ fieldset.friends {
   .menu-ready .site-nav a.nav-letter:hover,
   .menu-ready .site-nav a.nav-letter[aria-current="page"] {
     color: var(--blue-dark);
-  }
-
-  /* Home page hero: the three points go under the buttons. */
-  .home .hero-copy {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .home .hero-copy .hero-points {
-    order: 1;
-    margin-top: 1.75rem;
-  }
-
-  .home .hero-copy .hero-note {
-    order: 2;
   }
 
   /* Home page: full-width buttons that line up, and "Give it as a gift" as

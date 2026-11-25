@@ -55,22 +55,40 @@
 
   <main id="main">
     <!-- Who it's for, a break from screens, and shipping: a strip under the
-         header, above the hero. -->
+         header, above the hero. One line on wide screens; on narrower ones
+         it scrolls past like a ticker (the second list is a copy for the
+         seamless loop, hidden from screen readers). -->
     <section class="home-banner" aria-label="Why Tommy Stories">
-      <ul class="wrap wrap--wide home-banner-list">
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15.5v-3l2.2-4.6A2 2 0 0 1 7 6.8h8.6a2 2 0 0 1 1.6.8l3.1 4H21a1 1 0 0 1 1 1v2.9a1 1 0 0 1-1 1h-1.2M7.2 16.5h8.6M3 15.5a1 1 0 0 0 1 1h.2M6 11.6h14.3"/><circle cx="5.7" cy="16.8" r="1.9"/><circle cx="17.3" cy="16.8" r="1.9"/></svg>
-          <span><strong>Made for</strong> car lovers, people of faith, and families. A perfect gift, too.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M10.5 18.5h3M3.5 3.5l17 17"/></svg>
-          <span><strong>A break from screens:</strong> no apps, nothing to charge</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
-          <span><strong>Shipping included,</strong> no outside ads</span>
-        </li>
-      </ul>
+      <div class="home-banner-track">
+        <ul class="home-banner-list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15.5v-3l2.2-4.6A2 2 0 0 1 7 6.8h8.6a2 2 0 0 1 1.6.8l3.1 4H21a1 1 0 0 1 1 1v2.9a1 1 0 0 1-1 1h-1.2M7.2 16.5h8.6M3 15.5a1 1 0 0 0 1 1h.2M6 11.6h14.3"/><circle cx="5.7" cy="16.8" r="1.9"/><circle cx="17.3" cy="16.8" r="1.9"/></svg>
+            <span><strong>Made for</strong> car lovers, people of faith, and families. A perfect gift, too.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M10.5 18.5h3M3.5 3.5l17 17"/></svg>
+            <span><strong>A break from screens:</strong> no apps, nothing to charge</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+            <span><strong>Shipping included,</strong> no outside ads</span>
+          </li>
+        </ul>
+        <ul class="home-banner-list home-banner-copy" aria-hidden="true">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15.5v-3l2.2-4.6A2 2 0 0 1 7 6.8h8.6a2 2 0 0 1 1.6.8l3.1 4H21a1 1 0 0 1 1 1v2.9a1 1 0 0 1-1 1h-1.2M7.2 16.5h8.6M3 15.5a1 1 0 0 0 1 1h.2M6 11.6h14.3"/><circle cx="5.7" cy="16.8" r="1.9"/><circle cx="17.3" cy="16.8" r="1.9"/></svg>
+            <span><strong>Made for</strong> car lovers, people of faith, and families. A perfect gift, too.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M10.5 18.5h3M3.5 3.5l17 17"/></svg>
+            <span><strong>A break from screens:</strong> no apps, nothing to charge</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+            <span><strong>Shipping included,</strong> no outside ads</span>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="hero">

@@ -42,7 +42,7 @@ GA_ID = "G-FNPRVNVL46"
 CSS_VERSION_RE = re.compile(r"/assets/styles\.css\?v=[0-9a-z]+")
 
 # Paths the short links must never shadow (pages and links that already exist).
-RESERVED = {"join", "gift", "friend", "share", "write", "about", "questions", "terms",
+RESERVED = {"join", "gift", "friend", "share", "write", "about", "questions", "terms", "emails",
             "privacy", "welcome", "order-form", "manage", "subscribe", "assets", "stories"}
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 MARKER = "~~~"  # in a story file: where the Facebook half ends
@@ -274,6 +274,27 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
       </div>
     </article>
 
+    <!-- Story email signup (assets/signup.js; README, "Story emails"). -->
+    <section class="story-signup" id="story-emails" aria-labelledby="signup-title">
+      <div class="wrap story-wrap">
+        <div class="story-signup-box" data-signup-box>
+          <h2 id="signup-title">Want the next one?</h2>
+          <p class="story-signup-lead">Get a free true story in your inbox every week.</p>
+          <form class="story-signup-form" name="story-emails" method="POST" action="/emails/thanks/" data-netlify="true" netlify-honeypot="company" data-signup="story_end">
+            <input type="hidden" name="form-name" value="story-emails">
+            <input type="hidden" name="story" value="{slug}">
+            <p class="honeypot" aria-hidden="true">
+              <label>Leave this field empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+            </p>
+            <label class="visually-hidden" for="signup-email">Your email address</label>
+            <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="Your email address" required>
+            <button class="button button--primary" type="submit">Send me stories</button>
+          </form>
+          <p class="story-signup-note" data-signup-status role="status" aria-live="polite">One email a week. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="section section--wash story-offer" id="tommy-stories" aria-labelledby="offer-title">
       <div class="wrap story-offer-grid">
         <div class="story-offer-text">
@@ -328,6 +349,7 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
   {parts['menu']}
   {parts['track']}
   <script src="/assets/story.js?v=20261123" defer></script>
+  <script src="/assets/signup.js?v=20261126" defer></script>
 </body>
 </html>
 """

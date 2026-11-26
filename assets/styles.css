@@ -2329,6 +2329,52 @@ fieldset.friends {
   background: var(--gold-deep);
 }
 
+/* About two thirds of the way through: a quiet note about Tommy Stories
+   with a Subscribe button and a gift link (tools/build_stories.py). */
+.story-body .story-midcard {
+  margin: 2.25rem 0;
+  padding: 1.1rem 1.25rem 1rem;
+  border-left: 4px solid var(--gold-deep);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--wash);
+  font-size: 0.88em;
+  line-height: 1.55;
+}
+
+.story-body .story-midcard p {
+  margin: 0;
+}
+
+.story-body .story-midcard strong {
+  color: var(--blue);
+}
+
+.story-body .story-midcard .story-midcard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  margin-top: 0.85rem;
+}
+
+.story-midcard .button {
+  min-height: 2.75rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+}
+
+.story-midcard-gift {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.story-body .story-midcard .story-midcard-note {
+  margin-top: 0.8rem;
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--muted);
+}
+
 .story-source {
   margin: 1.5rem 0 0;
   font-size: 0.9rem;

@@ -138,10 +138,11 @@ def site_parts() -> dict:
     envelope = between('<svg class="envelope"', "          </svg>")
     css = CSS_VERSION_RE.search(home)
     menu = re.search(r'<script src="/assets/menu\.js\?v=[0-9a-z]+" defer></script>', home)
-    if not css or not menu:
-        raise StoryError("couldn't find the stylesheet or menu script on the home page")
+    track = re.search(r'<script src="/assets/cta-track\.js\?v=[0-9a-z]+" defer></script>', home)
+    if not css or not menu or not track:
+        raise StoryError("couldn't find the stylesheet, menu script or button tracking script on the home page")
     return {"header": header, "footer": footer, "envelope": envelope,
-            "css": css.group(0), "menu": menu.group(0)}
+            "css": css.group(0), "menu": menu.group(0), "track": track.group(0)}
 
 
 # ---------- The photo ----------
@@ -171,6 +172,14 @@ def describe(story: dict) -> str:
     return cut.rstrip(",;:") + "..."
 
 
+# The note two thirds of the way through each story (see render()).
+MIDCARD = """          <aside class="story-midcard" aria-label="About Tommy Stories">
+            <p><strong>Enjoying this story?</strong> Four true stories like it arrive in the mailbox every month, in large, easy-to-read print.</p>
+            <p class="story-midcard-actions"><a class="button button--primary" href="/join/">Start my subscription</a> <a class="story-midcard-gift" href="/gift/">or give it as a gift</a></p>
+            <p class="story-midcard-note">The story continues below.</p>
+          </aside>"""
+
+
 def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
     slug = story["slug"]
     url = f"{SITE}/stories/{slug}/"
@@ -194,6 +203,16 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
         paragraphs.append(
             '          <p class="story-left-off" id="left-off"><span>You left off on Facebook here</span></p>')
         paragraphs += [f"          <p>{esc(p)}</p>" for p in story["after"]]
+    # A small Tommy Stories note about two thirds of the way through: after
+    # the Facebook marker (so Facebook readers see it), and never in the last
+    # three paragraphs.
+    story_count = len(story["before"]) + len(story["after"])
+    at = round(story_count * 2 / 3)
+    at = max(at, len(story["before"]) + 2 if story["split"] else at)
+    at = min(at, story_count - 3)
+    if at > 0:
+        index = at + (1 if story["split"] and at >= len(story["before"]) else 0)
+        paragraphs.insert(index, MIDCARD)
     body = "\n".join(paragraphs)
 
     jump = ('\n        <p class="story-jump"><a href="#left-off">Coming from Facebook? '
@@ -307,6 +326,7 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
     <a class="button button--secondary" href="/gift/">Give a gift</a>
   </div>
   {parts['menu']}
+  {parts['track']}
   <script src="/assets/story.js?v=20261123" defer></script>
 </body>
 </html>

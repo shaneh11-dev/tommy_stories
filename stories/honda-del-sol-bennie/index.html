@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#004185">
   <link rel="preload" href="/assets/fonts/bodoni-moda-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/libre-caslon-text-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/styles.css?v=20261125">
+  <link rel="stylesheet" href="/assets/styles.css?v=20261126">
 </head>
 <body class="story-page" data-story="honda-del-sol-bennie">
   <!-- A story page for a Facebook post (tools/build_stories.py, from
@@ -82,6 +82,11 @@
           <p>Bennie kept working.</p>
           <p>He completed nearly all the fabrication himself, asking for help only with a few welding jobs. His mother made room for the project in her garage, and his brother continued to offer guidance.</p>
           <p>As the car neared completion, there was one important job left.</p>
+          <aside class="story-midcard" aria-label="About Tommy Stories">
+            <p><strong>Enjoying this story?</strong> Four true stories like it arrive in the mailbox every month, in large, easy-to-read print.</p>
+            <p class="story-midcard-actions"><a class="button button--primary" href="/join/">Start my subscription</a> <a class="story-midcard-gift" href="/gift/">or give it as a gift</a></p>
+            <p class="story-midcard-note">The story continues below.</p>
+          </aside>
           <p>Paint.</p>
           <p>Bennie found an old spray gun that had belonged to his father. His dad had once used it to paint cars.</p>
           <p>Bennie cleaned the gun and decided to use it on the del Sol.</p>
@@ -97,6 +102,27 @@
         <p class="story-end" aria-hidden="true"><span></span></p>
       </div>
     </article>
+
+    <!-- Story email signup (assets/signup.js; README, "Story emails"). -->
+    <section class="story-signup" id="story-emails" aria-labelledby="signup-title">
+      <div class="wrap story-wrap">
+        <div class="story-signup-box" data-signup-box>
+          <h2 id="signup-title">Want the next one?</h2>
+          <p class="story-signup-lead">Get a free true story in your inbox every week.</p>
+          <form class="story-signup-form" name="story-emails" method="POST" action="/emails/thanks/" data-netlify="true" netlify-honeypot="company" data-signup="story_end">
+            <input type="hidden" name="form-name" value="story-emails">
+            <input type="hidden" name="story" value="honda-del-sol-bennie">
+            <p class="honeypot" aria-hidden="true">
+              <label>Leave this field empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+            </p>
+            <label class="visually-hidden" for="signup-email">Your email address</label>
+            <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="Your email address" required>
+            <button class="button button--primary" type="submit">Send me stories</button>
+          </form>
+          <p class="story-signup-note" data-signup-status role="status" aria-live="polite">One email a week. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="section section--wash story-offer" id="tommy-stories" aria-labelledby="offer-title">
       <div class="wrap story-offer-grid">
@@ -249,6 +275,8 @@
     <a class="button button--secondary" href="/gift/">Give a gift</a>
   </div>
   <script src="/assets/menu.js?v=20261120" defer></script>
+  <script src="/assets/cta-track.js?v=20261126" defer></script>
   <script src="/assets/story.js?v=20261123" defer></script>
+  <script src="/assets/signup.js?v=20261126" defer></script>
 </body>
 </html>

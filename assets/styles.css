@@ -2329,6 +2329,116 @@ fieldset.friends {
   background: var(--gold-deep);
 }
 
+/* About two thirds of the way through: a quiet note about Tommy Stories
+   with a Subscribe button and a gift link (tools/build_stories.py). */
+.story-body .story-midcard {
+  margin: 2.25rem 0;
+  padding: 1.1rem 1.25rem 1rem;
+  border-left: 4px solid var(--gold-deep);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--wash);
+  font-size: 0.88em;
+  line-height: 1.55;
+}
+
+.story-body .story-midcard p {
+  margin: 0;
+}
+
+.story-body .story-midcard strong {
+  color: var(--blue);
+}
+
+.story-body .story-midcard .story-midcard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  margin-top: 0.85rem;
+}
+
+.story-midcard .button {
+  min-height: 2.75rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+}
+
+.story-midcard-gift {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.story-body .story-midcard .story-midcard-note {
+  margin-top: 0.8rem;
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Under each story: "Want the next one?" with an email box
+   (tools/build_stories.py, assets/signup.js). */
+.story-signup {
+  padding-bottom: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.story-signup-box {
+  padding: 1.5rem 1.5rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--gold-deep);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.story-signup-box h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--blue);
+}
+
+.story-signup-lead {
+  margin: 0.4rem 0 1rem;
+  font-size: 1.1rem;
+}
+
+.story-signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.story-signup-form[hidden] {
+  display: none;
+}
+
+.story-signup-form input[type="email"] {
+  flex: 1 1 15rem;
+  min-width: 0;
+}
+
+.story-signup-form .button {
+  flex: 0 0 auto;
+}
+
+.story-signup-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.story-signup-box.is-done .story-signup-note {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+@media (max-width: 40em) {
+  .story-signup-form .button {
+    flex-basis: 100%;
+  }
+}
+
 .story-source {
   margin: 1.5rem 0 0;
   font-size: 0.9rem;

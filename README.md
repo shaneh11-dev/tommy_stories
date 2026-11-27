@@ -196,6 +196,14 @@ and how to subscribe or give it as a gift.
 
 `assets/email/signature-logo.png` (440 x 136, shown at 220 x 68) is the logo in the Zoho Mail email signatures. Email signatures load it from https://tommystories.com/assets/email/signature-logo.png, so keep that file at that address: moving or renaming it breaks the logo in every email already sent.
 
+## Story emails
+
+Under every story page (built by `tools/build_stories.py`) is a "Want the next one?" box: one email field and a Send me stories button, promising a free true story by email each week. It's a Netlify Form named **story-emails** with two fields, `email` and `story` (the page's link name, so you know which story brought each person in). `assets/signup.js` sends it in the background and thanks the reader in place; without JavaScript it lands on `/emails/thanks/` (unlisted, kept out of search engines). Netlify's spam filter and a hidden honeypot field (`company`) keep bots out. No confirmation email is sent from our side.
+
+To move signups into the email service: Netlify > the site > Forms > story-emails > Download as CSV, then import that file into the email service (with double opt-in on, if the service offers it). Do this weekly, and only for new rows since the last import. Netlify's plan limits how many form submissions it accepts each month, so check the Forms usage there now and then. Later, a small function can send each signup straight to the email service instead.
+
+Each signup also sends `email_signup` (with `story`) to Google Analytics; mark it as a key event (Admin > Data display > Key events) to count signups like subscriptions. The Privacy page's "What we collect" and "How we use it" sections cover these emails.
+
 ## Google Analytics
 
 Every page has Google's tag (gtag.js) for the Google Analytics property tommystories.com, Measurement ID `G-FNPRVNVL46`, near the top of its `<head>`. A new page needs the same lines (copy them from any page). To switch to a different property, find and replace the ID on every page.
@@ -207,6 +215,8 @@ Checkout happens on Stripe's site, where the tag can't run, so the thank-you pag
 - `friend/thanks/` sends `friends_invited`
 
 Each is a **key event** in Google Analytics (Admin > Data display > Key events), so the reports count them. Stripe is on the property's list of unwanted referrals (Admin > Data streams > the web stream > Configure tag settings > List unwanted referrals), so a subscriber is credited to wherever they came from (Facebook, a search) rather than to Stripe.
+
+**Button clicks.** `assets/cta-track.js` (on every page) sends `cta_click` whenever someone clicks a link to subscribe or give a gift: the home page buttons, the phone bar, the header menu, the note partway through each story and the offer under it, and the plan buttons on `/join/` and `/gift/` that open Stripe. It has three details: `cta_link` (where the link goes, such as `/join/` or `/join/monthly`), `cta_location` (such as `hero`, `story_middle`, `story_end_offer`, `sticky_bar`, `header_menu`, `plans`) and `cta_text` (the button's words). To use the first two in reports, register each once as an event-scoped custom dimension (Admin > Data display > Custom definitions > Create custom dimension: names "CTA link" and "CTA location", event parameters `cta_link` and `cta_location`). Then Reports > Engagement > Events > `cta_click`, or an Exploration, shows which buttons people click. A button somewhere new gets a sensible location on its own (its section's id or heading); to name it yourself, add `data-cta-location="..."` to it or its section.
 
 The Privacy page's "Website visits" section describes this and says we don't use it to show ads: keep Google signals and other advertising features off unless that section is updated first. Don't add the tag to the `/friend/stop` page (made by a function): its address carries a friend's stop code.
 

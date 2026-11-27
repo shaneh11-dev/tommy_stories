@@ -42,7 +42,7 @@ GA_ID = "G-FNPRVNVL46"
 CSS_VERSION_RE = re.compile(r"/assets/styles\.css\?v=[0-9a-z]+")
 
 # Paths the short links must never shadow (pages and links that already exist).
-RESERVED = {"join", "gift", "friend", "share", "write", "about", "questions", "terms",
+RESERVED = {"join", "gift", "friend", "share", "write", "about", "questions", "terms", "emails",
             "privacy", "welcome", "order-form", "manage", "subscribe", "assets", "stories"}
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 MARKER = "~~~"  # in a story file: where the Facebook half ends
@@ -138,10 +138,11 @@ def site_parts() -> dict:
     envelope = between('<svg class="envelope"', "          </svg>")
     css = CSS_VERSION_RE.search(home)
     menu = re.search(r'<script src="/assets/menu\.js\?v=[0-9a-z]+" defer></script>', home)
-    if not css or not menu:
-        raise StoryError("couldn't find the stylesheet or menu script on the home page")
+    track = re.search(r'<script src="/assets/cta-track\.js\?v=[0-9a-z]+" defer></script>', home)
+    if not css or not menu or not track:
+        raise StoryError("couldn't find the stylesheet, menu script or button tracking script on the home page")
     return {"header": header, "footer": footer, "envelope": envelope,
-            "css": css.group(0), "menu": menu.group(0)}
+            "css": css.group(0), "menu": menu.group(0), "track": track.group(0)}
 
 
 # ---------- The photo ----------
@@ -171,6 +172,14 @@ def describe(story: dict) -> str:
     return cut.rstrip(",;:") + "..."
 
 
+# The note two thirds of the way through each story (see render()).
+MIDCARD = """          <aside class="story-midcard" aria-label="About Tommy Stories">
+            <p><strong>Enjoying this story?</strong> Four true stories like it arrive in the mailbox every month, in large, easy-to-read print.</p>
+            <p class="story-midcard-actions"><a class="button button--primary" href="/join/">Start my subscription</a> <a class="story-midcard-gift" href="/gift/">or give it as a gift</a></p>
+            <p class="story-midcard-note">The story continues below.</p>
+          </aside>"""
+
+
 def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
     slug = story["slug"]
     url = f"{SITE}/stories/{slug}/"
@@ -194,6 +203,16 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
         paragraphs.append(
             '          <p class="story-left-off" id="left-off"><span>You left off on Facebook here</span></p>')
         paragraphs += [f"          <p>{esc(p)}</p>" for p in story["after"]]
+    # A small Tommy Stories note about two thirds of the way through: after
+    # the Facebook marker (so Facebook readers see it), and never in the last
+    # three paragraphs.
+    story_count = len(story["before"]) + len(story["after"])
+    at = round(story_count * 2 / 3)
+    at = max(at, len(story["before"]) + 2 if story["split"] else at)
+    at = min(at, story_count - 3)
+    if at > 0:
+        index = at + (1 if story["split"] and at >= len(story["before"]) else 0)
+        paragraphs.insert(index, MIDCARD)
     body = "\n".join(paragraphs)
 
     jump = ('\n        <p class="story-jump"><a href="#left-off">Coming from Facebook? '
@@ -255,6 +274,27 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
       </div>
     </article>
 
+    <!-- Story email signup (assets/signup.js; README, "Story emails"). -->
+    <section class="story-signup" id="story-emails" aria-labelledby="signup-title">
+      <div class="wrap story-wrap">
+        <div class="story-signup-box" data-signup-box>
+          <h2 id="signup-title">Want the next one?</h2>
+          <p class="story-signup-lead">Get a free true story in your inbox every week.</p>
+          <form class="story-signup-form" name="story-emails" method="POST" action="/emails/thanks/" data-netlify="true" netlify-honeypot="company" data-signup="story_end">
+            <input type="hidden" name="form-name" value="story-emails">
+            <input type="hidden" name="story" value="{slug}">
+            <p class="honeypot" aria-hidden="true">
+              <label>Leave this field empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+            </p>
+            <label class="visually-hidden" for="signup-email">Your email address</label>
+            <input type="email" id="signup-email" name="email" autocomplete="email" placeholder="Your email address" required>
+            <button class="button button--primary" type="submit">Send me stories</button>
+          </form>
+          <p class="story-signup-note" data-signup-status role="status" aria-live="polite">One email a week. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="section section--wash story-offer" id="tommy-stories" aria-labelledby="offer-title">
       <div class="wrap story-offer-grid">
         <div class="story-offer-text">
@@ -307,7 +347,9 @@ def render(story: dict, parts: dict, photo_size: tuple[int, int] | None) -> str:
     <a class="button button--secondary" href="/gift/">Give a gift</a>
   </div>
   {parts['menu']}
+  {parts['track']}
   <script src="/assets/story.js?v=20261123" defer></script>
+  <script src="/assets/signup.js?v=20261126" defer></script>
 </body>
 </html>
 """
